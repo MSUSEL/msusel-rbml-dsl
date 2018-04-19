@@ -23,9 +23,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-/**
- * 
- */
 package edu.montana.gsoc.msusel.rbml.factory
 
 import edu.montana.gsoc.msusel.rbml.model.Association
@@ -34,7 +31,7 @@ import edu.montana.gsoc.msusel.rbml.model.Multiplicity
 import edu.montana.gsoc.msusel.rbml.model.SPS
 /**
  * @author Isaac Griffith
- *
+ * @version 1.2.0
  */
 class AssociationRoleFactory extends AbstractFactory {
 

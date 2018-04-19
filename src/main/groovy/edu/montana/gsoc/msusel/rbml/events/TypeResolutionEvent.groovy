@@ -25,6 +25,10 @@
  */
 package edu.montana.gsoc.msusel.rbml.events
 
+/**
+ * @author Isaac Griffith
+ * @version 1.2.0
+ */
 abstract class TypeResolutionEvent {
 
     def role

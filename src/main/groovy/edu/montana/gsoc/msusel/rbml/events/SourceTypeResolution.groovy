@@ -28,6 +28,10 @@ package edu.montana.gsoc.msusel.rbml.events
 import edu.montana.gsoc.msusel.rbml.PatternManager
 import edu.montana.gsoc.msusel.rbml.model.*
 
+/**
+ * @author Isaac Griffith
+ * @version 1.2.0
+ */
 class SourceTypeResolution extends TypeResolutionEvent {
 
     @Override

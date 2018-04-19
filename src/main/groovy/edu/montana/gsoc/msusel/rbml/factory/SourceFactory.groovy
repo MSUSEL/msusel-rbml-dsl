@@ -23,9 +23,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-/**
- * 
- */
 package edu.montana.gsoc.msusel.rbml.factory
 
 import edu.montana.gsoc.msusel.rbml.events.SourceTypeResolution
@@ -35,7 +32,7 @@ import edu.montana.gsoc.msusel.rbml.model.Association
 
 /**
  * @author Isaac Griffith
- *
+ * @version 1.2.0
  */
 class SourceFactory extends AbstractFactory {
 

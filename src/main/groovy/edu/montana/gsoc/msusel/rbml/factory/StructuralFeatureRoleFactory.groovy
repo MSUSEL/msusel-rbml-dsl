@@ -23,9 +23,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-/**
- * 
- */
 package edu.montana.gsoc.msusel.rbml.factory
 
 import edu.montana.gsoc.msusel.rbml.PatternManager
@@ -34,9 +31,10 @@ import edu.montana.gsoc.msusel.rbml.model.Classifier
 import edu.montana.gsoc.msusel.rbml.model.Multiplicity
 import edu.montana.gsoc.msusel.rbml.model.StructuralFeature
 import edu.montana.gsoc.msusel.rbml.model.UnspecifiedType
+
 /**
  * @author Isaac Griffith
- *
+ * @version 1.2.0
  */
 class StructuralFeatureRoleFactory extends AbstractFactory {
 

@@ -25,6 +25,10 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+/**
+ * @author Isaac Griffith
+ * @version 1.2.0
+ */
 class AtLeastOne extends Role {
 
     def relations = []

@@ -30,6 +30,10 @@ import edu.montana.gsoc.msusel.rbml.events.DestTypeResolution
 import edu.montana.gsoc.msusel.rbml.events.SourceTypeResolution
 import edu.montana.gsoc.msusel.rbml.model.*
 
+/**
+ * @author Isaac Griffith
+ * @version 1.2.0
+ */
 class CreateRoleFactory extends AbstractFactory {
 
     /**

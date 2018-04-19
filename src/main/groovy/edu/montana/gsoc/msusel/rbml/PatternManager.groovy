@@ -32,9 +32,10 @@ import edu.montana.gsoc.msusel.rbml.model.Classifier
 import edu.montana.gsoc.msusel.rbml.model.GeneralizationHierarchy
 import edu.montana.gsoc.msusel.rbml.model.Lifeline
 import edu.montana.gsoc.msusel.rbml.model.Pattern
+
 /**
  * @author Isaac Griffith
- *
+ * @version 1.2.0
  */
 @Singleton
 class PatternManager {

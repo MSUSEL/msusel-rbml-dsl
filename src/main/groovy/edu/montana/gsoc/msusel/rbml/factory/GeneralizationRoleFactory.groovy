@@ -35,9 +35,10 @@ import edu.montana.gsoc.msusel.rbml.model.AtLeastOne
 import edu.montana.gsoc.msusel.rbml.model.Generalization
 import edu.montana.gsoc.msusel.rbml.model.Multiplicity
 import edu.montana.gsoc.msusel.rbml.model.SPS
+
 /**
  * @author Isaac Griffith
- *
+ * @version 1.2.0
  */
 class GeneralizationRoleFactory extends AbstractFactory {
 

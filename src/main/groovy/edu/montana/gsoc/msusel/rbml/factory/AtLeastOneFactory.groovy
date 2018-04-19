@@ -28,6 +28,10 @@ package edu.montana.gsoc.msusel.rbml.factory
 import edu.montana.gsoc.msusel.rbml.model.AtLeastOne
 import edu.montana.gsoc.msusel.rbml.model.SPS
 
+/**
+ * @author Isaac Griffith
+ * @version 1.2.0
+ */
 class AtLeastOneFactory extends AbstractFactory {
 
     /**

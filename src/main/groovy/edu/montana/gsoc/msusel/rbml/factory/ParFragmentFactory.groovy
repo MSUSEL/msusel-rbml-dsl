@@ -23,9 +23,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-/**
- * 
- */
 package edu.montana.gsoc.msusel.rbml.factory
 
 import edu.montana.gsoc.msusel.rbml.model.Trace
@@ -33,7 +30,7 @@ import edu.montana.gsoc.msusel.rbml.model.ParFragment
 
 /**
  * @author Isaac Griffith
- *
+ * @version 1.2.0
  */
 class ParFragmentFactory extends AbstractFactory {
 

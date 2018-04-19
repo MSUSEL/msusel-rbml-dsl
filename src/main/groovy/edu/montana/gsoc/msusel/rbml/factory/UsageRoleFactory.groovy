@@ -23,9 +23,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-/**
- * 
- */
 package edu.montana.gsoc.msusel.rbml.factory
 
 import edu.montana.gsoc.msusel.rbml.PatternManager
@@ -35,9 +32,10 @@ import edu.montana.gsoc.msusel.rbml.model.AtLeastOne
 import edu.montana.gsoc.msusel.rbml.model.Multiplicity
 import edu.montana.gsoc.msusel.rbml.model.SPS
 import edu.montana.gsoc.msusel.rbml.model.Usage
+
 /**
  * @author Isaac Griffith
- *
+ * @version 1.2.0
  */
 class UsageRoleFactory extends AbstractFactory {
 

@@ -23,13 +23,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-/**
- * 
- */
 package edu.montana.gsoc.msusel.rbml.model
+
 /**
  * @author Isaac Griffith
- *
+ * @version 1.2.0
  */
 class CallMessage extends Message implements Fragment {
 

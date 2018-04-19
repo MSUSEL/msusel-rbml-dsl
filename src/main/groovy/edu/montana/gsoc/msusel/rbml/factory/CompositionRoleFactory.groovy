@@ -30,6 +30,10 @@ import edu.montana.gsoc.msusel.rbml.model.Composition
 import edu.montana.gsoc.msusel.rbml.model.Multiplicity
 import edu.montana.gsoc.msusel.rbml.model.SPS
 
+/**
+ * @author Isaac Griffith
+ * @version 1.2.0
+ */
 class CompositionRoleFactory extends AbstractFactory {
 
     boolean isLeaf() {
