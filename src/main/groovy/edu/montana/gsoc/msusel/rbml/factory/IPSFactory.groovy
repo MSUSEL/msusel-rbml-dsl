@@ -23,9 +23,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-/**
- * 
- */
 package edu.montana.gsoc.msusel.rbml.factory
 
 import edu.montana.gsoc.msusel.rbml.model.IPS
@@ -35,7 +32,7 @@ import edu.montana.gsoc.msusel.rbml.model.Pattern
 
 /**
  * @author Isaac Griffith
- *
+ * @version 1.3.0
  */
 class IPSFactory extends AbstractFactory {
 
@@ -43,9 +40,6 @@ class IPSFactory extends AbstractFactory {
         return false
     }
 
-    /**
-     * {@inheritDoc}
-     */
     def newInstance(FactoryBuilderSupport builder, Object name, Object value, Map attributes)
     throws InstantiationException, IllegalAccessException {
         IPS inst = new IPS()
@@ -71,9 +65,6 @@ class IPSFactory extends AbstractFactory {
         inst
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void setParent(FactoryBuilderSupport builder, Object parent, Object child) {
         if (parent != null && parent instanceof Pattern) {
@@ -84,9 +75,6 @@ class IPSFactory extends AbstractFactory {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void onNodeCompleted(FactoryBuilderSupport builder, Object parent, Object child) {
     }

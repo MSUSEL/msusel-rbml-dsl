@@ -30,7 +30,7 @@ import edu.montana.gsoc.msusel.rbml.model.LoopFragment
 
 /**
  * @author Isaac Griffith
- * @version 1.2.0
+ * @version 1.3.0
  */
 class LoopFragmentFactory extends AbstractFactory {
 
@@ -38,17 +38,11 @@ class LoopFragmentFactory extends AbstractFactory {
         return false
     }
 
-    /**
-     * {@inheritDoc}
-     */
     def newInstance(FactoryBuilderSupport builder, Object name, Object value, Map attributes)
     throws InstantiationException, IllegalAccessException {
         new LoopFragment(attributes)
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void setParent(FactoryBuilderSupport builder, Object parent, Object child) {
         if (parent && parent instanceof Trace) {
@@ -56,11 +50,7 @@ class LoopFragmentFactory extends AbstractFactory {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void onNodeCompleted(FactoryBuilderSupport builder, Object parent, Object child) {
     }
-
 }

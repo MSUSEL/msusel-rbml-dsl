@@ -32,7 +32,7 @@ import edu.montana.gsoc.msusel.rbml.model.SPS
 
 /**
  * @author Isaac Griffith
- * @version 1.2.0
+ * @version 1.3.0
  */
 class AggregationRoleFactory extends AbstractFactory {
 
@@ -40,9 +40,6 @@ class AggregationRoleFactory extends AbstractFactory {
         return false
     }
 
-    /**
-     * {@inheritDoc}
-     */
     def newInstance(FactoryBuilderSupport builder, Object name, Object value, Map attributes)
             throws InstantiationException, IllegalAccessException {
         Aggregation inst = new Aggregation()
@@ -59,9 +56,6 @@ class AggregationRoleFactory extends AbstractFactory {
         inst
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void setParent(FactoryBuilderSupport builder, Object parent, Object child) {
         if (parent != null && parent instanceof AtLeastOne) {
@@ -69,9 +63,6 @@ class AggregationRoleFactory extends AbstractFactory {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void onNodeCompleted(FactoryBuilderSupport builder, Object parent, Object child) {
     }

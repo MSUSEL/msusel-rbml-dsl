@@ -28,7 +28,7 @@ package edu.montana.gsoc.msusel.rbml.factory
 
 /**
  * @author Isaac Griffith
- * @version 1.2.0
+ * @version 1.3.0
  */
 class RelationsFactory extends AbstractFactory {
 
@@ -36,25 +36,16 @@ class RelationsFactory extends AbstractFactory {
         return false
     }
 
-    /**
-     * {@inheritDoc}
-     */
     def newInstance(FactoryBuilderSupport arg0, Object arg1, Object arg2, Map arg3)
     throws InstantiationException, IllegalAccessException {
         def relations = []
         relations
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void setParent(FactoryBuilderSupport builder, Object parent, Object child) {
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void onNodeCompleted(FactoryBuilderSupport builder, Object parent, Object child) {
     }

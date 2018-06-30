@@ -34,7 +34,7 @@ import edu.montana.gsoc.msusel.rbml.model.UnknownType
 
 /**
  * @author Isaac Griffith
- * @version 1.2.0
+ * @version 1.3.0
  */
 class LifelineRoleFactory extends AbstractFactory {
 
@@ -42,9 +42,6 @@ class LifelineRoleFactory extends AbstractFactory {
         return true
     }
 
-    /**
-     * {@inheritDoc}
-     */
     def newInstance(FactoryBuilderSupport builder, Object name, Object value, Map attributes)
     throws InstantiationException, IllegalAccessException {
         Lifeline inst = new Lifeline()
@@ -85,16 +82,10 @@ class LifelineRoleFactory extends AbstractFactory {
         inst
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void setParent(FactoryBuilderSupport builder, Object parent, Object child) {
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void onNodeCompleted(FactoryBuilderSupport builder, Object parent, Object child) {
     }

@@ -26,7 +26,7 @@
 package edu.montana.gsoc.msusel.rbml.factory
 
 import edu.montana.gsoc.msusel.rbml.PatternManager
-import edu.montana.gsoc.msusel.rbml.events.StructuralTypeResoultion
+import edu.montana.gsoc.msusel.rbml.events.StructuralTypeResolution
 import edu.montana.gsoc.msusel.rbml.model.Classifier
 import edu.montana.gsoc.msusel.rbml.model.Multiplicity
 import edu.montana.gsoc.msusel.rbml.model.StructuralFeature
@@ -34,20 +34,14 @@ import edu.montana.gsoc.msusel.rbml.model.UnspecifiedType
 
 /**
  * @author Isaac Griffith
- * @version 1.2.0
+ * @version 1.3.0
  */
 class StructuralFeatureRoleFactory extends AbstractFactory {
 
-    /**
-     * {@inheritDoc}
-     */
     boolean isLeaf() {
         return false
     }
 
-    /**
-     * {@inheritDoc}
-     */
     def newInstance(FactoryBuilderSupport builder, Object name, Object value, Map attributes)
     throws InstantiationException, IllegalAccessException {
         StructuralFeature inst = new StructuralFeature()
@@ -59,7 +53,7 @@ class StructuralFeatureRoleFactory extends AbstractFactory {
 
                 inst.name = n
 
-                PatternManager.instance.events << new StructuralTypeResoultion(role: inst, type: type)
+                PatternManager.instance.events << new StructuralTypeResolution(role: inst, type: type)
             } else {
                 inst.name = value
                 inst.type = new UnspecifiedType()
@@ -86,9 +80,6 @@ class StructuralFeatureRoleFactory extends AbstractFactory {
         inst
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void setParent(FactoryBuilderSupport builder, Object parent, Object child) {
         if (parent != null && parent instanceof Classifier) {
@@ -96,9 +87,6 @@ class StructuralFeatureRoleFactory extends AbstractFactory {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void onNodeCompleted(FactoryBuilderSupport builder, Object parent, Object child) {
     }

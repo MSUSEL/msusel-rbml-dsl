@@ -27,7 +27,7 @@ package edu.montana.gsoc.msusel.rbml.model
 
 /**
  * @author Isaac Griffith
- * @version 1.2.0
+ * @version 1.3.0
  */
 class SPS {
 
@@ -35,4 +35,23 @@ class SPS {
     def classifiers = []
     def relations = []
     def constraints = []
+
+    List roleBlocks() {
+        def blocks = []
+        relations.each {
+            switch (it) {
+                case Realization:
+                case Generalization:
+                    block.source = it.child
+                    block.dest = it.parent
+                    break
+                case Usage:
+                case Create:
+                case Association:
+                    block.source = it.source
+                    block.dest = it.dest
+                    break
+            }
+        }
+    }
 }

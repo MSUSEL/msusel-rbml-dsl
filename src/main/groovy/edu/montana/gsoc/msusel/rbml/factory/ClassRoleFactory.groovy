@@ -32,7 +32,7 @@ import edu.montana.gsoc.msusel.rbml.model.SPS
 
 /**
  * @author Isaac Griffith
- * @version 1.2.0
+ * @version 1.3.0
  */
 class ClassRoleFactory extends AbstractFactory {
 
@@ -40,9 +40,6 @@ class ClassRoleFactory extends AbstractFactory {
         return false
     }
 
-    /**
-     * {@inheritDoc}
-     */
     def newInstance(FactoryBuilderSupport builder, Object name, Object value, Map attributes)
     throws InstantiationException, IllegalAccessException {
         ClassRole inst = new ClassRole()
@@ -79,9 +76,6 @@ class ClassRoleFactory extends AbstractFactory {
         inst
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void setParent(FactoryBuilderSupport builder, parent, child) {
         if (parent && parent instanceof GeneralizationHierarchy) {
@@ -92,9 +86,6 @@ class ClassRoleFactory extends AbstractFactory {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void onNodeCompleted(FactoryBuilderSupport builder, Object parent, Object child) {
     }

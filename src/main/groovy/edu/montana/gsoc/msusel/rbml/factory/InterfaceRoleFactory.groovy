@@ -23,9 +23,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-/**
- * 
- */
 package edu.montana.gsoc.msusel.rbml.factory
 
 import edu.montana.gsoc.msusel.rbml.model.GeneralizationHierarchy
@@ -35,7 +32,7 @@ import edu.montana.gsoc.msusel.rbml.model.SPS
 
 /**
  * @author Isaac Griffith
- *
+ * @version 1.3.0
  */
 class InterfaceRoleFactory extends AbstractFactory {
 
@@ -48,9 +45,6 @@ class InterfaceRoleFactory extends AbstractFactory {
         return false
     }
 
-    /**
-     * {@inheritDoc}
-     */
     def newInstance(FactoryBuilderSupport builder, Object name, Object value, Map attributes)
     throws InstantiationException, IllegalAccessException {
         InterfaceRole inst = new InterfaceRole()
@@ -83,9 +77,6 @@ class InterfaceRoleFactory extends AbstractFactory {
         inst
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void setParent(FactoryBuilderSupport builder, parent, child) {
         if (parent && parent instanceof GeneralizationHierarchy) {
@@ -96,11 +87,7 @@ class InterfaceRoleFactory extends AbstractFactory {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void onNodeCompleted(FactoryBuilderSupport builder, Object parent, Object child) {
     }
-
 }

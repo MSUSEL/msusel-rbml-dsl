@@ -27,7 +27,7 @@ package edu.montana.gsoc.msusel.rbml.model
 
 /**
  * @author Isaac Griffith
- * @version 1.2.0
+ * @version 1.3.0
  */
 class LoopFragment extends CombinedFragment {
 
@@ -38,7 +38,7 @@ class LoopFragment extends CombinedFragment {
     /**
      * 
      */
-    public LoopFragment()
+    LoopFragment()
     {
         // TODO Auto-generated constructor stub
     }

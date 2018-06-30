@@ -27,7 +27,7 @@ package edu.montana.gsoc.msusel.rbml.model
 
 /**
  * @author Isaac Griffith
- * @version 1.2.0
+ * @version 1.3.0
  */
 class Multiplicity {
 
@@ -42,4 +42,14 @@ class Multiplicity {
             "$lower..*"
     }
 
+    def toRange() {
+        if (upper < 0)
+            return (lower..Integer.MAX_VALUE)
+        else
+            return (lower..upper)
+    }
+
+    boolean inRange(int count) {
+        toRange().contains(count)
+    }
 }

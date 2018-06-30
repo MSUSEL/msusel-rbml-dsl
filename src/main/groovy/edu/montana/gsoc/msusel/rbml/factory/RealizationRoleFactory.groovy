@@ -35,7 +35,7 @@ import edu.montana.gsoc.msusel.rbml.model.*
 
 /**
  * @author Isaac Griffith
- * @version 1.2.0
+ * @version 1.3.0
  */
 class RealizationRoleFactory extends AbstractFactory {
 
@@ -43,9 +43,6 @@ class RealizationRoleFactory extends AbstractFactory {
         return false
     }
 
-    /**
-     * {@inheritDoc}
-     */
     def newInstance(FactoryBuilderSupport builder, Object name, Object value, Map attributes)
     throws InstantiationException, IllegalAccessException {
         Realization inst = new Realization()
@@ -84,9 +81,6 @@ class RealizationRoleFactory extends AbstractFactory {
         inst
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void setParent(FactoryBuilderSupport builder, Object parent, Object child) {
         println("Parent: " + parent.getClass().simpleName)
@@ -96,9 +90,6 @@ class RealizationRoleFactory extends AbstractFactory {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void onNodeCompleted(FactoryBuilderSupport builder, Object parent, Object child) {
     }

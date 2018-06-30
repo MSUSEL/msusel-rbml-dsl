@@ -27,14 +27,14 @@ package edu.montana.gsoc.msusel.rbml.factory
 
 /**
  * @author Isaac Griffith
- * @version 1.2.0
+ * @version 1.3.0
  */
 class RBMLFactoryBuilder extends FactoryBuilderSupport {
 
     /**
      * @param init
      */
-    public RBMLFactoryBuilder(boolean init = true) {
+    RBMLFactoryBuilder(boolean init = true) {
         super(init)
     }
 
@@ -82,8 +82,6 @@ class RBMLFactoryBuilder extends FactoryBuilderSupport {
         registerFactory("context", new ContextFactory())
         registerFactory("pps", new PPSFactory())
         registerFactory("smps", new SMPSFactory())
-        
-        
     }
 
 }

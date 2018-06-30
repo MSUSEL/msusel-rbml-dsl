@@ -29,7 +29,7 @@ import edu.montana.gsoc.msusel.rbml.model.Constraint
 
 /**
  * @author Isaac Griffith
- * @version 1.2.0
+ * @version 1.3.0
  */
 class ContextFactory extends AbstractFactory {
 
@@ -37,9 +37,6 @@ class ContextFactory extends AbstractFactory {
         return true
     }
 
-    /**
-     * {@inheritDoc}
-     */
     def newInstance(FactoryBuilderSupport builder, Object name, Object value, Map attributes)
     throws InstantiationException, IllegalAccessException {
         Constraint cons = new Constraint(attributes)
@@ -49,9 +46,6 @@ class ContextFactory extends AbstractFactory {
         cons
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void setParent(FactoryBuilderSupport builder, Object parent, Object child) {
         if (parent != null && parent instanceof List) {
@@ -59,9 +53,6 @@ class ContextFactory extends AbstractFactory {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void onNodeCompleted(FactoryBuilderSupport builder, Object parent, Object child) {
     }

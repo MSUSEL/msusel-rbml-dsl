@@ -34,7 +34,7 @@ import edu.montana.gsoc.msusel.rbml.model.ReturnMessage
 
 /**
  * @author Isaac Griffith
- * @version 1.2.0
+ * @version 1.3.0
  */
 class CallReturnRoleFactory extends AbstractFactory {
 
@@ -42,9 +42,6 @@ class CallReturnRoleFactory extends AbstractFactory {
         return true
     }
 
-    /**
-     * {@inheritDoc}
-     */
     def newInstance(FactoryBuilderSupport builder, Object name, Object value, Map attributes)
     throws InstantiationException, IllegalAccessException {
         ReturnMessage msg = new ReturnMessage()
@@ -83,9 +80,6 @@ class CallReturnRoleFactory extends AbstractFactory {
         msg
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void setParent(FactoryBuilderSupport builder, Object parent, Object child) {
         if (parent && parent instanceof Trace) {
@@ -93,9 +87,6 @@ class CallReturnRoleFactory extends AbstractFactory {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void onNodeCompleted(FactoryBuilderSupport builder, Object parent, Object child) {
     }

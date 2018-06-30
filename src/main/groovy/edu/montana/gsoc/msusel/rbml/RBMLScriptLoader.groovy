@@ -23,9 +23,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-/**
- * 
- */
 package edu.montana.gsoc.msusel.rbml
 
 import edu.montana.gsoc.msusel.rbml.model.Pattern
@@ -33,7 +30,7 @@ import org.codehaus.groovy.control.CompilerConfiguration
 
 /**
  * @author Isaac Griffith
- * @version 1.2.0
+ * @version 1.3.0
  */
 class RBMLScriptLoader {
 

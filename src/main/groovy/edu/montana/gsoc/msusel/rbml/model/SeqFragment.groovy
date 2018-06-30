@@ -23,14 +23,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-/**
- * 
- */
 package edu.montana.gsoc.msusel.rbml.model
 
 /**
  * @author Isaac Griffith
- *
+ * @version 1.3.0
  */
 class SeqFragment extends CombinedFragment {
 
@@ -39,7 +36,7 @@ class SeqFragment extends CombinedFragment {
     /**
      * 
      */
-    public SeqFragment()
+    SeqFragment()
     {
         // TODO Auto-generated constructor stub
     }

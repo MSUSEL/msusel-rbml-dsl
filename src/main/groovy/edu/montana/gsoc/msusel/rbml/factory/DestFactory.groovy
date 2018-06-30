@@ -32,7 +32,7 @@ import edu.montana.gsoc.msusel.rbml.model.Multiplicity
 
 /**
  * @author Isaac Griffith
- * @version 1.2.0
+ * @version 1.3.0
  */
 class DestFactory extends AbstractFactory {
 
@@ -40,9 +40,6 @@ class DestFactory extends AbstractFactory {
         return false
     }
 
-    /**
-     * {@inheritDoc}
-     */
     def newInstance(FactoryBuilderSupport builder, Object name, Object value, Map attributes)
     throws InstantiationException, IllegalAccessException {
         Association assoc = null
@@ -70,16 +67,10 @@ class DestFactory extends AbstractFactory {
         assoc
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void setParent(FactoryBuilderSupport builder, Object parent, Object child) {
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void onNodeCompleted(FactoryBuilderSupport builder, Object parent, Object child) {
     }

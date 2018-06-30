@@ -30,28 +30,19 @@ import edu.montana.gsoc.msusel.rbml.model.Trace
 
 /**
  * @author Isaac Griffith
- * @version 1.2.0
+ * @version 1.3.0
  */
 class StrictFragmentFactory extends AbstractFactory {
 
-    /**
-     * {@inheritDoc}
-     */
     boolean isLeaf() {
         return false
     }
 
-    /**
-     * {@inheritDoc}
-     */
     def newInstance(FactoryBuilderSupport builder, Object name, Object value, Map attributes)
     throws InstantiationException, IllegalAccessException {
         new StrictFragment()
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void setParent(FactoryBuilderSupport builder, Object parent, Object child) {
         if (parent && parent instanceof Trace) {
@@ -59,9 +50,6 @@ class StrictFragmentFactory extends AbstractFactory {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     void onNodeCompleted(FactoryBuilderSupport builder, Object parent, Object child) {
     }

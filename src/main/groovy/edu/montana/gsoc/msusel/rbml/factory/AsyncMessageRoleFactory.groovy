@@ -27,13 +27,10 @@ package edu.montana.gsoc.msusel.rbml.factory
 
 /**
  * @author Isaac Griffith
- * @version 1.2.0
+ * @version 1.3.0
  */
 class AsyncMessageRoleFactory extends AbstractFactory {
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     def newInstance(FactoryBuilderSupport builder, Object name, Object value, Map attributes)
             throws InstantiationException, IllegalAccessException
