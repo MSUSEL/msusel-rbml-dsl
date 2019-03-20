@@ -2,8 +2,9 @@
  * The MIT License (MIT)
  *
  * MSUSEL RBML DSL
- * Copyright (c) 2015-2018 Montana State University, Gianforte School of Computing,
- * Software Engineering Laboratory
+ * Copyright (c) 2015-2019 Montana State University, Gianforte School of Computing,
+ * Software Engineering Laboratory and Idaho State University, Informatics and
+ * Computer Science, Empirical Software Engineering Laboratory
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +24,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
 package edu.montana.gsoc.msusel.rbml.factory
 
 import edu.montana.gsoc.msusel.rbml.model.OptFragment

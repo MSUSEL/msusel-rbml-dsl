@@ -2,8 +2,9 @@
  * The MIT License (MIT)
  *
  * MSUSEL RBML DSL
- * Copyright (c) 2015-2018 Montana State University, Gianforte School of Computing,
- * Software Engineering Laboratory
+ * Copyright (c) 2015-2019 Montana State University, Gianforte School of Computing,
+ * Software Engineering Laboratory and Idaho State University, Informatics and
+ * Computer Science, Empirical Software Engineering Laboratory
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,10 +27,8 @@
 package edu.montana.gsoc.msusel.rbml.conformance
 
 import com.google.inject.Inject
-import edu.montana.gsoc.msusel.datamodel.DataModelMediator
-import edu.montana.gsoc.msusel.datamodel.pattern.PatternInstance
-import edu.montana.gsoc.msusel.datamodel.type.Interface
-import edu.montana.gsoc.msusel.datamodel.type.Type
+import edu.isu.isuese.datamodel.PatternInstance
+import edu.isu.isuese.datamodel.Type
 import edu.montana.gsoc.msusel.rbml.model.*
 import org.apache.commons.lang3.tuple.Pair
 import org.apache.commons.lang3.tuple.Triple

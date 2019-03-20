@@ -2,8 +2,9 @@
  * The MIT License (MIT)
  *
  * MSUSEL RBML DSL
- * Copyright (c) 2015-2018 Montana State University, Gianforte School of Computing,
- * Software Engineering Laboratory
+ * Copyright (c) 2015-2019 Montana State University, Gianforte School of Computing,
+ * Software Engineering Laboratory and Idaho State University, Informatics and
+ * Computer Science, Empirical Software Engineering Laboratory
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +26,7 @@
  */
 package edu.montana.gsoc.msusel.rbml.conformance
 
-import edu.montana.gsoc.msusel.datamodel.Component
+import edu.isu.isuese.datamodel.Component
 import edu.montana.gsoc.msusel.rbml.model.Role
 
 /**
