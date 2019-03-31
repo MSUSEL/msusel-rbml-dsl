@@ -41,7 +41,6 @@ class SPSConformance {
 
     // Roles mapped to CodeNodes
     def roleNodeMap = [:]
-    @Inject DataModelMediator mediator
 
     /**
      *
@@ -72,21 +71,42 @@ class SPSConformance {
         }
 
         if (realizationMult(mapping))
-            if (dom(mapping))
-                println "conforms"
+            noncom = dom(mapping)
 
         // TODO Info needed to capture:
         // TODO 1. Non-conforming Model Blocks
         // TODO 2. Conforming Model Blocks
+        List<ModelBlock> conformingModelBlocks = getConformingModelBlocks(mapping)
         // TODO 3. Roles without bindings
+        List<RoleBlock> unboundRoles = getUnboundRoles(mapping, SPS)
         // TODO 4. Unbound Types
+        List<Type> unbound = getUnboundTypes(mapping, instance)
         // TODO Use this info to calculate instance conformance index (ICI), pattern satisfaction index (PSI), and to build list of non-conforming and conforming model blocks
         // TODO Return Tuple of (ICI, PSI, NonComList, ComList)
         return Triple.of([], [], 0.0)
     }
 
+    List<ModelBlock> getConformingModelBlocks(Map<RoleBlock, List<BlockBinding>> mapping) {
+
+    }
+
+    List<RoleBlock> getUnboundRoles(Map<RoleBlock, List<BlockBinding>> mapping, SPS sps) {
+        List<RoleBlock> list = []
+
+        SPS.roleBlocks().each { RoleBlock rb ->
+            if (mapping[rb] == null || mapping[rb].isEmpty())
+                list += rb
+        }
+
+        list
+    }
+
+    List<Type> getUnboundTypes(Map<RoleBlock, List<BlockBinding>> mapping, PatternInstance inst) {
+
+    }
+
     List<ModelBlock> getModelBlocks(PatternInstance inst) {
-        List<Type> types = mediator.findTypes(inst)
+        List<Type> types = inst.getTypes()
         Set<ModelBlock> blocks = [] as Set
 
         types.each { Type src ->
@@ -124,8 +144,8 @@ class SPSConformance {
     private Set<Type> getGenRealDestTypes(Type src) {
         Set<Type> types = [] as Set
 
-        types += mediator.getRealizedFrom(src)
-        types += mediator.getGeneralizedFrom(src)
+        types += src.getRealizes()
+        types += src.getGeneralizes()
 
         types
     }
@@ -138,9 +158,9 @@ class SPSConformance {
     private Set<Type> getAssocDestTypes(Type src) {
         Set<Type> types = [] as Set
 
-        types += mediator.getAssociatedFrom(src)
-        types += mediator.getAggregatedFrom(src)
-        types += mediator.getComposedFrom(src)
+        types += src.getAssociatedFrom()
+        types += src.getAggregatedFrom()
+        types += src.getComposedFrom()
 
         types
     }
@@ -153,8 +173,8 @@ class SPSConformance {
     private Set<Type> getDependDestTypes(Type src) {
         Set<Type> types = [] as Set
 
-        types += mediator.getUseFrom(src)
-        types += mediator.getDependencyFrom(src)
+        types += src.getUseFrom()
+        types += src.getDependencyFrom()
 
         types
     }
@@ -167,8 +187,8 @@ class SPSConformance {
     private Set<Type> getGenRealSrcTypes(Type dest) {
         Set<Type> types = [] as Set
 
-        types += mediator.getRealizedTo(dest)
-        types += mediator.getGeneralizedTo(dest)
+        types += dest.getRealizedBy()
+        types += dest.getGeneralizedBy()
 
         types
     }
@@ -181,9 +201,9 @@ class SPSConformance {
     private Set<Type> getAssocSrcTypes(Type dest) {
         Set<Type> types = [] as Set
 
-        types += mediator.getAssociatedTo(dest)
-        types += mediator.getAggregatedTo(dest)
-        types += mediator.getComposedTo(dest)
+        types += dest.getAssociatedTo()
+        types += dest.getAggregatedTo()
+        types += dest.getComposedTo()
 
         types
     }
@@ -196,8 +216,8 @@ class SPSConformance {
     private Set<Type> getDependSrcTypes(Type dest) {
         Set<Type> types = [] as Set
 
-        types += mediator.getUseTo(dest)
-        types += mediator.getDependencyTo(dest)
+        types += dest.getUseTo()
+        types += dest.getDependencyTo()
 
         types
     }
@@ -213,16 +233,17 @@ class SPSConformance {
      * @return true if the model block conforms to the provided role block
      */
     def checkBlockConformance(RoleBlock rb, ModelBlock mb) {
-        List<BlockBinding> bindings = []
+        BlockBinding binding
         if (rb.type == mb.type) {
             if (checkEndRole(rb.source, mb.source) && checkEndRole(rb.dest, mb.dest)) {
-                bindings << BlockBinding.of(rb, mb)
+                binding = BlockBinding.of(rb, mb)
             }
             else if (checkEndRole(rb.source, mb.dest) && checkEndRole(rb.dest, mb.source)) {
-                bindings << BlockBinding.fo(rb, mb)
+                binding = BlockBinding.fo(rb, mb)
             }
         }
-        bindings
+        // TODO Check that each feature in the role block can be mapped to a feature in the model block
+        binding
     }
 
     /**
@@ -238,10 +259,10 @@ class SPSConformance {
                 ret = c instanceof Classifier
                 break
             case ClassRole:
-                ret = c instanceof Class
+                ret = c instanceof Class && !c.isInterface()
                 break
             case InterfaceRole:
-                ret = c instanceof Interface
+                ret = c instanceof Class && c.isInterface()
                 break
         }
 
@@ -334,8 +355,8 @@ class SPSConformance {
             counts[role] = set.size()
         }
 
-        // check that realization mutiliplicities are satisfied
-        // check that mandatory roles have been bound
+        // TODO check that realization multiplicities are satisfied
+        // TODO check that mandatory roles have been bound
         counts.each { role, count ->
             if (role.mult.inRange(count)) {
 

@@ -26,6 +26,8 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+import edu.montana.gsoc.msusel.rbml.conformance.RoleBlock
+
 /**
  * @author Isaac Griffith
  * @version 1.3.0
@@ -37,7 +39,7 @@ class SPS {
     def relations = []
     def constraints = []
 
-    List roleBlocks() {
+    List<RoleBlock> roleBlocks() {
         def blocks = []
         relations.each {
             switch (it) {
