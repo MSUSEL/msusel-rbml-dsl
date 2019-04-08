@@ -56,9 +56,9 @@ class SPSConformance {
         sps.roleBlocks().each { RoleBlock rb ->
             mapping[rb] = []
             modelBlocks.each { ModelBlock mb ->
-                List<BlockBinding> bindings = checkBlockConformance(rb, mb)
-                if (bindings)
-                    mapping[rb] += bindings
+                BlockBinding binding = checkBlockConformance(rb, mb)
+                if (binding)
+                    mapping[rb] << binding
             }
         }
 
@@ -107,7 +107,7 @@ class SPSConformance {
 
     List<ModelBlock> getModelBlocks(PatternInstance inst) {
         List<Type> types = inst.getTypes()
-        Set<ModelBlock> blocks = [] as Set
+        Set<ModelBlock> blocks = [] as Set<ModelBlock>
 
         types.each { Type src ->
             getGenRealDestTypes(src).each { Type dest ->
@@ -334,18 +334,20 @@ class SPSConformance {
 
     /**
      * for each rb in mapping.keys check that the multiplicity of the role is met by the  matching instances in mb
-     * if a role is found unsatisfied, the mapping instances for the role blocks that contain the role are removed from the mapping
+     * if a role is found unsatisfied, the mapping instances for the role blocks that contain the role are removed
+     * from the mapping
      *
      * @param bindings
      */
     def realizationMult(List<BlockBinding> bindings) {
-        // TODO check that the number of classifiers bound to a classifier role satisfy the realization multiplicities associated with the role,
+        // TODO check that the number of classifiers bound to a classifier role
+        //      satisfy the realization multiplicities associated with the role,
         // TODO and check that mandatory roles have classifiers bound to them.
         Map<Role, Set<Type>> mappings = [:]
         bindings.each {
             it.roleBindings.each { RoleBinding rb ->
                 if (!mappings.containsKey(rb.role))
-                    mappings[rb.role] = [] as Set
+                    mappings[rb.role] = [] as Set<Type>
                 mappings[rb.role] << rb.type
             }
         }
@@ -355,14 +357,11 @@ class SPSConformance {
             counts[role] = set.size()
         }
 
+
         // TODO check that realization multiplicities are satisfied
         // TODO check that mandatory roles have been bound
         counts.each { role, count ->
-            if (role.mult.inRange(count)) {
-
-            }
-
-            if (role.mult.lower > 0 && count > 0) {
+            if ((role.mult.lower > 0 && count > 0) && role.mult.inRange(count)) {
 
             }
         }
