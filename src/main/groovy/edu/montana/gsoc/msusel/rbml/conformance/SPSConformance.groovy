@@ -102,7 +102,19 @@ class SPSConformance {
     }
 
     List<Type> getUnboundTypes(Map<RoleBlock, List<BlockBinding>> mapping, PatternInstance inst) {
-
+        List<Type> unbound = [] as List<Type>
+        inst.getTypes().each { Type t ->
+            outer:
+            for (List<BlockBinding> binding : mapping.values()) {
+                for (BlockBinding bind : binding) {
+                    if (bind.getMb().getDest() == t)
+                        continue outer
+                    if (bind.getMb().getSource() == t)
+                        continue outer
+                }
+            }
+            unbound << t
+        }
     }
 
     List<ModelBlock> getModelBlocks(PatternInstance inst) {
