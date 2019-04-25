@@ -34,7 +34,7 @@ import edu.montana.gsoc.msusel.datamodel.pattern.PatternInstance
  * @author Isaac Griffith
  * @version 1.3.0
  */
-class ChainIdentifier {
+class itChainIdentifier {
 
     def findChains(System system) {
         int index = 0

@@ -26,21 +26,17 @@
  */
 package edu.montana.gsoc.msusel.rbml.conformance
 
-import com.google.inject.Inject
+import edu.isu.isuese.datamodel.Class
 import edu.isu.isuese.datamodel.PatternInstance
 import edu.isu.isuese.datamodel.Type
 import edu.montana.gsoc.msusel.rbml.model.*
 import org.apache.commons.lang3.tuple.Pair
-import org.apache.commons.lang3.tuple.Triple
 
 /**
  * @author Isaac Griffith
  * @version 1.3.0
  */
 class SPSConformance {
-
-    // Roles mapped to CodeNodes
-    def roleNodeMap = [:]
 
     /**
      *
@@ -53,14 +49,23 @@ class SPSConformance {
         Map<RoleBlock, List<BlockBinding>> mapping = [:]
         List<ModelBlock> modelBlocks = getModelBlocks(instance)
 
+        double totalLocal = 0
+        int total = 0
+
         sps.roleBlocks().each { RoleBlock rb ->
             mapping[rb] = []
             modelBlocks.each { ModelBlock mb ->
                 BlockBinding binding = checkBlockConformance(rb, mb)
+                localConform = checkLocalConformance(binding)
+                total += 1
+                totalLocal += localConform
                 if (binding)
                     mapping[rb] << binding
             }
         }
+
+        // Instance Conformance Index
+        double ici = totalLocal / total
 
         List<Pair<RoleBlock, BlockBinding>> toRemove = []
         mapping.each { RoleBlock rb, List<BlockBinding> list ->
@@ -70,20 +75,20 @@ class SPSConformance {
             }
         }
 
-        if (realizationMult(mapping))
-            noncom = dom(mapping)
+        Pair<List<Role>, List<Role>> sat = realizationMult(mapping)
 
-        // TODO Info needed to capture:
-        // TODO 1. Non-conforming Model Blocks
-        // TODO 2. Conforming Model Blocks
+        // Pattern Satisfaction Index
+        double psi = (double) sat.right.size() / (sat.left.size() + sat.right.size())
+
+        List<ModelBlock> nonConformingModelBlocks = getNonConformingModelBlocks(mapping)
         List<ModelBlock> conformingModelBlocks = getConformingModelBlocks(mapping)
-        // TODO 3. Roles without bindings
-        List<RoleBlock> unboundRoles = getUnboundRoles(mapping, SPS)
-        // TODO 4. Unbound Types
-        List<Type> unbound = getUnboundTypes(mapping, instance)
-        // TODO Use this info to calculate instance conformance index (ICI), pattern satisfaction index (PSI), and to build list of non-conforming and conforming model blocks
+
         // TODO Return Tuple of (ICI, PSI, NonComList, ComList)
-        return Triple.of([], [], 0.0)
+        return Tuple.of(ici, psi, nonConformingModelBlocks, conformingModelBlocks)
+    }
+
+    List<ModelBlock> getNonConformingModelBlocks(mapping) {
+
     }
 
     List<ModelBlock> getConformingModelBlocks(Map<RoleBlock, List<BlockBinding>> mapping) {
@@ -249,13 +254,39 @@ class SPSConformance {
         if (rb.type == mb.type) {
             if (checkEndRole(rb.source, mb.source) && checkEndRole(rb.dest, mb.dest)) {
                 binding = BlockBinding.of(rb, mb)
-            }
-            else if (checkEndRole(rb.source, mb.dest) && checkEndRole(rb.dest, mb.source)) {
+            } else if (checkEndRole(rb.source, mb.dest) && checkEndRole(rb.dest, mb.source)) {
                 binding = BlockBinding.fo(rb, mb)
             }
         }
-        // TODO Check that each feature in the role block can be mapped to a feature in the model block
-        binding
+
+        return binding
+    }
+
+    def checkLocalConformance(binding) {
+        double total = 0
+        double unmapped = 0
+        double localConformance = 1
+
+        if (binding) {
+            binding.roleBindings.each { b ->
+                b.role.getProps().each { prop ->
+                    if (canMap(prop, b.type)) {
+                        unmapped += 1
+                    }
+                    total += 1
+                }
+            }
+
+            localConformance = (total - unmapped) / total
+        }
+
+
+        localConformance
+    }
+
+    def canMap(prop, type) {
+
+        return false
     }
 
     /**
@@ -267,14 +298,14 @@ class SPSConformance {
     private boolean checkEndRole(Role r, Type c) {
         boolean ret = false
         switch (r) {
-            case Classifier:
-                ret = c instanceof Classifier
-                break
             case ClassRole:
                 ret = c instanceof Class && !c.isInterface()
                 break
             case InterfaceRole:
                 ret = c instanceof Class && c.isInterface()
+                break
+            case Classifier:
+                ret = c instanceof edu.isu.isuese.datamodel.Classifier
                 break
         }
 
@@ -352,9 +383,9 @@ class SPSConformance {
      * @param bindings
      */
     def realizationMult(List<BlockBinding> bindings) {
-        // TODO check that the number of classifiers bound to a classifier role
-        //      satisfy the realization multiplicities associated with the role,
-        // TODO and check that mandatory roles have classifiers bound to them.
+        // check that the number of classifiers bound to a classifier role
+        // satisfy the realization multiplicities associated with the role,
+        // and check that mandatory roles have classifiers bound to them.
         Map<Role, Set<Type>> mappings = [:]
         bindings.each {
             it.roleBindings.each { RoleBinding rb ->
@@ -370,12 +401,16 @@ class SPSConformance {
         }
 
 
-        // TODO check that realization multiplicities are satisfied
-        // TODO check that mandatory roles have been bound
+        List<Role> unsatisfied = []
+
+        // check that realization multiplicities are satisfied
+        // check that mandatory roles have been bound
         counts.each { role, count ->
             if ((role.mult.lower > 0 && count > 0) && role.mult.inRange(count)) {
-
+                unsatisfied << role
             }
         }
+
+        Pair.of(satisfied, unsatisfied)
     }
 }
