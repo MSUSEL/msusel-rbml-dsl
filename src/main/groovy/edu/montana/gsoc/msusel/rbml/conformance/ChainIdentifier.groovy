@@ -25,52 +25,47 @@
  * SOFTWARE.
  */
 package edu.montana.gsoc.msusel.rbml.conformance
-
-import edu.montana.gsoc.msusel.datamodel.System
-import edu.montana.gsoc.msusel.datamodel.pattern.PatternChain
-import edu.montana.gsoc.msusel.datamodel.pattern.PatternInstance
-
 /**
  * @author Isaac Griffith
  * @version 1.3.0
  */
-class itChainIdentifier {
+class ChainIdentifier {
 
-    def findChains(System system) {
-        int index = 0
-        def chains = system.patternChains
-        if (!chains) {
-            chains = createChains(system.projects[0].patterns)
-            index = 1
-        }
-
-        (index..(system.projects.size())).each { i ->
-            system.projects[i].patterns.each { p ->
-                PatternChain chain
-                chains.each { c ->
-                    if (c.matches(p)) {
-                        chain = c
-                        return
-                    }
-                }
-
-                if (chain)
-                    chain << p
-                else
-                    createChain(p)
-            }
-        }
-    }
-
-    List<PatternChain> createChains(List<PatternInstance> insts) {
-        List<PatternChain> chains = []
-        insts.each {
-            chains << createChain(it)
-        }
-        chains
-    }
-
-    PatternChain createChain(PatternInstance inst) {
-
-    }
+//    def findChains(System system) {
+//        int index = 0
+//        def chains = system.patternChains
+//        if (!chains) {
+//            chains = createChains(system.projects[0].patterns)
+//            index = 1
+//        }
+//
+//        (index..(system.projects.size())).each { i ->
+//            system.projects[i].patterns.each { p ->
+//                PatternChain chain
+//                chains.each { c ->
+//                    if (c.matches(p)) {
+//                        chain = c
+//                        return
+//                    }
+//                }
+//
+//                if (chain)
+//                    chain << p
+//                else
+//                    createChain(p)
+//            }
+//        }
+//    }
+//
+//    List<PatternChain> createChains(List<PatternInstance> insts) {
+//        List<PatternChain> chains = []
+//        insts.each {
+//            chains << createChain(it)
+//        }
+//        chains
+//    }
+//
+//    PatternChain createChain(PatternInstance inst) {
+//
+//    }
 }

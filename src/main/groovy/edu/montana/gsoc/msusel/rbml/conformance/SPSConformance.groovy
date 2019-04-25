@@ -88,11 +88,11 @@ class SPSConformance {
     }
 
     List<ModelBlock> getNonConformingModelBlocks(mapping) {
-
+        null
     }
 
     List<ModelBlock> getConformingModelBlocks(Map<RoleBlock, List<BlockBinding>> mapping) {
-
+        null
     }
 
     List<RoleBlock> getUnboundRoles(Map<RoleBlock, List<BlockBinding>> mapping, SPS sps) {
@@ -109,17 +109,18 @@ class SPSConformance {
     List<Type> getUnboundTypes(Map<RoleBlock, List<BlockBinding>> mapping, PatternInstance inst) {
         List<Type> unbound = [] as List<Type>
         inst.getTypes().each { Type t ->
-            outer:
             for (List<BlockBinding> binding : mapping.values()) {
                 for (BlockBinding bind : binding) {
                     if (bind.getMb().getDest() == t)
-                        continue outer
+                        break
                     if (bind.getMb().getSource() == t)
-                        continue outer
+                        break
                 }
             }
             unbound << t
         }
+
+        unbound
     }
 
     List<ModelBlock> getModelBlocks(PatternInstance inst) {
@@ -262,7 +263,7 @@ class SPSConformance {
         return binding
     }
 
-    def checkLocalConformance(binding) {
+    def checkLocalConformance(BlockBinding binding) {
         double total = 0
         double unmapped = 0
         double localConformance = 1
@@ -319,7 +320,7 @@ class SPSConformance {
      * @param rb RoleBlock
      * @param mb ModelBlock
      */
-    boolean sharingConstraint(RoleBlock rb, BlockBinding binding, Map<RoleBlock, List<SharingConstraint>> constraints, Map<RoleBlock, List<BlockBinding>> mappings) {
+    boolean sharingConstraint(RoleBlock rb, BlockBinding binding) {
         boolean ret = true
 
         constraints[rb].each { SharingConstraint sc ->
@@ -382,7 +383,7 @@ class SPSConformance {
      *
      * @param bindings
      */
-    def realizationMult(List<BlockBinding> bindings) {
+    Pair<List<Role>, List<Role>> realizationMult(List<BlockBinding> bindings) {
         // check that the number of classifiers bound to a classifier role
         // satisfy the realization multiplicities associated with the role,
         // and check that mandatory roles have classifiers bound to them.
@@ -411,6 +412,7 @@ class SPSConformance {
             }
         }
 
-        Pair.of(satisfied, unsatisfied)
+        //Pair.of(satisfied, unsatisfied)
+        null
     }
 }
