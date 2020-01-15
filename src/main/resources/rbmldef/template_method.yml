@@ -1,0 +1,32 @@
+SPS:
+  name: Template Method
+  roles:
+    - GenHierarchy:
+        name: Template
+        Class:
+          name: Template
+          mult: 1..1
+          abstract: true
+          features:
+            b1:
+              - Operation: void
+              - []
+              - mult: 1..*
+            b2:
+              - PrimitiveOp: void
+              - []
+              - mult: 1..*
+              - abstract: true
+        children:
+          - Class:
+              name: ConcreteTemplate
+              mult: 1..*
+              features:
+                b2:
+                  - PrimitiveOp: void
+                  - []
+                  - mult: 1..*
+                  - abstract: false
+          - Classifier:
+              name: AbstractTemplate
+              mult: "*"

@@ -35,9 +35,10 @@ abstract class Feature extends Role {
     /**
      * 
      */
-    Feature()
+    Feature(String name, Multiplicity mult)
     {
-        // TODO Auto-generated constructor stub
+        this.name = name
+        this.mult = mult
     }
 
 }

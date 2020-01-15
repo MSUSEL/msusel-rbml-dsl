@@ -40,6 +40,9 @@ class BlockBinding {
     List<RoleBinding> roleBindings
 
     private BlockBinding(rb, mb) {
+        if (!rb || !mb)
+            throw new IllegalArgumentException()
+
         this.rb = rb
         this.mb = mb
         roleBindings = []

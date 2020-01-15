@@ -1,0 +1,45 @@
+SPS:
+  name: Factory Method
+  roles:
+    - GenHierarchy:
+        name: Product
+        Classifier:
+          name: Product
+          mult: 1..1
+        children:
+          - Class:
+              name: ConcreteProduct
+              mult: 1..*
+          - Classifier:
+              name: AbstractProduct
+              mult: "*"
+    - GenHierarchy:
+        name: Creator
+        Classifier:
+          name: Creator
+          mult: 1..1
+          features:
+            b1:
+              name: FactoryMethod
+              type: Product@Product
+              params: []
+              mult: 1..*
+        children:
+          - Class:
+              name: ConcreteCreator
+              mult: 1..*
+              features:
+                b1:
+                  name: FactoryMethod
+                  type: Product@Product
+                  params: []
+                  mult: 1..*
+          - Classifier:
+              name: AbstractCreator
+              mult: "*"
+  relations:
+    - Create:
+        name: CreatorProduct
+        mult: 1..1
+        source: Creator@ConcreteCreator
+        dest: Product@ConcreteProduct

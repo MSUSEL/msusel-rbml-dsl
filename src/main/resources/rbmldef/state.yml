@@ -1,0 +1,40 @@
+SPS:
+  name: State
+  roles:
+    - Class:
+        name: Context
+        features:
+          s1:
+            name: currentState
+            type: State
+            mult: 1..1
+          b1:
+            name: Request
+            params: []
+            mult: 1..*
+    - GenHierarchy:
+        name: State
+        Classifier:
+          name: State
+          features:
+            b1:
+              name: Handle
+              params: []
+              mult: 1..*
+        children:
+          - Class:
+              name: ConcreteState
+          - Classifier:
+              name: AbstractState
+  relations:
+    - Association:
+        name: Delegates
+        mult: 1..1
+        source:
+          name: cont
+          type: Context
+          mult: 1..1
+        dest:
+          name: st
+          type: State@State
+          mult: 1..*

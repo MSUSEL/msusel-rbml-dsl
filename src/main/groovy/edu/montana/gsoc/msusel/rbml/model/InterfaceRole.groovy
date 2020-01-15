@@ -26,11 +26,18 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+import groovy.transform.builder.Builder
+
 /**
  * @author Isaac Griffith
  * @version 1.3.0
  */
 class InterfaceRole extends Classifier {
+
+    @Builder(buildMethodName = "create")
+    InterfaceRole(String name, Multiplicity mult) {
+        super(name, mult)
+    }
 
     InterfaceRole() {
         abstrct = true

@@ -1,0 +1,84 @@
+SPS:
+  name: Abstract Factory
+  roles:
+    - GenHierarchy:
+        name: Factory
+        Classifier:
+          name: Factory
+          mult: 1..1
+          features:
+            b1:
+              name: CreateProduct
+              type: Product@Product
+              mult: 1..*
+              abstract: true
+        children:
+          - Classifier:
+              name: AbstractFactory
+              mult: "*"
+          - Class:
+              name: ConcreteFactory
+              mult: 1..*
+              features:
+                b1:
+                  name: CreateProduct
+                  type: Product@Product
+                  mult: 1..*
+    - GenHierarchy:
+        name: Product
+        Classifier:
+          name: Product
+          mult: 1..1
+        children:
+          - Classifier:
+              name: AbstractFactory
+              mult: "*"
+          - Class:
+              name: ConcreteFactory
+              mult: 1..*
+    - Class:
+        name: Client
+        mult: 1..1
+  relations:
+    - Usage:
+        name: ConcreteDep
+        mult: 1..*
+        source: Factory@ConcreteFactory
+        dest: Product@ConcreteProduct
+    - Association:
+        name: ClientFactory
+        mult: 1..1
+        source:
+          name: fact
+          type: Factory@Factory
+          mult: 1..1
+        dest:
+          name: cln
+          type: Client
+          mult: 1..*
+        atLeastOne: group1
+    - Usage:
+        name: ClientFactoryDep
+        mult: 1..*
+        source: Factory@Factory
+        dest: Client
+        atLeastOne: group1
+    - Association:
+        name: ClientProduct
+        mult: 1..1
+        source:
+          name: clnt
+          type: Client
+          mult: 1..1
+        dest:
+          name: prod
+          type: Product@Product
+          mult: 1..*
+        atLeastOne: group2
+    - Usage:
+        name: ClientProductDep
+        mult: 1..*
+        source: Client
+        dest: Product@Product
+        atLeastOne: group2
+

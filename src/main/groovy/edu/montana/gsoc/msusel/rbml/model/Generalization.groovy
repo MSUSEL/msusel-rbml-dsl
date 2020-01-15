@@ -26,12 +26,31 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+import groovy.transform.builder.Builder
+
 /**
  * @author Isaac Griffith
  * @version 1.3.0
  */
 class Generalization extends Relationship {
 
-    Classifier child
-    Classifier parent
+    Role child
+    Role parent
+
+    @Builder(buildMethodName = "create")
+    Generalization(String name, Multiplicity mult, Role parent, Role child) {
+        super(name, mult)
+        this.child = child
+        this.parent = parent
+    }
+
+    @Override
+    Role source() {
+        return child
+    }
+
+    @Override
+    Role dest() {
+        return parent
+    }
 }

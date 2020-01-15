@@ -1,0 +1,49 @@
+SPS:
+  name: Bridge
+  roles:
+    - GenHierarchy:
+        name: Abstraction
+        Classifier:
+          name: Abstraction
+          mult: 1..1
+          features:
+            b1:
+              name: Operation
+              params: []
+              mult: 1..*
+        children:
+          - Class:
+              name: ConcreteAbstraction
+              mult: 1..*
+          - Classifier:
+              name: AbstractAbstraction
+              mult: 1..*
+    - GenHierarchy:
+        name: Implementor
+        Classifier:
+          name: Implementor
+          mult: 1..1
+          features:
+            b1:
+              name: OperationImpl
+              params: []
+              mult: 1..*
+        children:
+          - Class:
+              name: ConcreteImplementor
+              mult: 1..*
+          - Classifier:
+              name: AbstractImplementor
+              mult: "*"
+  relations:
+    - Association:
+        name: Implements
+        mult: 1..1
+        source:
+            name: abs
+            type: Abstraction@Abstraction
+            mult: 1..*
+        dest:
+            name: imp
+            type: Implementor@Implementor
+            mult: 1..*

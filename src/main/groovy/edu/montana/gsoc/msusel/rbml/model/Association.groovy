@@ -26,21 +26,42 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+import groovy.transform.builder.Builder
+
 /**
  * @author Isaac Griffith
  * @version 1.3.0
  */
 class Association extends Relationship {
 
-    Classifier source
-    Classifier dest
+    Role source
+    Role dest
     Multiplicity sourceMult
     Multiplicity destMult
+    String sourceName
+    String destName
 
     /**
      * 
      */
-    Association() {
-        // TODO Auto-generated constructor stub
+    @Builder(buildMethodName = "create")
+    Association(String name, Multiplicity mult, String srcName, String destName, Role srcType, Role destType, Multiplicity srcMult, Multiplicity destMult) {
+        super(name, mult)
+        this.sourceName = srcName
+        this.destName = destName
+        this.source = srcType
+        this.dest = destType
+        this.sourceMult = srcMult
+        this.destMult = destMult
+    }
+
+    @Override
+    Role source() {
+        return source
+    }
+
+    @Override
+    Role dest() {
+        return dest
     }
 }

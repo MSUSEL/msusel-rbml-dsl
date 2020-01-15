@@ -26,6 +26,8 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+import groovy.transform.builder.Builder
+
 /**
  * @author Isaac Griffith
  * @version 1.3.0
@@ -33,5 +35,24 @@ package edu.montana.gsoc.msusel.rbml.model
 class GeneralizationHierarchy extends Role {
 
     Classifier root
-    def children = []
+    List<Role> children = []
+    List<Relationship> internalRels = []
+    boolean hasGen = true
+    boolean hasReal = true
+
+    @Builder(buildMethodName = "create")
+    GeneralizationHierarchy(String name, Multiplicity mult, root, hasGen = true, hasReal = true) {
+        super(name, mult)
+        this.root = root
+        this.hasGen = hasGen
+        this.hasReal = hasReal
+    }
+
+    boolean hasPort(String port) {
+        getPort(port) != null
+    }
+
+    Role getPort(String port) {
+        children.find { it.name == port }
+    }
 }

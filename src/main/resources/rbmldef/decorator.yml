@@ -1,0 +1,67 @@
+SPS:
+  name: Decorator
+  roles:
+    - GenHierarchy:
+        name: Component
+        Classifier:
+          name: Component
+          mult: 1..1
+          features:
+            b1:
+              - Operation : void
+              - []
+              - mult: 1..*
+        children:
+          - Class:
+              name: ConcreteComponent
+              mult: 1..*
+          - Classifier:
+              name: AbstractComponent
+              mult: 1..1
+    - GenHierarchy:
+        name: 1..1
+        Classifier:
+          name: Decorator
+          mult: 1..1
+          features:
+            b1:
+              - OperationImpl: void
+              - []
+              - mult: 1..*
+        children:
+          - Class:
+              name: ConcreteDecorator
+              mult: 1..*
+          - Classifier:
+              name: AbstractDecorator
+              mult: 1..1
+              features:
+                s1:
+                  - addedState : State
+                  - mult: 1..*
+                b1:
+                  - AddedBehavior: void
+                  - []
+                  - mult: 1..*
+  relations:
+    - Association:
+        name: Comp
+        mult: 1..*
+        source:
+          name: absComp
+          type: Component@Component
+          mult: 1..*
+        dest:
+          name: absDec
+          type: Decorator@Decorator
+          mult: 1..1
+    - Generalization:
+        name: CompDecGen
+        child: Decorator@Decorator
+        parent: Component@Component
+        atLeastOne: group1
+    - Realization:
+        name: CompDecReal
+        child: Decorator@Decorator
+        parent: Component@Component
+        atLeastOne: group1

@@ -1,0 +1,21 @@
+SPS:
+  name: Facade
+  roles:
+    - Class:
+        name: Facade
+        mult: 1..1
+    - Classifier:
+        name: SystemClass
+        mult: 1..*
+  relations:
+    - Association:
+        name: Delegates
+        mult: 1..1
+        source:
+          name: facade
+          type: Facade
+          mult: 1..1
+        dest:
+          name: sys
+          type: SystemClass
+          mult: 1..*

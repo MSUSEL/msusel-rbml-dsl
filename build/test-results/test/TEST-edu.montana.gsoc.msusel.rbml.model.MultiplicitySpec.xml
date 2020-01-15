@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.montana.gsoc.msusel.rbml.model.MultiplicitySpec" tests="8" skipped="0" failures="0" errors="0" timestamp="2019-11-11T03:31:45" hostname="grifisaa-Latitude-7390" time="0.158">
+  <properties/>
+  <testcase name="single value range" classname="edu.montana.gsoc.msusel.rbml.model.MultiplicitySpec" time="0.113"/>
+  <testcase name="range is 1..1" classname="edu.montana.gsoc.msusel.rbml.model.MultiplicitySpec" time="0.0"/>
+  <testcase name="range is 1..*" classname="edu.montana.gsoc.msusel.rbml.model.MultiplicitySpec" time="0.001"/>
+  <testcase name="fromString '1..1'" classname="edu.montana.gsoc.msusel.rbml.model.MultiplicitySpec" time="0.032"/>
+  <testcase name="fromString '1..*'" classname="edu.montana.gsoc.msusel.rbml.model.MultiplicitySpec" time="0.001"/>
+  <testcase name="invalid range 5..1" classname="edu.montana.gsoc.msusel.rbml.model.MultiplicitySpec" time="0.002"/>
+  <testcase name="invalid range from string '5..1'" classname="edu.montana.gsoc.msusel.rbml.model.MultiplicitySpec" time="0.001"/>
+  <testcase name="null input to Multiplicity.fromString" classname="edu.montana.gsoc.msusel.rbml.model.MultiplicitySpec" time="0.007"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

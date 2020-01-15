@@ -1,0 +1,50 @@
+SPS:
+  name: Strategy
+  roles:
+    - GenHierarchy:
+        name: Strategy
+        Classifier:
+          name: Strategy
+          mult: 1..1
+          features:
+            b1:
+              name: Operation
+              params: []
+              mult: 1..*
+        children:
+          - Class:
+              name: ConcreteStrategy
+              mult: 1..*
+              features:
+                b1:
+                  name: StrategyOp
+                  params: []
+                  mult: 1..*
+          - Classifier:
+              name: AbstractStrategy
+              mult: "*"
+    - Class:
+        name: Context
+        mult: 1..*
+        features:
+          b1:
+            name: GetState
+            params: []
+            type: State
+            mult: "*"
+          b2:
+            name: Operation
+            params: []
+            mult: 1..*
+  relations:
+    - Association:
+        name: StrategyContext
+        mult: 1..1
+        source:
+          name: ctx
+          type: Context
+          mult: 1..1
+        dest:
+          name: strat
+          type: Strategy@Strategy
+          mult: 1..*

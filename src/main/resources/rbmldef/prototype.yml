@@ -1,0 +1,48 @@
+SPS:
+  name: Prototype
+  roles:
+    - GenHierarchy:
+        name: Prototype
+        Classifier:
+          name: Prototype
+          mult: 1..1
+          features:
+            b1:
+              name: Clone
+              type: Prototype@Prototype
+              params: []
+              mult: 1..1
+              abstract: true
+        children:
+          - Class:
+              name: ConcretePrototype
+              mult: 1..*
+              features:
+                b1:
+                  name: Clone
+                  type: Prototype@Prototype
+                  params: []
+                  mult: 1..1
+          - Classifier:
+              name: AbstractPrototype
+              mult: "*"
+    - Class:
+        name: Client
+        mult: 1..*
+        features:
+          b1:
+            name: Operation
+            params: []
+            mult: 1..*
+  relations:
+    - Association:
+        name: ClntProto
+        mult: 1..1
+        source:
+          name: clnt
+          type: Client
+          mult: 1..1
+        dest:
+          name: proto
+          type: Prototype@Prototype
+          mult: 1..*

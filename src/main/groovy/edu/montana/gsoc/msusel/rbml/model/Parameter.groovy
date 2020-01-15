@@ -26,6 +26,8 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+import groovy.transform.builder.Builder
+
 /**
  * @author Isaac Griffith
  * @version 1.3.0
@@ -34,4 +36,11 @@ class Parameter extends Role {
 
     String variable
     Classifier type
+
+    @Builder(buildMethodName = "create")
+    Parameter(String var, Classifier type, Multiplicity mult) {
+        super(var, mult)
+        this.variable = var
+        this.type = type
+    }
 }

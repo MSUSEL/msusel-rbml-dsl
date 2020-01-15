@@ -26,6 +26,8 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+import groovy.transform.builder.Builder
+
 /**
  * @author Isaac Griffith
  * @version 1.3.0
@@ -35,9 +37,10 @@ class Composition extends Association {
     /**
      * 
      */
-    Composition()
+    @Builder(buildMethodName = "create")
+    Composition(String name, Multiplicity mult, String srcName, String destName, Role srcType, Role destType, Multiplicity srcMult, Multiplicity destMult)
     {
-        // TODO Auto-generated constructor stub
+        super(name, mult, srcName, destName, srcType, destType, srcMult, destMult)
     }
 
 }

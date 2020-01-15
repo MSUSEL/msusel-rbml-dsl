@@ -1,0 +1,61 @@
+patterns =
+    ["Bridge":
+        ["Abstraction": "ConcreteAbstraction",
+         "Implementor": "ConcreteImplementor",
+         "Operation()": "ConcreteAbstraction::Operation()"],
+    "Decorator":
+        ["Component": "ConcreteComponent",
+         "Decorator": "ConcreteDecorator",
+         "component": "AbsComp",
+         "Operation()": "Decorator::Operation()"],
+    "Chain of Responsibility":
+        ["Handler": "",
+         "successor": ""],
+    "Command":
+        ["Receiver": "",
+         "ConcreteCommand": "",
+         "receiver": "",
+         "Execute()": ""],
+    "Composite":
+        ["Component": "",
+         "Composite": "",
+         "Operation()": ""],
+    "State":
+        ["Context": "",
+         "State": "",
+         "state": "",
+         "Request()": ""],
+    "Strategy":
+        ["Context": "",
+         "Strategy": "",
+         "strategy": "",
+         "ContextInterface()": ""],
+    "Observer":
+        ["Observer": "",
+         "Subject": "",
+         "Notify()": ""],
+    "Visitor":
+        ["ConcreteElement": "",
+         "Visitor": "",
+         "Accept()": ""],
+    "Prototype":
+        ["Client": "",
+         "Prototype": "",
+         "prototype": "",
+         "Operation()": ""],
+    "(Object)Adapter-Command": [:],
+    "Singleton":
+        ["Singleton": "Singleton",
+         "uniqueInstance": "Instance"],
+    "Template Method":
+        ["AbstractClass": "",
+         "TemplateMethod()": ""],
+    "Factory Method":
+        ["Creator": "",
+         "FactoryMethod()": ""],
+    "Proxy":
+        ["Proxy": "",
+         "RealSubject": "",
+         "Request()": ""],
+    "Proxy2": [:]
+]

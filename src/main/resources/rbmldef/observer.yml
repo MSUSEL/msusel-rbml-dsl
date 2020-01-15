@@ -1,0 +1,72 @@
+SPS:
+  name: Observer
+  roles:
+    - GenHierarchy:
+        name: Subject
+        Classifier:
+          name: Subject
+          features:
+            s2:
+              name: subjectState
+              type: SubStateType
+              mult: 1..*
+            b1:
+              name: Attach
+              params: [obsv: Observer]
+              mult: 1..*
+            b2:
+              name: Detach
+              params: [obsv: Observer]
+              mult: 1..*
+            b3:
+              name: Notify
+              params: []
+              mult: 1..*
+            b4:
+              name: GetState
+              type: SubStateType
+              params: []
+              mult: 1..*
+            b5:
+              name: SetState
+              params: [lst: ObserverState]
+              mult: 1..*
+        children:
+          - Class:
+              name: ConcreteSubject
+              mult: 1..*
+          - Classifier:
+              name: AbstractSubject
+              mult: "*"
+    - GenHierarchy:
+        name: Observer
+        Classifier:
+          name: Observer
+          features:
+            s2:
+              name: ObserverState
+              type: ObsStateType
+              mult: 1..*
+            b1:
+              name: Attach
+              params: [subj: Subject]
+              mult: 1..*
+        children:
+          - Class:
+              name: ConcreteObserver
+              mult: 1..*
+          - Classifier:
+              name: AbstractObserver
+              mult: "*"
+  relations:
+    - Association:
+        name: Observes
+        mult: 1..1
+        source:
+          name: sub
+          type: Subject@Subject
+          mult: 1..*
+        dest:
+          name: obs
+          type: Observer@Observer
+          mult: 1..*

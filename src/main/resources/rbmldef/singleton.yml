@@ -1,0 +1,54 @@
+SPS:
+  name: Singleton
+  roles:
+    - GenHierarchy:
+        name: Singleton
+        Class:
+          name: Creator
+          mult: 1..1
+          features:
+            b1:
+              name: Operation
+              params: []
+              mult: 1..*
+              abstract: true
+            b2:
+              name: GetData
+              type: Data
+              params: []
+              mult: 1..*
+              abstract: true
+        children:
+          - Class:
+              name: ConcreteSingleton
+              mult: 1..*
+              features:
+                s1:
+                  name: UniqueInstance
+                  type: Singleton@Singleton
+                  mult: 1..1
+                  props: [static, readOnly]
+                s2:
+                  name: SingletonData
+                  type: Data
+                  mult: 1..*
+                b1:
+                  name: FactoryMethod
+                  type: Singleton@Singleton
+                  params: []
+                  mult: 1..1
+                  props: [readOnly]
+                b2:
+                  name: Operation
+                  params: []
+                  mult: 1..*
+                  abstract: true
+                b3:
+                  name: GetData
+                  type: Data
+                  params: []
+                  mult: 1..*
+                  abstract: true
+          - Classifier:
+              name: AbstractSingleton
+              mult: "*"

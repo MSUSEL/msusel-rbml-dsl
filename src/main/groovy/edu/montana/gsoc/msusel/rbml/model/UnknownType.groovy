@@ -26,10 +26,16 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+import groovy.transform.builder.Builder
+
 /**
  * @author Isaac Griffith
  * @version 1.3.0
  */
 class UnknownType extends Classifier {
 
+    @Builder(buildMethodName = "create")
+    UnknownType(String name, Multiplicity mult) {
+        super(name, mult)
+    }
 }

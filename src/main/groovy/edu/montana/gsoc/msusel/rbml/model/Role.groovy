@@ -26,13 +26,25 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+import groovy.transform.ToString
+
 /**
  * @author Isaac Griffith
  * @version 1.3.0
  */
+@ToString(includes = ["name"])
 abstract class Role {
 
     String name
     Multiplicity mult
-    def props = []
+    List<String> props = []
+
+    Role() {
+
+    }
+
+    Role(String name, Multiplicity mult) {
+        this.name = name
+        this.mult = mult ? mult : Multiplicity.fromString("1..1")
+    }
 }

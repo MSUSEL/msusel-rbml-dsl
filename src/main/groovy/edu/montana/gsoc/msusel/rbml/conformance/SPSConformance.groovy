@@ -26,7 +26,14 @@
  */
 package edu.montana.gsoc.msusel.rbml.conformance
 
+import com.google.common.collect.Sets
+import com.google.common.graph.Graph
+import com.google.common.graph.GraphBuilder
+import com.google.common.graph.MutableGraph
 import edu.isu.isuese.datamodel.Class
+import edu.isu.isuese.datamodel.Field
+import edu.isu.isuese.datamodel.Interface
+import edu.isu.isuese.datamodel.Method
 import edu.isu.isuese.datamodel.PatternInstance
 import edu.isu.isuese.datamodel.Type
 import edu.montana.gsoc.msusel.rbml.model.*
@@ -38,6 +45,8 @@ import org.apache.commons.lang3.tuple.Pair
  */
 class SPSConformance {
 
+    Map<Role, List<Type>> roleTypeMap = [:]
+
     /**
      *
      * @param sps
@@ -45,6 +54,9 @@ class SPSConformance {
      * @return
      */
     def conforms(SPS sps, PatternInstance instance) {
+
+        if (sps == null || instance == null)
+            throw new IllegalArgumentException()
 
         Map<RoleBlock, List<BlockBinding>> mapping = [:]
         List<ModelBlock> modelBlocks = getModelBlocks(instance)
@@ -77,28 +89,44 @@ class SPSConformance {
 
         Pair<List<Role>, List<Role>> sat = realizationMult(mapping)
 
-        // Pattern Satisfaction Index
-        double psi = (double) sat.right.size() / (sat.left.size() + sat.right.size())
+        double psi = 0
+
+        if (sat) {
+            // Pattern Satisfaction Index
+            psi = (double) sat.right.size() / (sat.left.size() + sat.right.size())
+        }
 
         List<ModelBlock> nonConformingModelBlocks = getNonConformingModelBlocks(mapping)
         List<ModelBlock> conformingModelBlocks = getConformingModelBlocks(mapping)
 
         // TODO Return Tuple of (ICI, PSI, NonComList, ComList)
-        return Tuple.of(ici, psi, nonConformingModelBlocks, conformingModelBlocks)
+        return new Tuple(ici, psi, nonConformingModelBlocks, conformingModelBlocks)
     }
 
-    List<ModelBlock> getNonConformingModelBlocks(mapping) {
-        null
+    List<ModelBlock> getNonConformingModelBlocks(Map<RoleBlock, List<BlockBinding>> mapping) {
+        
     }
 
     List<ModelBlock> getConformingModelBlocks(Map<RoleBlock, List<BlockBinding>> mapping) {
-        null
+        if (mapping == null)
+            throw new IllegalArgumentException()
+
+        def results = []
+        mapping.each { rb, list ->
+           list.each { item ->
+               results << item.mb
+           }
+        }
+        results
     }
 
     List<RoleBlock> getUnboundRoles(Map<RoleBlock, List<BlockBinding>> mapping, SPS sps) {
+        if (mapping == null || sps == null)
+            throw new IllegalArgumentException()
+
         List<RoleBlock> list = []
 
-        SPS.roleBlocks().each { RoleBlock rb ->
+        sps.roleBlocks().each { RoleBlock rb ->
             if (mapping[rb] == null || mapping[rb].isEmpty())
                 list += rb
         }
@@ -107,6 +135,9 @@ class SPSConformance {
     }
 
     List<Type> getUnboundTypes(Map<RoleBlock, List<BlockBinding>> mapping, PatternInstance inst) {
+        if (mapping == null || inst == null)
+            throw new IllegalArgumentException()
+
         List<Type> unbound = [] as List<Type>
         inst.getTypes().each { Type t ->
             for (List<BlockBinding> binding : mapping.values()) {
@@ -124,6 +155,9 @@ class SPSConformance {
     }
 
     List<ModelBlock> getModelBlocks(PatternInstance inst) {
+        if (inst == null)
+            throw new IllegalArgumentException()
+
         List<Type> types = inst.getTypes()
         Set<ModelBlock> blocks = [] as Set<ModelBlock>
 
@@ -139,17 +173,17 @@ class SPSConformance {
             }
         }
 
-        types.each { Type dest ->
-            getGenRealSrcTypes(dest).each { Type src ->
-                blocks << ModelBlock.of(src, dest).type(BlockType.GENERALIZATION)
-            }
-            getAssocSrcTypes(dest).each { Type src ->
-                blocks << ModelBlock.of(src, dest).type(BlockType.ASSOCIATION)
-            }
-            getDependSrcTypes(dest).each { Type src ->
-                blocks << ModelBlock.of(src, dest).type(BlockType.DEPENDENCY)
-            }
-        }
+//        types.each { Type dest ->
+//            getGenRealSrcTypes(dest).each { Type src ->
+//                blocks << ModelBlock.of(src, dest).type(BlockType.GENERALIZATION)
+//            }
+//            getAssocSrcTypes(dest).each { Type src ->
+//                blocks << ModelBlock.of(src, dest).type(BlockType.ASSOCIATION)
+//            }
+//            getDependSrcTypes(dest).each { Type src ->
+//                blocks << ModelBlock.of(src, dest).type(BlockType.DEPENDENCY)
+//            }
+//        }
 
         blocks as List
     }
@@ -162,8 +196,8 @@ class SPSConformance {
     private Set<Type> getGenRealDestTypes(Type src) {
         Set<Type> types = [] as Set
 
-        types += src.getRealizes()
-        types += src.getGeneralizes()
+        types += src.getRealizedBy()
+        types += src.getGeneralizedBy()
 
         types
     }
@@ -176,9 +210,9 @@ class SPSConformance {
     private Set<Type> getAssocDestTypes(Type src) {
         Set<Type> types = [] as Set
 
-        types += src.getAssociatedFrom()
-        types += src.getAggregatedFrom()
-        types += src.getComposedFrom()
+        types += src.getAssociatedTo()
+        types += src.getAggregatedTo()
+        types += src.getComposedTo()
 
         types
     }
@@ -191,8 +225,8 @@ class SPSConformance {
     private Set<Type> getDependDestTypes(Type src) {
         Set<Type> types = [] as Set
 
-        types += src.getUseFrom()
-        types += src.getDependencyFrom()
+        types += src.getUseTo()
+        types += src.getDependencyTo()
 
         types
     }
@@ -205,37 +239,37 @@ class SPSConformance {
     private Set<Type> getGenRealSrcTypes(Type dest) {
         Set<Type> types = [] as Set
 
-        types += dest.getRealizedBy()
-        types += dest.getGeneralizedBy()
+        types += dest.getRealizes()
+        types += dest.getGeneralizes()
 
         types
     }
 
     /**
-     * Extracts the types the given type is associated to
+     * Extracts the types the given type is associated from
      * @param dest The destination side of the association
      * @return Set of types
      */
     private Set<Type> getAssocSrcTypes(Type dest) {
         Set<Type> types = [] as Set
 
-        types += dest.getAssociatedTo()
-        types += dest.getAggregatedTo()
-        types += dest.getComposedTo()
+        types += dest.getAssociatedFrom()
+        types += dest.getAggregatedFrom()
+        types += dest.getComposedFrom()
 
         types
     }
 
     /**
-     * Extracts the types the given type is dependent to
+     * Extracts the types the given type is dependent from
      * @param dest The destination side of the dependency
      * @return Set of types
      */
     private Set<Type> getDependSrcTypes(Type dest) {
         Set<Type> types = [] as Set
 
-        types += dest.getUseTo()
-        types += dest.getDependencyTo()
+        types += dest.getUseFrom()
+        types += dest.getDependencyFrom()
 
         types
     }
@@ -251,6 +285,9 @@ class SPSConformance {
      * @return true if the model block conforms to the provided role block
      */
     def checkBlockConformance(RoleBlock rb, ModelBlock mb) {
+        if (!rb || !mb)
+            throw new IllegalArgumentException()
+
         BlockBinding binding
         if (rb.type == mb.type) {
             if (checkEndRole(rb.source, mb.source) && checkEndRole(rb.dest, mb.dest)) {
@@ -264,17 +301,18 @@ class SPSConformance {
     }
 
     def checkLocalConformance(BlockBinding binding) {
+        if (!binding)
+            throw new IllegalArgumentException()
+
         double total = 0
         double unmapped = 0
         double localConformance = 1
 
         if (binding) {
             binding.roleBindings.each { b ->
-                b.role.getProps().each { prop ->
-                    if (canMap(prop, b.type)) {
-                        unmapped += 1
-                    }
-                    total += 1
+                def featBind = createFeatureBindings(b)
+                featBind.each { fb ->
+
                 }
             }
 
@@ -285,9 +323,60 @@ class SPSConformance {
         localConformance
     }
 
-    def canMap(prop, type) {
+    def createFeatureBindings(RoleBinding rb) {
+        if (!rb)
+            throw new IllegalArgumentException()
 
-        return false
+        def bindings = []
+        Role role = rb.role
+        if (role instanceof Classifier) {
+            role.behFeats.each { BehavioralFeature feat ->
+                Method m = rb.type.methods.find { Method m ->
+                    if (roleTypeMap[feat.type].contains(m.type)) {
+                        if (feat.params.size() <= m.params.size()) {
+                            boolean paramsAlign = true
+                            for (int i = 0; i < feat.params.size(); i++) {
+                                if (!roleTypeMap[feat.params[i].type].contains(m.params[i].type))
+                                    paramsAlign = false
+                                    break
+                            }
+                            paramsAlign
+                        }
+                        else false
+                    } else false
+                }
+                if (m) {
+                    bindings << FeatureBinding.of(feat, m)
+                }
+            }
+            role.structFeats.each { StructuralFeature feat ->
+                Field f = rb.type.fields.find { Field f ->
+                    roleTypeMap[feat.type].contains(f.type)
+                }
+                if (f) {
+                    bindings << FeatureBinding.of(feat, f)
+                }
+            }
+        }
+
+        bindings
+    }
+
+    def featureRoleBindings(List<Type> types, List<Role> roles, List<RoleBinding> bindings) {
+        if (types == null || roles == null || bindings == null)
+            throw new IllegalArgumentException()
+
+        def rprime = Sets.newHashSet(roles)
+        rprime.removeAll(bindings*.role)
+        def tprime = Sets.newHashSet(types)
+        tprime.removeAll(bindings*.type)
+        def kprime = []
+        rprime.each { r ->
+            tprime.each { t ->
+                kprime << RoleBinding.of(r, t)
+            }
+        }
+        kprime
     }
 
     /**
@@ -296,14 +385,17 @@ class SPSConformance {
      * @param c CodeNode
      * @return true if the role and type have the same types
      */
-    private boolean checkEndRole(Role r, Type c) {
+    protected boolean checkEndRole(Role r, Type c) {
+        if (!r || !c)
+            throw new IllegalArgumentException()
+
         boolean ret = false
         switch (r) {
             case ClassRole:
-                ret = c instanceof Class && !c.isInterface()
+                ret = c instanceof Class
                 break
             case InterfaceRole:
-                ret = c instanceof Class && c.isInterface()
+                ret = c instanceof Interface
                 break
             case Classifier:
                 ret = c instanceof edu.isu.isuese.datamodel.Classifier
@@ -320,7 +412,7 @@ class SPSConformance {
      * @param rb RoleBlock
      * @param mb ModelBlock
      */
-    boolean sharingConstraint(RoleBlock rb, BlockBinding binding) {
+    boolean sharingConstraint(RoleBlock rb, BlockBinding binding, Map<RoleBlock, List<SharingConstraint>> constraints) {
         boolean ret = true
 
         constraints[rb].each { SharingConstraint sc ->
@@ -348,20 +440,22 @@ class SPSConformance {
     Map<RoleBlock, List<SharingConstraint>> findSharingConstraints(List<RoleBlock> blocks) {
         Map<RoleBlock, List<SharingConstraint>> constraints = [:]
 
-        List<List<RoleBlock>> candidates = pairs(blocks).findAll() { List<RoleBlock> pair ->
-            pair[0].source == pair[1].source || pair[0].dest == pair[1].dest || pair[0].source == pair[1].dest || pair[0].dest == pair[1].source
-        }
+        List<Pair<RoleBlock, RoleBlock>> candidates = pairs(blocks)
 
-        candidates.collect { List<RoleBlock> pair ->
-            SharingConstraint s = SharingConstraint.of(pair[0], pair[1])
-            if (pair[0].source == pair[1].source || pair[0].source == pair[1].dest) {
-                s.on(pair[0].source)
+        candidates.each { Pair<RoleBlock, RoleBlock> pair ->
+            SharingConstraint s = SharingConstraint.of(pair.left, pair.right)
+            boolean found = false
+            if (pair.left.source == pair.right.source || pair.left.source == pair.right.dest) {
+                s.on(pair.left.source)
+                found = true
+            } else if (pair.left.dest == pair.right.source || pair.left.dest == pair.right.dest) {
+                s.on(pair.left.dest)
+                found = true
             }
-            else {
-                s.on(pair[0].dest)
+            if (found) {
+                constraints[pair.left] = constraints[pair.left] ? constraints[pair.left] + s : [s]
+                constraints[pair.right] = constraints[pair.right] ? constraints[pair.right] + s : [s]
             }
-            constraints[pair[0]] = constraints[pair[0]] ? constraints[pair[0]] + s : [s]
-            constraints[pair[1]] = constraints[pair[1]] ? constraints[pair[1]] + s : [s]
         }
 
         constraints
@@ -372,8 +466,17 @@ class SPSConformance {
      * @param blocks Initial list of unpaired role blocks
      * @return List of potential pairs of role blocks for use in constructing sharing constraints
      */
-    private List<List<RoleBlock>> pairs(List<RoleBlock> blocks) {
-        return blocks.tail().collect { [blocks.head(), it] } + (blocks.size() > 1 ? pairs(blocks.tail()) : [])
+    private List<Pair<RoleBlock, RoleBlock>> pairs(List<RoleBlock> blocks) {
+        if (blocks == null)
+            throw new IllegalArgumentException()
+
+        List<Pair<RoleBlock, RoleBlock>> pairs = []
+        for (int i = 0; i < blocks.size() - 1; i++) {
+            for (int j = i + 1; j < blocks.size(); j++) {
+                pairs << Pair.of(blocks[i], blocks[j])
+            }
+        }
+        pairs
     }
 
     /**
@@ -382,17 +485,20 @@ class SPSConformance {
      * from the mapping
      *
      * @param bindings
+     * @return a value between 0.0 and 1.0 representing the percent of
      */
-    Pair<List<Role>, List<Role>> realizationMult(List<BlockBinding> bindings) {
+    def realizationMult(Map<RoleBlock, List<BlockBinding>> bindings) {
         // check that the number of classifiers bound to a classifier role
         // satisfy the realization multiplicities associated with the role,
         // and check that mandatory roles have classifiers bound to them.
         Map<Role, Set<Type>> mappings = [:]
-        bindings.each {
-            it.roleBindings.each { RoleBinding rb ->
-                if (!mappings.containsKey(rb.role))
-                    mappings[rb.role] = [] as Set<Type>
-                mappings[rb.role] << rb.type
+        bindings.each { role, lst ->
+            lst.each { bb ->
+                bb.roleBindings.each { RoleBinding rb ->
+                    if (!mappings.containsKey(rb.role))
+                        mappings[rb.role] = [] as Set<Type>
+                    mappings[rb.role] << rb.type
+                }
             }
         }
 

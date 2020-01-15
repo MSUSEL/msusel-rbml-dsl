@@ -1,0 +1,82 @@
+SPS:
+  name: Command
+  roles:
+    - GenHierarchy:
+        name: Command
+        Classifier:
+          name: Command
+          mult: 1..*
+          features:
+            b1:
+              - name: Execute
+              - params: []
+              - mult: 1..1
+        children:
+          - Class:
+              name: ConcreteCommand
+              mult: 1..*
+              features:
+                s1:
+                  name: UndoState
+                  type: State
+                  mult: 1..*
+                b1:
+                  name: Execute
+                  params: []
+                  mult: 1..1
+          - Classifier:
+              name: AbstractCommand
+              mult: "*"
+    - Class:
+        name: Invoker
+        mult: 1..*
+    - Classifier:
+        name: Receiver
+        mult: 1..*
+        features:
+          b1:
+            name: Action
+            params: []
+            mult: 1..*
+    - Class:
+        name: Client
+        mult: 1..*
+  relations:
+    - Association:
+        name: ClntReceiver
+        mult: 1..1
+        source:
+          name: clnt
+          type: Client
+          mult: 1..1
+        dest:
+          name: rcvr
+          type: Receiver
+          mult: 1..1
+    - Create:
+        name: CreateCommand
+        mult: 1..1
+        source: Client
+        dest: Command@ConcreteCommand
+    - Association:
+        name: Stores
+        mult: 1..*
+        source:
+          name: inv
+          type: Invoker
+          mult: 1..*
+        dest:
+          name: cond
+          type: Command@Command
+          mult: 1..*
+    - Association:
+        name: Invokes
+        mult: 1..1
+        source:
+          name: r
+          type: Receiver
+          mult: 1..1
+        dest:
+          name: c
+          type: Command@ConcreteCommand
+          mult: 1..1

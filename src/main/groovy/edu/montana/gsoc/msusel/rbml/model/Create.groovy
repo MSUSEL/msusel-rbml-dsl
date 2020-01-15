@@ -26,12 +26,31 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+import groovy.transform.builder.Builder
+
 /**
  * @author Isaac Griffith
  * @version 1.3.0
  */
 class Create extends Relationship {
 
-    Classifier source
-    Classifier dest
+    Role source
+    Role dest
+
+    @Builder(buildMethodName = "create")
+    Create(String name, Multiplicity mult, Role source, Role dest) {
+        super(name, mult)
+        this.source = source
+        this.dest = dest
+    }
+
+    @Override
+    Role source() {
+        return source
+    }
+
+    @Override
+    Role dest() {
+        return dest
+    }
 }

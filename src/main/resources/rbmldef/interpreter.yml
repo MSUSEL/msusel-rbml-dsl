@@ -1,0 +1,65 @@
+SPS:
+  name: Interpreter
+  roles:
+    - GenHierarchy:
+        name: Expression
+        Classifier:
+          name: Expression
+          mult: 1..*
+          features:
+            b1:
+              name: Interpret
+              params: [c: Context]
+              mult: 1..1
+        children:
+          - Class:
+              name: ConcreteTerminalExpr
+              mult: 1..*
+              features:
+                b1:
+                  name: Interpret
+                  params: [c: Context]
+                  mult: 1..1
+          - Classifier:
+              name: AbstractTerminalExpr
+              mult: "*"
+          - Class:
+              name: ConcreteNonterminalExpr
+              mult: 1..*
+              features:
+                b1:
+                  name: Interpret
+                  params: [c: Context]
+                  mult: 1..1
+          - Classifier:
+              name: AbstractNonTerminalExpr
+              mult: "*"
+    - Class:
+        name: Client
+        mult: 1..*
+    - Classifier:
+        name: Context
+        mult: 1..*
+  relations:
+    - Association:
+        name: ClntExp
+        mult: 1..1
+        source:
+          name: clnt
+          type: Client
+          mult: 1..1
+        dest:
+          name: ex
+          type: Expression@Expression
+          mult: 1..1
+    - Association:
+        name: ClntCtx
+        mult: 1..1
+        source:
+          name: cln
+          type: Client
+          mult: 1..1
+        dest:
+          name: con
+          type: Context
+          mult: 1..1

@@ -26,14 +26,59 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+import groovy.transform.EqualsAndHashCode
+
 /**
  * @author Isaac Griffith
  * @version 1.3.0
  */
+@EqualsAndHashCode
 class Multiplicity {
 
     int lower
     int upper
+
+    Multiplicity(int lower, int upper) {
+        this.lower = lower
+        this.upper = upper
+
+        if (lower > upper && upper != -1)
+        {
+            this.upper = lower
+            this.lower = upper
+        }
+    }
+
+    Multiplicity(int lower) {
+        this(lower, lower)
+    }
+
+    static Multiplicity fromString(String val) {
+        if (val == null)
+            throw new IllegalArgumentException()
+        int lower, upper
+        if (val.contains("..")) {
+            def (l, u) = val.split(/\.\./)
+            if (l == "*")
+                lower = -1
+            else
+                lower = Integer.parseInt(l)
+            if (u == "*")
+                upper = -1
+            else
+                upper = Integer.parseInt(u)
+
+            new Multiplicity(lower, upper)
+        }
+        else {
+            if (val == "*")
+                lower = -1
+            else
+                lower = Integer.parseInt(val)
+
+            new Multiplicity(lower)
+        }
+    }
     
     @Override
     String toString() {

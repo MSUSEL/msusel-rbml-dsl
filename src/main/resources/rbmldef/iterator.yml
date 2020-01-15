@@ -1,0 +1,114 @@
+SPS:
+  name: Iterator
+  roles:
+    - Class:
+        name: Item
+        mult: 1..*
+    - GenHierarchy:
+        name: Aggregate
+        Classifier:
+          name: Aggregate
+          features:
+            b1:
+              name: CreateIterator
+              type: Iterator@Iterator
+              params: []
+              mult: 1..*
+        children:
+          - Class:
+              name: ConcreteAggregate
+              mult: 1..*
+              features:
+                b1:
+                  name: CreateIterator
+                  type: Iterator@Iterator
+                  params: []
+                  mult: 1..*
+          - Classifier:
+              name: AbstractAggregate
+              mult: "*"
+    - GenHierarchy:
+        name: Iterator
+        Classifier:
+          name: Iterator
+          features:
+            s1:
+              name: Index
+              type: Int
+              mult: 1..1
+            b1:
+              name: First
+              params: []
+              mult: 1..1
+              abstract: true
+            b2:
+              name: Next
+              params: []
+              mult: 1..1
+              abstract: true
+            b3:
+              name: IsDone
+              type: Boolean
+              params: []
+              mult: 1..1
+              abstract: true
+            b4:
+              name: CurrentItem
+              type: Item
+              params: []
+              mult: 1..1
+              abstract: true
+        children:
+          - Class:
+              name: ConcreteIterator
+              mult: 1..*
+              features:
+                b1:
+                  name: First
+                  params: []
+                  mult: 1..1
+                b2:
+                  name: Next
+                  params: []
+                  mult: 1..1
+                b3:
+                  name: IsDone
+                  type: Boolean
+                  params: []
+                  mult: 1..1
+                b4:
+                  name: CurrentItem
+                  type: Item
+                  params: []
+                  mult: 1..1
+          - Classifier:
+              name: AbstractIterator
+              mult: "*"
+  relations:
+    - Association:
+        name: AggrIter
+        mult: 1..1
+        source:
+          name: aggr
+          type: Aggregate@Aggregate
+          mult: 1..1
+        dest:
+          name: iter
+          type: Iterator@Iterator
+          mult: 1..*
+    - Association:
+        name: AggrItem
+        mult: 1..1
+        source:
+          name: agt
+          type: Aggregate@Aggregate
+          mult: 1..1
+        dest:
+          name: itm
+          type: Item
+          mult: 1..*
+    - Create:
+        name: AggrItemCreateDep
+        mult: 1..1
+        source: Aggregate@ConcreteAggregate
+        dest: Iterator@ConcreteIterator

@@ -1,0 +1,53 @@
+SPS:
+  name: Chain of Responsibility
+  roles:
+    - GenHierarchy:
+        name: Handler
+        Class:
+          name: Handler
+          mult: 1..1
+          abstract: true
+          features:
+            b1:
+              name: HandleRequest
+              params: []
+              mult: 1..*
+              abstract: true
+        children:
+          - Class:
+              name: ConcreteHandler
+              mult: 1..*
+              features:
+                b1:
+                  name: HandleRequest
+                  params: []
+                  mult: 1..*
+          - Classifier:
+              name: AbstractAbstraction
+              mult: 1..*
+    - Classifier:
+        name: Client
+        mult: 1..*
+  relations:
+    - Association:
+        name: Successor
+        mult: 1..1
+        source:
+          name: sup
+          type: Handler@Handler
+          mult: 1..1
+        dest:
+          name: succ
+          type: Handler@Handler
+          mult: 1..1
+    - Association:
+        name: ClntHandler
+        mult: 1..1
+        source:
+          name: hand
+          type: Handler@Handler
+          mult: 1..1
+        dest:
+          name: clnt
+          type: Client
+          mult: 1..*

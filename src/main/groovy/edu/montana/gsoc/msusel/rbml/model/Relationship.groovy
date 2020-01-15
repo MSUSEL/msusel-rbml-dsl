@@ -32,6 +32,15 @@ package edu.montana.gsoc.msusel.rbml.model
  */
 abstract class Relationship extends Role {
 
-    String sourceName
-    String destName
+    String srcPort
+    String destPort
+    String atLeastOne
+
+    Relationship(String name, Multiplicity mult) {
+        super(name, mult)
+    }
+
+    abstract Role source()
+
+    abstract Role dest()
 }

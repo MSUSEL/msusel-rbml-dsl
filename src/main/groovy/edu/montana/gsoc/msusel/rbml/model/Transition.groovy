@@ -32,4 +32,17 @@ package edu.montana.gsoc.msusel.rbml.model
  */
 class Transition extends Relationship {
 
+    Transition(Object sourceName, Object destName) {
+        super(sourceName, destName)
+    }
+
+    @Override
+    Role source() {
+        return null
+    }
+
+    @Override
+    Role dest() {
+        return null
+    }
 }

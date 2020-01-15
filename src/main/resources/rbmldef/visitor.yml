@@ -1,0 +1,82 @@
+SPS:
+  name: Visitor
+  roles:
+    - GenHierarchy:
+        name: Visitor
+        Classifier:
+          name: Visitor
+          mult: 1..1
+          features:
+            b1:
+              name: Visit
+              params: [elem: Element@ConcreteElement]
+              mult: 1..*
+              abstract: true
+        children:
+          - Class:
+              name: ConcreteAbstraction
+              mult: 1..*
+              features:
+                b1:
+                  name: Visit
+                  params: [elem: Element@ConcreteElement]
+                  mult: 1..*
+          - Classifier:
+              name: AbstractAbstraction
+              mult: "*"
+    - GenHierarchy:
+        name: Element
+        Classifier:
+          name: Element
+          mult: 1..1
+          features:
+            b1:
+              name: Accept
+              params: [vis: Vistor@ConcreteVistor]
+              mult: 1..1
+              abstract: true
+        children:
+          - Class:
+              name: ConcreteElement
+              mult: 1..*
+              features:
+                b1:
+                  name: Accept
+                  params: [vis: Vistor@ConcreteVistor]
+                  mult: 1..1
+                b2:
+                  name: Operation
+                  params: []
+                  mult: 1..*
+          - Classifier:
+              name: AbstractImplementor
+              mult: "*"
+    - Class:
+        name: Client
+        mult: 1..*
+    - Classifier:
+        name: ObjectStructure
+        mult: 1..*
+  relations:
+    - Usage:
+        name: ClntElemDep
+        mult: 1..*
+        source: Client
+        dest: Element@Element
+    - Usage:
+        name: ClntVisitDep
+        mult: 1..*
+        source: Client
+        dest: Visitor@ConcreteVisitor
+    - Association:
+        name: ObjStructElem
+        mult: 1..1
+        source:
+          name: obj
+          type: ObjectStructure
+          mult: 1..1
+        dest:
+          name: elem
+          type: Element@Element
+          mult: 1..*
+

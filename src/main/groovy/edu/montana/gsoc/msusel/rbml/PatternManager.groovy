@@ -39,7 +39,7 @@ import edu.montana.gsoc.msusel.rbml.model.Pattern
 class PatternManager {
 
     Pattern current
-    def patterns = []
+    List<Pattern> patterns = []
     def events = []
 
     void reset() {

@@ -26,16 +26,24 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+import groovy.transform.builder.Builder
+
 /**
  * @author Isaac Griffith
  * @version 1.3.0
  */
 class Classifier extends Role {
 
-    def structFeats = []
-    def behFeats = []
+    List<StructuralFeature> structFeats = []
+    List<BehavioralFeature> behFeats = []
     boolean abstrct
     boolean root = false
+
+    @Builder(buildMethodName = "create")
+    Classifier(String name, Multiplicity mult) {
+        super(name, mult)
+        abstrct = true
+    }
 
     Classifier() {
         abstrct = true

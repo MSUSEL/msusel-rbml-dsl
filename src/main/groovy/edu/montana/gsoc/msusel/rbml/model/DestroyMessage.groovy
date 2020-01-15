@@ -43,6 +43,6 @@ class DestroyMessage extends Message implements Fragment {
     @Override
     MessageType getType()
     {
-        MessageType.DESTRUCT;
+        MessageType.DESTRUCT
     }
 }

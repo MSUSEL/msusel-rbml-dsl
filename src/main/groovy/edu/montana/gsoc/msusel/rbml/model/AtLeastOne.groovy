@@ -30,7 +30,8 @@ package edu.montana.gsoc.msusel.rbml.model
  * @author Isaac Griffith
  * @version 1.3.0
  */
-class AtLeastOne extends Role {
+class AtLeastOne {
 
-    def relations = []
+    String groupName
+    def roles = []
 }

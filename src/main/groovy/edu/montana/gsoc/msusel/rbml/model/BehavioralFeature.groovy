@@ -26,21 +26,25 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+import groovy.transform.builder.Builder
+
 /**
  * @author Isaac Griffith
  * @version 1.3.0
  */
 class BehavioralFeature extends Feature {
 
-    def params = []
+    List<Parameter> params = []
     Classifier type
     
     /**
      * 
      */
-    BehavioralFeature()
+    @Builder(buildMethodName = "create")
+    BehavioralFeature(String name, Multiplicity mult, Classifier type)
     {
-        // TODO Auto-generated constructor stub
+        super(name, mult)
+        this.type = type
     }
 
 }

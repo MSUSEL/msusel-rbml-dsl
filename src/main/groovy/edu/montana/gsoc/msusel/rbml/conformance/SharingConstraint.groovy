@@ -39,10 +39,16 @@ class SharingConstraint {
     RoleBlock second
 
     static SharingConstraint of(RoleBlock first, RoleBlock second) {
+        if (!first || !second)
+            throw new IllegalArgumentException()
+
         new SharingConstraint(first: first, second: second)
     }
 
     SharingConstraint on(Role shared) {
+        if (!shared)
+            throw new IllegalArgumentException()
+
         this.shared = shared
         this
     }

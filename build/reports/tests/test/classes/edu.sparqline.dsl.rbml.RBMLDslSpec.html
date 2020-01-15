@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class edu.montana.gsoc.msusel.rbml.RBMLDslSpec</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class edu.montana.gsoc.msusel.rbml.RBMLDslSpec</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/edu.sparqline.dsl.rbml.html">edu.sparqline.dsl.rbml</a> &gt; RBMLDslSpec</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">61</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">31</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.555s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox failures" id="successRate">
+<div class="percent">49%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Failed tests</a>
+</li>
+<li>
+<a href="#tab1">Tests</a>
+</li>
+<li>
+<a href="#tab2">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="testAnonymousLifelineRole"></a>
+<h3 class="failures">testAnonymousLifelineRole</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'lifeline' reason: groovy.lang.MissingPropertyException: No such property: current for class: edu.montana.gsoc.msusel.rbml.PatternManager
+Possible solutions: current
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testAnonymousLifelineRole(RBMLDslSpec.groovy:924)
+Caused by: groovy.lang.MissingPropertyException: No such property: current for class: edu.montana.gsoc.msusel.rbml.PatternManager
+Possible solutions: current
+	at edu.montana.gsoc.msusel.rbml.factory.LifelineRoleFactory.newInstance(LifelineRoleFactory.groovy:53)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testAssociationDest"></a>
+<h3 class="failures">testAssociationDest</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'association_role' reason: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.Association()
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testAssociationDest(RBMLDslSpec.groovy:556)
+Caused by: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.Association()
+	at edu.montana.gsoc.msusel.rbml.factory.AssociationRoleFactory.newInstance(AssociationRoleFactory.groovy:45)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testAssociationRole"></a>
+<h3 class="failures">testAssociationRole</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'association_role' reason: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.Association()
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testAssociationRole(RBMLDslSpec.groovy:478)
+Caused by: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.Association()
+	at edu.montana.gsoc.msusel.rbml.factory.AssociationRoleFactory.newInstance(AssociationRoleFactory.groovy:45)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testAssociationRoleWithContents"></a>
+<h3 class="failures">testAssociationRoleWithContents</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'association_role' reason: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.Association()
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testAssociationRoleWithContents(RBMLDslSpec.groovy:499)
+Caused by: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.Association()
+	at edu.montana.gsoc.msusel.rbml.factory.AssociationRoleFactory.newInstance(AssociationRoleFactory.groovy:45)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testAssociationSource"></a>
+<h3 class="failures">testAssociationSource</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'association_role' reason: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.Association()
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testAssociationSource(RBMLDslSpec.groovy:533)
+Caused by: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.Association()
+	at edu.montana.gsoc.msusel.rbml.factory.AssociationRoleFactory.newInstance(AssociationRoleFactory.groovy:45)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testBehavioralFeatureRole"></a>
+<h3 class="failures">testBehavioralFeatureRole</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'class_role' reason: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at groovy.lang.GroovyObjectSupport.invokeMethod(GroovyObjectSupport.java:44)
+	at groovy.lang.GroovyObjectSupport.invokeMethod(GroovyObjectSupport.java:44)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec$__spock_feature_0_14_closure8.closure36$_closure37(RBMLDslSpec.groovy:382)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec$__spock_feature_0_14_closure8.closure36$_closure37(RBMLDslSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:405)
+	at groovy.lang.Closure.call(Closure.java:399)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:895)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at groovy.lang.GroovyObjectSupport.invokeMethod(GroovyObjectSupport.java:44)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.$spock_feature_0_14_closure8$_closure36(RBMLDslSpec.groovy:381)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.$spock_feature_0_14_closure8$_closure36(RBMLDslSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:405)
+	at groovy.lang.Closure.call(Closure.java:399)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:895)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testBehavioralFeatureRole_closure8(RBMLDslSpec.groovy:380)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testBehavioralFeatureRole_closure8(RBMLDslSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:405)
+	at groovy.lang.Closure.call(Closure.java:399)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:895)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testBehavioralFeatureRole(RBMLDslSpec.groovy:379)
+Caused by: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at edu.montana.gsoc.msusel.rbml.factory.ClassRoleFactory.newInstance(ClassRoleFactory.groovy:71)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 28 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testCallReturnRole"></a>
+<h3 class="failures">testCallReturnRole</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'call_return' reason: groovy.lang.MissingPropertyException: No such property: current for class: edu.montana.gsoc.msusel.rbml.PatternManager
+Possible solutions: current
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testCallReturnRole(RBMLDslSpec.groovy:989)
+Caused by: groovy.lang.MissingPropertyException: No such property: current for class: edu.montana.gsoc.msusel.rbml.PatternManager
+Possible solutions: current
+	at edu.montana.gsoc.msusel.rbml.factory.CallReturnRoleFactory.newInstance(CallReturnRoleFactory.groovy:54)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testCallRole"></a>
+<h3 class="failures">testCallRole</h3>
+<span class="code">
+<pre>groovy.lang.MissingMethodException: No signature of method: static edu.montana.gsoc.msusel.rbml.PatternManager.reset() is applicable for argument types: () values: []
+Possible solutions: reset(), use([Ljava.lang.Object;), getAt(java.lang.String), use(java.lang.Class, groovy.lang.Closure), use(java.util.List, groovy.lang.Closure), wait()
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testCallRole(RBMLDslSpec.groovy:945)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testClassRole"></a>
+<h3 class="failures">testClassRole</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'class_role' reason: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testClassRole(RBMLDslSpec.groovy:279)
+Caused by: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at edu.montana.gsoc.msusel.rbml.factory.ClassRoleFactory.newInstance(ClassRoleFactory.groovy:71)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testClassRoleWithContents"></a>
+<h3 class="failures">testClassRoleWithContents</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'class_role' reason: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testClassRoleWithContents(RBMLDslSpec.groovy:300)
+Caused by: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at edu.montana.gsoc.msusel.rbml.factory.ClassRoleFactory.newInstance(ClassRoleFactory.groovy:71)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testClassifierRole"></a>
+<h3 class="failures">testClassifierRole</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'classifier_role' reason: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testClassifierRole(RBMLDslSpec.groovy:229)
+Caused by: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at edu.montana.gsoc.msusel.rbml.factory.ClassifierRoleFactory.newInstance(ClassifierRoleFactory.groovy:69)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testClassifierRoleWithContents"></a>
+<h3 class="failures">testClassifierRoleWithContents</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'classifier_role' reason: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testClassifierRoleWithContents(RBMLDslSpec.groovy:250)
+Caused by: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at edu.montana.gsoc.msusel.rbml.factory.ClassifierRoleFactory.newInstance(ClassifierRoleFactory.groovy:69)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testCreateRole"></a>
+<h3 class="failures">testCreateRole</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'create_role' reason: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.Create()
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testCreateRole(RBMLDslSpec.groovy:970)
+Caused by: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.Create()
+	at edu.montana.gsoc.msusel.rbml.factory.CreateRoleFactory.newInstance(CreateRoleFactory.groovy:46)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testDestroyRole"></a>
+<h3 class="failures">testDestroyRole</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'destroy_role' reason: groovy.lang.MissingPropertyException: No such property: current for class: edu.montana.gsoc.msusel.rbml.PatternManager
+Possible solutions: current
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testDestroyRole(RBMLDslSpec.groovy:1008)
+Caused by: groovy.lang.MissingPropertyException: No such property: current for class: edu.montana.gsoc.msusel.rbml.PatternManager
+Possible solutions: current
+	at edu.montana.gsoc.msusel.rbml.factory.DestroyRoleFactory.newInstance(DestroyRoleFactory.groovy:66)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testGenHierarchy"></a>
+<h3 class="failures">testGenHierarchy</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'gen_hierarchy' reason: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.GeneralizationHierarchy()
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testGenHierarchy(RBMLDslSpec.groovy:197)
+Caused by: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.GeneralizationHierarchy()
+	at edu.montana.gsoc.msusel.rbml.factory.GenHierarchyFactory.newInstance(GenHierarchyFactory.groovy:46)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testGenHierarchyWithContents"></a>
+<h3 class="failures">testGenHierarchyWithContents</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'gen_hierarchy' reason: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.GeneralizationHierarchy()
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testGenHierarchyWithContents(RBMLDslSpec.groovy:211)
+Caused by: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.GeneralizationHierarchy()
+	at edu.montana.gsoc.msusel.rbml.factory.GenHierarchyFactory.newInstance(GenHierarchyFactory.groovy:46)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testGeneralizationRole"></a>
+<h3 class="failures">testGeneralizationRole</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'generalization_role' reason: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.Generalization()
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testGeneralizationRole(RBMLDslSpec.groovy:699)
+Caused by: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.Generalization()
+	at edu.montana.gsoc.msusel.rbml.factory.GeneralizationRoleFactory.newInstance(GeneralizationRoleFactory.groovy:49)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testGeneralizationRoleWithContents"></a>
+<h3 class="failures">testGeneralizationRoleWithContents</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'class_role' reason: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at groovy.lang.GroovyObjectSupport.invokeMethod(GroovyObjectSupport.java:44)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.$spock_feature_0_27_closure15$_closure46(RBMLDslSpec.groovy:722)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.$spock_feature_0_27_closure15$_closure46(RBMLDslSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:405)
+	at groovy.lang.Closure.call(Closure.java:399)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:895)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testGeneralizationRoleWithContents_closure15(RBMLDslSpec.groovy:721)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testGeneralizationRoleWithContents_closure15(RBMLDslSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:405)
+	at groovy.lang.Closure.call(Closure.java:399)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:895)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testGeneralizationRoleWithContents(RBMLDslSpec.groovy:720)
+Caused by: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at edu.montana.gsoc.msusel.rbml.factory.ClassRoleFactory.newInstance(ClassRoleFactory.groovy:71)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 19 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testInterfaceRole"></a>
+<h3 class="failures">testInterfaceRole</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'interface_role' reason: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testInterfaceRole(RBMLDslSpec.groovy:329)
+Caused by: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at edu.montana.gsoc.msusel.rbml.factory.InterfaceRoleFactory.newInstance(InterfaceRoleFactory.groovy:72)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testInterfaceRoleWithContents"></a>
+<h3 class="failures">testInterfaceRoleWithContents</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'interface_role' reason: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testInterfaceRoleWithContents(RBMLDslSpec.groovy:350)
+Caused by: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at edu.montana.gsoc.msusel.rbml.factory.InterfaceRoleFactory.newInstance(InterfaceRoleFactory.groovy:72)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testIps"></a>
+<h3 class="failures">testIps</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'ips' reason: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testIps(RBMLDslSpec.groovy:849)
+Caused by: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at edu.montana.gsoc.msusel.rbml.factory.IPSFactory.newInstance(IPSFactory.groovy:64)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testIpsWithContents"></a>
+<h3 class="failures">testIpsWithContents</h3>
+<span class="code">
+<pre>groovy.lang.MissingMethodException: No signature of method: static edu.montana.gsoc.msusel.rbml.PatternManager.reset() is applicable for argument types: () values: []
+Possible solutions: reset(), use([Ljava.lang.Object;), getAt(java.lang.String), use(java.lang.Class, groovy.lang.Closure), use(java.util.List, groovy.lang.Closure), wait()
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testIpsWithContents(RBMLDslSpec.groovy:859)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testLifelineRole"></a>
+<h3 class="failures">testLifelineRole</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'lifeline' reason: groovy.lang.MissingPropertyException: No such property: current for class: edu.montana.gsoc.msusel.rbml.PatternManager
+Possible solutions: current
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testLifelineRole(RBMLDslSpec.groovy:899)
+Caused by: groovy.lang.MissingPropertyException: No such property: current for class: edu.montana.gsoc.msusel.rbml.PatternManager
+Possible solutions: current
+	at edu.montana.gsoc.msusel.rbml.factory.LifelineRoleFactory.newInstance(LifelineRoleFactory.groovy:53)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testPatternWithContents"></a>
+<h3 class="failures">testPatternWithContents</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'ips' reason: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testPatternWithContents_closure1(RBMLDslSpec.groovy:99)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testPatternWithContents_closure1(RBMLDslSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:405)
+	at groovy.lang.Closure.call(Closure.java:399)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:895)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testPatternWithContents(RBMLDslSpec.groovy:97)
+Caused by: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at edu.montana.gsoc.msusel.rbml.factory.IPSFactory.newInstance(IPSFactory.groovy:64)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 11 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testRealizationRole"></a>
+<h3 class="failures">testRealizationRole</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'realization_role' reason: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.Realization()
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testRealizationRole(RBMLDslSpec.groovy:639)
+Caused by: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.Realization()
+	at edu.montana.gsoc.msusel.rbml.factory.RealizationRoleFactory.newInstance(RealizationRoleFactory.groovy:49)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testRealizationRoleWithContents"></a>
+<h3 class="failures">testRealizationRoleWithContents</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'class_role' reason: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at groovy.lang.GroovyObjectSupport.invokeMethod(GroovyObjectSupport.java:44)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.$spock_feature_0_25_closure14$_closure44(RBMLDslSpec.groovy:662)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.$spock_feature_0_25_closure14$_closure44(RBMLDslSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:405)
+	at groovy.lang.Closure.call(Closure.java:399)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:895)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testRealizationRoleWithContents_closure14(RBMLDslSpec.groovy:661)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testRealizationRoleWithContents_closure14(RBMLDslSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:405)
+	at groovy.lang.Closure.call(Closure.java:399)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:895)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testRealizationRoleWithContents(RBMLDslSpec.groovy:660)
+Caused by: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at edu.montana.gsoc.msusel.rbml.factory.ClassRoleFactory.newInstance(ClassRoleFactory.groovy:71)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 19 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testRolesWithContents"></a>
+<h3 class="failures">testRolesWithContents</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'classifier_role' reason: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testRolesWithContents_closure3(RBMLDslSpec.groovy:180)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testRolesWithContents_closure3(RBMLDslSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:405)
+	at groovy.lang.Closure.call(Closure.java:399)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:895)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testRolesWithContents(RBMLDslSpec.groovy:179)
+Caused by: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at edu.montana.gsoc.msusel.rbml.factory.ClassifierRoleFactory.newInstance(ClassifierRoleFactory.groovy:69)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 11 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testStructuralFeatureRole"></a>
+<h3 class="failures">testStructuralFeatureRole</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'class_role' reason: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at groovy.lang.GroovyObjectSupport.invokeMethod(GroovyObjectSupport.java:44)
+	at groovy.lang.GroovyObjectSupport.invokeMethod(GroovyObjectSupport.java:44)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec$__spock_feature_0_15_closure9.closure39$_closure40(RBMLDslSpec.groovy:418)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec$__spock_feature_0_15_closure9.closure39$_closure40(RBMLDslSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:405)
+	at groovy.lang.Closure.call(Closure.java:399)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:895)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at groovy.lang.GroovyObjectSupport.invokeMethod(GroovyObjectSupport.java:44)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.$spock_feature_0_15_closure9$_closure39(RBMLDslSpec.groovy:417)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.$spock_feature_0_15_closure9$_closure39(RBMLDslSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:405)
+	at groovy.lang.Closure.call(Closure.java:399)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:895)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testStructuralFeatureRole_closure9(RBMLDslSpec.groovy:416)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testStructuralFeatureRole_closure9(RBMLDslSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:405)
+	at groovy.lang.Closure.call(Closure.java:399)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:895)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testStructuralFeatureRole(RBMLDslSpec.groovy:415)
+Caused by: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at edu.montana.gsoc.msusel.rbml.factory.ClassRoleFactory.newInstance(ClassRoleFactory.groovy:71)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 28 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testTraceWithContents"></a>
+<h3 class="failures">testTraceWithContents</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'call_role' reason: groovy.lang.MissingPropertyException: No such property: current for class: edu.montana.gsoc.msusel.rbml.PatternManager
+Possible solutions: current
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testTraceWithContents_closure31(RBMLDslSpec.groovy:1356)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testTraceWithContents_closure31(RBMLDslSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:405)
+	at groovy.lang.Closure.call(Closure.java:399)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:895)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testTraceWithContents(RBMLDslSpec.groovy:1355)
+Caused by: groovy.lang.MissingPropertyException: No such property: current for class: edu.montana.gsoc.msusel.rbml.PatternManager
+Possible solutions: current
+	at edu.montana.gsoc.msusel.rbml.factory.CallRoleFactory.newInstance(CallRoleFactory.groovy:66)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 11 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testUsageRole"></a>
+<h3 class="failures">testUsageRole</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'usage_role' reason: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.Usage()
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testUsageRole(RBMLDslSpec.groovy:579)
+Caused by: groovy.lang.GroovyRuntimeException: Could not find matching constructor for: edu.montana.gsoc.msusel.rbml.model.Usage()
+	at edu.montana.gsoc.msusel.rbml.factory.UsageRoleFactory.newInstance(UsageRoleFactory.groovy:49)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 4 more
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="testUsageRoleWithContents"></a>
+<h3 class="failures">testUsageRoleWithContents</h3>
+<span class="code">
+<pre>java.lang.RuntimeException: Failed to create component for 'class_role' reason: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:727)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:863)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at groovy.lang.GroovyObjectSupport.invokeMethod(GroovyObjectSupport.java:44)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.$spock_feature_0_23_closure13$_closure42(RBMLDslSpec.groovy:602)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.$spock_feature_0_23_closure13$_closure42(RBMLDslSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:405)
+	at groovy.lang.Closure.call(Closure.java:399)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:895)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testUsageRoleWithContents_closure13(RBMLDslSpec.groovy:601)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testUsageRoleWithContents_closure13(RBMLDslSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:405)
+	at groovy.lang.Closure.call(Closure.java:399)
+	at groovy.util.FactoryBuilderSupport.dispatchNodeCall(FactoryBuilderSupport.java:895)
+	at groovy.util.FactoryBuilderSupport.doInvokeMethod(FactoryBuilderSupport.java:787)
+	at groovy.util.FactoryBuilderSupport.invokeMethod(FactoryBuilderSupport.java:507)
+	at edu.montana.gsoc.msusel.rbml.RBMLDslSpec.testUsageRoleWithContents(RBMLDslSpec.groovy:600)
+Caused by: org.codehaus.groovy.runtime.metaclass.MethodSelectionException: Could not find which method &lt;init&gt;() to invoke from this list:
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int)
+  public edu.montana.gsoc.msusel.rbml.model.Multiplicity#&lt;init&gt;(int, int)
+	at edu.montana.gsoc.msusel.rbml.factory.ClassRoleFactory.newInstance(ClassRoleFactory.groovy:71)
+	at groovy.util.FactoryBuilderSupport.createNode(FactoryBuilderSupport.java:717)
+	... 19 more
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">testAltFragment</td>
+<td class="success">0.011s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testAltFragmentWithContents</td>
+<td class="success">0.014s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">testAnonymousLifelineRole</td>
+<td class="failures">0.002s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testAssociationDest</td>
+<td class="failures">0.005s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testAssociationRole</td>
+<td class="failures">0.001s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testAssociationRoleWithContents</td>
+<td class="failures">0.002s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testAssociationSource</td>
+<td class="failures">0.002s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testBehavioralFeatureRole</td>
+<td class="failures">0.008s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">testBreakFragment</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testBreakFragmentWithContents</td>
+<td class="success">0.006s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">testCallReturnRole</td>
+<td class="failures">0.009s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testCallRole</td>
+<td class="failures">0s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testClassRole</td>
+<td class="failures">0.002s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testClassRoleWithContents</td>
+<td class="failures">0.003s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testClassifierRole</td>
+<td class="failures">0.007s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testClassifierRoleWithContents</td>
+<td class="failures">0.003s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">testConstraints</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testConstraintsWithContents</td>
+<td class="success">0.008s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testContext</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testContextWithInv</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testContextWithPreAndPost</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">testCreateRole</td>
+<td class="failures">0.014s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">testCriticalFragment</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCriticalFragmentWithContents</td>
+<td class="success">0.005s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">testDestroyRole</td>
+<td class="failures">0.009s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testGenHierarchy</td>
+<td class="failures">0.004s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testGenHierarchyWithContents</td>
+<td class="failures">0.005s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testGeneralizationRole</td>
+<td class="failures">0.012s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testGeneralizationRoleWithContents</td>
+<td class="failures">0.007s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testInterfaceRole</td>
+<td class="failures">0.001s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testInterfaceRoleWithContents</td>
+<td class="failures">0.002s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testIps</td>
+<td class="failures">0.001s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testIpsWithContents</td>
+<td class="failures">0.006s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testLifelineRole</td>
+<td class="failures">0.009s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">testLoopFragment</td>
+<td class="success">0.009s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testLoopFragmentWithContents</td>
+<td class="success">0.008s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testOptFragment</td>
+<td class="success">0.005s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testOptFragmentWithContents</td>
+<td class="success">0.008s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testParFragment</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testParFragmentWithContents</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testPattern</td>
+<td class="success">0.185s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">testPatternWithContents</td>
+<td class="failures">0.018s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">testPps</td>
+<td class="success">0.008s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testPpsWithContents</td>
+<td class="success">0.010s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">testRealizationRole</td>
+<td class="failures">0.001s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testRealizationRoleWithContents</td>
+<td class="failures">0.010s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">testRelations</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testRelationsWithContents</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testRoles</td>
+<td class="success">0.005s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">testRolesWithContents</td>
+<td class="failures">0.050s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">testSeqFragment</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testSeqFragmentWithContents</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testSps</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testSpsWithContents</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testStrictFragment</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testStrictFragmentWithContents</td>
+<td class="success">0.005s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">testStructuralFeatureRole</td>
+<td class="failures">0.014s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">testTrace</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">testTraceWithContents</td>
+<td class="failures">0.011s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testUsageRole</td>
+<td class="failures">0.002s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">testUsageRoleWithContents</td>
+<td class="failures">0.006s</td>
+<td class="failures">failed</td>
+</tr>
+</table>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>Creating Classifier with Name: test
+Creating new Generalization Hierarchy: Factory
+Creating new Generalization Hierarchy: null
+Creating Classifier with Name: test
+Creating Classifier with Name: class1
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 5.0</a> at Nov 10, 2019 8:31:46 PM</p>
+</div>
+</div>
+</body>
+</html>

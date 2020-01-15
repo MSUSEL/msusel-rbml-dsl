@@ -32,4 +32,7 @@ package edu.montana.gsoc.msusel.rbml.model
  */
 class UnknownBehavioralFeature extends BehavioralFeature {
 
+    UnknownBehavioralFeature(String name, Multiplicity mult, Classifier type) {
+        super(name, mult, type)
+    }
 }

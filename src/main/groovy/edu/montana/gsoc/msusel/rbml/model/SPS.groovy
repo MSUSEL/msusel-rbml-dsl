@@ -27,6 +27,7 @@
 package edu.montana.gsoc.msusel.rbml.model
 
 import edu.montana.gsoc.msusel.rbml.conformance.RoleBlock
+import groovy.transform.builder.Builder
 
 /**
  * @author Isaac Griffith
@@ -36,25 +37,41 @@ class SPS {
 
     String name
     def classifiers = []
-    def relations = []
+    List<Role> relations = []
     def constraints = []
+    def genHierarchies = []
+
+    @Builder(buildMethodName = "create")
+    SPS(String name) {
+        this.name = name
+    }
 
     List<RoleBlock> roleBlocks() {
         def blocks = []
-        relations.each {
-            switch (it) {
-                case Realization:
-                case Generalization:
-                    block.source = it.child
-                    block.dest = it.parent
-                    break
-                case Usage:
-                case Create:
-                case Association:
-                    block.source = it.source
-                    block.dest = it.dest
-                    break
+        relations.each { Role r ->
+
+            if (r instanceof Relationship) {
+                blocks << createBlock((Relationship) r)
+            } else if (r instanceof AtLeastOne) {
+                r.relations.each {
+                    blocks << createBlock((Relationship) it)
+                }
             }
         }
+
+        genHierarchies.each { GeneralizationHierarchy gh ->
+            def block = new RoleBlock()
+            block.source = gh
+            block.dest = gh
+            blocks << block
+        }
+        blocks
+    }
+
+    private def createBlock(Relationship r) {
+        def block = new RoleBlock()
+        block.source = r.source()
+        block.dest = r.dest()
+        block
     }
 }

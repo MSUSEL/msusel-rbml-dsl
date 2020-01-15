@@ -1,0 +1,88 @@
+SPS:
+  name: Flyweight
+  roles:
+    - GenHierarchy:
+        name: Expression
+        Classifier:
+          name: Flyweight
+          mult: 1..*
+          features:
+            b1:
+              name: Operation
+              params: [s: State]
+              mult: 1..*
+              abstract: true
+        children:
+          - Class:
+              name: ConcreteFlyweight
+              mult: 1..*
+              features:
+                b1:
+                  name: Operation
+                  params: [s: State]
+                  mult: 1..1
+          - Classifier:
+              name: AbstractFlyweight
+              mult: "*"
+          - Class:
+              name: ConcreteUnsharedFlyweight
+              mult: 1..*
+              features:
+                b1:
+                  name: Operation
+                  params: [s: State]
+                  mult: 1..1
+          - Classifier:
+              name: AbstractUnsharedFlyweight
+              mult: "*"
+    - Class:
+        name: FlyweightFactory
+        mult: 1..1
+        features:
+          b1:
+            name: GetFlyweight
+            type: Flyweight@Flyweight
+            params: [key: Key]
+            mult: 1..1
+    - Class:
+        name: Client
+        mult: 1..*
+  relations:
+    - Aggregation:
+        name: AvailableFlyweights
+        mult: 1..1
+        source:
+          name: factory
+          type: FlyweightFactory
+          mult: 1..1
+        dest:
+          name: flyweights
+          type: Flyweight@Flyweight
+          mult: 1..*
+    - Association:
+        name: SharedFlyweight
+        mult: 1..*
+        source:
+          name: clnt
+          type: Client
+          mult: 1..1
+        dest:
+          name: cfw
+          type: Flyweight@ConcreteFlyweight
+          mult: 1..*
+    - Association:
+        name: UnsharedFlyweight
+        mult: "*"
+        source:
+          name: clt
+          type: Client
+          mult: 1..1
+        dest:
+          name: ufw
+          type: Flyweight@ConcreteUnsharedFlyweight
+          mult: 1..*
+    - Usage:
+        name: FactoryDep
+        mult: 1..1
+        source: Client
+        dest: FlyweightFactory

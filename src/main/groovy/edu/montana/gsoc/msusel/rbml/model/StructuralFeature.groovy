@@ -26,6 +26,8 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+import groovy.transform.builder.Builder
+
 /**
  * @author Isaac Griffith
  * @version 1.3.0
@@ -33,4 +35,10 @@ package edu.montana.gsoc.msusel.rbml.model
 class StructuralFeature extends Feature {
 
     Classifier type
+
+    @Builder(buildMethodName = "create")
+    StructuralFeature(String name, Multiplicity mult, Classifier type) {
+        super(name, mult)
+        this.type = type
+    }
 }

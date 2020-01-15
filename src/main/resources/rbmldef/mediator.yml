@@ -1,0 +1,50 @@
+SPS:
+  name: Mediator
+  roles:
+    - GenHierarchy:
+        name: Mediator
+        Classifier:
+          name: Mediator
+          mult: 1..*
+        children:
+          - Class:
+              name: ConcreteMediator
+              mult: 1..*
+          - Classifier:
+              name: AbstractMediator
+              mult: 1..*
+    - GenHierarchy:
+        name: Colleague
+        Classifier:
+          name: Colleague
+          mult: 1..*
+        children:
+          - Class:
+              name: ConcreteColleague
+              mult: 1..*
+          - Classifier:
+              name: AbstractColleague
+              mult: "*"
+  relations:
+    - Association:
+        name: MedColl
+        mult: 1..1
+        source:
+          name: med
+          type: Mediator@Mediator
+          mult: 1..1
+        dest:
+          name: col
+          type: Colleague@Colleague
+          mult: 1..1
+    - Association:
+        name: Concrete
+        mult: 1..1
+        source:
+          name: cm
+          type: Mediator@ConcreteMediator
+          mult: 1..1
+        dest:
+          name: cc
+          type: Colleague@ConcreteColleague
+          mult: 1..*

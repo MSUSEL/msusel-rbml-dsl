@@ -27,14 +27,20 @@
 package edu.montana.gsoc.msusel.rbml.conformance
 
 import edu.montana.gsoc.msusel.rbml.model.Role
+import groovy.transform.ToString
 
 /**
  * @author Isaac Griffith
  * @version 1.3.0
  */
+@ToString(includes = ["source", "dest"])
 class RoleBlock {
 
     Role source
     Role dest
     BlockType type
+
+    static RoleBlock of (Role source, Role dest) {
+        new RoleBlock(source: source, dest: dest)
+    }
 }

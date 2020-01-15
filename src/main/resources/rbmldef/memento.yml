@@ -1,0 +1,53 @@
+SPS:
+  name: Memento
+  roles:
+    - Class:
+        name: Originator
+        mult: 1..*
+        features:
+          b1:
+            name: SetMemento
+            params: [m: Memento]
+            mult: 1..1
+          b2:
+            name: CreateMemento
+            params: []
+            type: Memento
+            mult: 1..1
+    - Class:
+        name: Memento
+        mult: 1..*
+        feature:
+          s1:
+            name: st
+            type: MemoState
+            mult: 1..*
+          b1:
+            name: GetState
+            type: MemoState
+            params: []
+            mult: 1..*
+          b2:
+            name: SetState
+            params: [st: MemoState]
+            mult: 1..*
+    - Class:
+        name: CareTaker
+        mult: 1..*
+  relations:
+    - Usage:
+        name: CreateMemento
+        mult: 1..1
+        source: Orginator
+        dest: Memento
+    - Aggregation:
+        name: MementoGenerator
+        mult: 1..1
+        source:
+          name: memento
+          type: Memento
+          mult: 1..*
+        dest:
+          name: caretaker
+          type: CareTaker
+          mult: 1..1

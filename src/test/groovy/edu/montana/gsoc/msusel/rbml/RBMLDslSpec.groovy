@@ -27,7 +27,7 @@
 /**
  * 
  */
-package com.sparqline.dsl.rbml
+package edu.montana.gsoc.msusel.rbml
 
 import edu.montana.gsoc.msusel.rbml.PatternManager
 import edu.montana.gsoc.msusel.rbml.factory.RBMLFactoryBuilder

@@ -1,0 +1,86 @@
+SPS:
+  name: Composite
+  roles:
+    - GenHierarchy:
+        name: Component
+        Classifier:
+          name: Component
+          mult: 1..*
+          features:
+            b1:
+              name: Operation
+              params: []
+              mult: 1..*
+              abstract: true
+            b2:
+              name: Add
+              params: [c: Component]
+              mult: 1..1
+            b3:
+              name: Remove
+              params: [c: Component]
+              mult: 1..1
+            b4:
+              name: GetChild
+              type: Component
+              params: [index: Int]
+              mult: 1..1
+        children:
+          - Class:
+              name: ConcreteComposite
+              mult: 1..*
+              features:
+                b1:
+                  name: Operation
+                  params: []
+                  mult: 1..*
+                b2:
+                  name: Add
+                  params: [c: Component]
+                  mult: 1..1
+                b3:
+                  name: Remove
+                  params: [c: Component]
+                  mult: 1..1
+                b4:
+                  name: GetChild
+                  type: Component
+                  params: [index: Int]
+                  mult: 1..1
+          - Classifier:
+              name: AbstractComposite
+              mult: "*"
+          - Class:
+              name: Leaf
+              mult: 1..*
+              features:
+                b1:
+                  name: Operation
+                  params: []
+                  mult: 1..*
+    - Class:
+        name: Client
+        mult: 1..1
+  relations:
+    - Association:
+        name: ClntCmpt
+        mult: 1..1
+        source:
+          name: clnt
+          mult: 1..*
+          type: Client
+        dest:
+          name: cmpt
+          mult: 1..*
+          type: Component@Component
+    - Aggregation:
+        name: ContainedChildren
+        mult: 1..1
+        source:
+          name: parent
+          type: Component@ConcreteComponent
+          mult: 1..1
+        dest:
+          name: children
+          type: Component@Component
+          mult: 1..*

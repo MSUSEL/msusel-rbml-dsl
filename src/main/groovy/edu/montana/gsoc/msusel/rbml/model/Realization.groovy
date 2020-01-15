@@ -26,12 +26,33 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+import groovy.transform.builder.Builder
+
 /**
  * @author Isaac Griffith
  * @version 1.3.0
  */
 class Realization extends Relationship {
 
-    Classifier parent
-    Classifier child
+    Role parent
+    Role child
+
+    @Builder(buildMethodName = "create")
+    Realization(String name, Multiplicity mult, Role parent, Role child) {
+        super(name, mult)
+        this.name = name
+        this.mult = mult
+        this.parent = parent
+        this.child = child
+    }
+
+    @Override
+    Role source() {
+        return child
+    }
+
+    @Override
+    Role dest() {
+        return parent
+    }
 }

@@ -1,0 +1,76 @@
+SPS:
+  name: Builder
+  roles:
+    - GenHierarchy:
+        name: Builder
+        Classifier:
+          name: Builder
+          mult: 1..*
+          features:
+            b1:
+              name: BuildPart
+              params: []
+              mult: 1..*
+              abstract: true
+            b2:
+              name: GetResult
+              params: []
+              type: Product@Product
+              mult: 1..1
+              abstract: true
+        children:
+          - Class:
+              name: ConcreteBuilder
+              mult: 1..*
+              features:
+                b1:
+                  name: BuildPart
+                  params: []
+                  mult: 1..*
+                  abstract: true
+                b2:
+                  name: GetResult
+                  params: []
+                  type: Product@Product
+                  mult: 1..1
+                  abstract: true
+          - Classifier:
+              name: AbstractBuidler
+              mult: "*"
+    - GenHierarchy:
+        name: Product
+        Classifier:
+          name: Product
+          mult: 1..*
+        children:
+          - Class:
+              name: ConcreteProduct
+              mult: 1..*
+          - Classifier:
+              name: AbstractProduct
+              mult: "*"
+    - Class:
+        name: Director
+        mult: 1..*
+        features:
+          b1:
+            name: Construct
+            params: []
+            mult: 1..1
+  relations:
+    - Create:
+        name: CreateProduct
+        mult: 1..1
+        source: Builder@ConcreteBuilder
+        dest: Product@ConcreteBuilder
+    - Association:
+        name: Directs
+        mult: 1..1
+        source:
+          name: director
+          type: Director
+          mult: 1..1
+        dest:
+          name: build
+          type: Builder@Builder
+          mult: 1..*

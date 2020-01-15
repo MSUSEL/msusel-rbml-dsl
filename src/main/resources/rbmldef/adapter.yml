@@ -1,0 +1,72 @@
+SPS:
+  name: Adapter
+  roles:
+    - Class:
+        name: Client
+        mult: 1..1
+    - Classifier:
+        name: Target
+        mult: 1..1
+        features:
+          b1:
+            name: Request
+            params: []
+            mult: 1..*
+    - Classifier:
+        name: Adapter
+        mult: 1..1
+        features:
+          b1:
+            name: Request
+            params: []
+            mult: 1..*
+    - Classifier:
+        name: Adaptee
+        mult: 1..1
+        features:
+          b1:
+            name: SpecificRequest
+            params: []
+            mult: 1..*
+  relations:
+    - Association:
+        name: ClntTarg
+        mult: 1..1
+        source:
+          name: clnt
+          type: Client
+          mult: 1..1
+        dest:
+          name: targ
+          type: Target
+          mult: 1..*
+    - Generalization:
+        name: TargetGeneralization
+        mult: 1..1
+        parent: Target
+        child: Adapter
+        atLeastOne: group1
+    - Realization:
+        name: TargetRealization
+        mult: 1..1
+        parent: Target
+        child: Adapter
+        atLeastOne: group1
+    - Realization:
+        name: AdapteeRealization
+        mult: 1..1
+        parent: Adaptee
+        child: Adapter
+        atLeastOne: group2
+    - Association:
+        name: Adapts
+        mult: 1..1
+        source:
+          name: adapter
+          type: Adapter
+          mult: 1..1
+        dest:
+          name: adaptee
+          type: Adaptee
+          mult: 1..1
+        atLeastOne: group2

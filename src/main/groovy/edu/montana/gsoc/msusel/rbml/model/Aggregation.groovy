@@ -26,6 +26,8 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+import groovy.transform.builder.Builder
+
 /**
  * @author Isaac Griffith
  * @version 1.3.0
@@ -35,9 +37,10 @@ class Aggregation extends Association {
     /**
      * 
      */
-    Aggregation()
+    @Builder(buildMethodName = "create")
+    Aggregation(String name, Multiplicity mult, String srcName, String destName, Role srcType, Role destType, Multiplicity srcMult, Multiplicity destMult)
     {
-        // TODO Auto-generated constructor stub
+        super(name, mult, srcName, destName, srcType, destType, srcMult, destMult)
     }
 
 }

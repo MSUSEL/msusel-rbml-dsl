@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.montana.gsoc.msusel.rbml.conformance.BlockBindingSpec" tests="1" skipped="0" failures="1" errors="0" timestamp="2019-11-11T03:31:45" hostname="grifisaa-Latitude-7390" time="0.039">
+  <properties/>
+  <testcase name="create a block binding" classname="edu.montana.gsoc.msusel.rbml.conformance.BlockBindingSpec" time="0.039">
+    <failure message="groovy.lang.MissingMethodException: No signature of method: edu.montana.gsoc.msusel.rbml.conformance.BlockBindingSpec.BlockBinding() is applicable for argument types: (edu.montana.gsoc.msusel.rbml.conformance.RoleBlock, edu.montana.gsoc.msusel.rbml.conformance.ModelBlock) values: [edu.montana.gsoc.msusel.rbml.conformance.RoleBlock@1886756e, ...]" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: edu.montana.gsoc.msusel.rbml.conformance.BlockBindingSpec.BlockBinding() is applicable for argument types: (edu.montana.gsoc.msusel.rbml.conformance.RoleBlock, edu.montana.gsoc.msusel.rbml.conformance.ModelBlock) values: [edu.montana.gsoc.msusel.rbml.conformance.RoleBlock@1886756e, ...]
+	at edu.montana.gsoc.msusel.rbml.conformance.BlockBindingSpec.create a block binding(BlockBindingSpec.groovy:40)
+</failure>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
