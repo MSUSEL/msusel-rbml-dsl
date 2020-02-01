@@ -26,7 +26,14 @@
  */
 package edu.montana.gsoc.msusel.rbml.conformance
 
+import edu.isu.isuese.datamodel.Class
+import edu.isu.isuese.datamodel.Interface
+import edu.isu.isuese.datamodel.Type
+import edu.montana.gsoc.msusel.rbml.model.ClassRole
+import edu.montana.gsoc.msusel.rbml.model.Classifier
+import edu.montana.gsoc.msusel.rbml.model.InterfaceRole
 import edu.montana.gsoc.msusel.rbml.model.Role
+import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 
 /**
@@ -34,13 +41,72 @@ import groovy.transform.ToString
  * @version 1.3.0
  */
 @ToString(includes = ["source", "dest"])
+@EqualsAndHashCode
 class RoleBlock {
 
-    Role source
-    Role dest
+    List<Role> sources
+    List<Role> dests
     BlockType type
 
     static RoleBlock of (Role source, Role dest) {
-        new RoleBlock(source: source, dest: dest)
+        new RoleBlock(sources: [source], dests: [dest])
+    }
+
+    static RoleBlock of (List<Role> sources, List<Role> dests) {
+        new RoleBlock(sources: sources, dests: dests)
+    }
+
+    boolean matchesSource(Type comp) {
+        return (comp instanceof Class && contains(sources, ClassRole.class)) ||
+                (comp instanceof Interface && contains(sources, InterfaceRole.class)) ||
+                (contains(sources, Classifier.class))
+    }
+
+    boolean matchesDest(Type comp) {
+        return (comp instanceof Class && contains(dests, ClassRole.class)) ||
+                (comp instanceof Interface && contains(dests, InterfaceRole.class)) ||
+                (contains(dests, Classifier.class))
+    }
+
+    Role findSourceMatch(Type comp) {
+        findMatch(comp, sources)
+    }
+
+    Role findDestMatch(Type comp) {
+        findMatch(comp, dests)
+    }
+
+    Role findMatch(Type comp, List<Role> list) {
+        Role role
+
+        switch (comp) {
+            case Class:
+                role = list.find { it instanceof ClassRole || it instanceof Classifier }
+                break
+            case Interface:
+                role = list.find { it instanceof InterfaceRole || it instanceof Classifier }
+                break
+            default:
+                role = list.find { it instanceof Classifier }
+                break
+        }
+
+        role
+    }
+
+    Role sharesWith(RoleBlock other) {
+        if (sources.findAll { it in other.sources }) {
+            sources.findAll { it in other.sources }.first()
+        } else if (sources.findAll { it in other.dests }) {
+            sources.findAll { it in other.dests }.first()
+        } else if (dests.findAll {it in other.dests }) {
+            dests.findAll { it in other.dests }.first()
+        } else if (dests.findAll {it in other.sources}) {
+            dests.findAll { it in other.sources }.first()
+        }
+    }
+
+    private boolean contains(List<Role> list, type) {
+        list.find { it.class == type }
     }
 }

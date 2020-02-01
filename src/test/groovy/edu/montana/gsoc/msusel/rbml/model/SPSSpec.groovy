@@ -33,47 +33,44 @@ import spock.lang.Specification
 
 class SPSSpec extends Specification {
 
-    def "generate role blocks"() {
+    def "generate role blocks"(resource, blocks) {
         given:
-            def spec = '''\
-                SPS:
-                    name: test
-                    roles:
-                        - Classifier:
-                            name: X
-                        - Classifier:
-                            name: Y
-                        - Class:
-                            name: Z
-                        - Class:
-                            name: W
-                    relations:
-                        - Association:
-                            name: XY
-                            mult: 1..1
-                            source:
-                                name: x
-                                mult: 1..*
-                                type: X
-                            dest:
-                                name: y
-                                mult: 1..*
-                                type: Y
-                        - Generalization:
-                            name: zy
-                            mult: 0..1
-                            child: Z
-                            parent: Y
-            '''
-            Yaml yaml = new Yaml()
-            SpecificationReader reader = new SpecificationReader()
+        String text = getClass().getResource("/rbmldef/${resource}.yml").readLines().join('\n')
+        Yaml yaml = new Yaml()
+        SpecificationReader reader = new SpecificationReader()
 
         when:
-            def map = yaml.load(spec)
-            reader.processSPS(map)
-            def rblocks = reader.sps.roleBlocks()
+        def map = yaml.load(text)
+        reader.processSPS(map)
+
+        def rblocks = reader.sps.roleBlocks()
 
         then:
-            rblocks.size() == 2
+            rblocks.size() == blocks
+
+        where:
+        resource                  | blocks
+        'abstract_factory'        | 7
+        'adapter'                 | 5
+        'bridge'                  | 3
+        'builder'                 | 4
+        'chain_of_responsibility' | 3
+        'command'                 | 5
+        'composite'               | 3
+        'decorator'               | 5
+        'facade'                  | 1
+        'factory_method'          | 3
+        'flyweight'               | 5
+        'interpreter'             | 3
+        'iterator'                | 5
+        'mediator'                | 4
+        'memento'                 | 2
+        'observer'                | 3
+        'prototype'               | 2
+        'singleton'               | 1
+        'strategy'                | 2
+        'state'                   | 2
+        'template_method'         | 1
+        'visitor'                 | 5
     }
 }

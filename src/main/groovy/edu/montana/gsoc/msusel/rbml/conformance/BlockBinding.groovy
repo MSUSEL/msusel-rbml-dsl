@@ -58,15 +58,15 @@ class BlockBinding {
 
     static BlockBinding of(RoleBlock rb, ModelBlock mb) {
         def binding = new BlockBinding(rb, mb)
-        binding.roleBindings << RoleBinding.of(rb.source, mb.source)
-        binding.roleBindings << RoleBinding.of(rb.dest, mb.dest)
+        binding.roleBindings << RoleBinding.of(rb.findSourceMatch(mb.source), mb.source)
+        binding.roleBindings << RoleBinding.of(rb.findDestMatch(mb.dest), mb.dest)
         binding
     }
 
     static BlockBinding fo(RoleBlock rb, ModelBlock mb) {
         def binding = new BlockBinding(rb, mb)
-        binding.roleBindings << RoleBinding.of(rb.source, mb.dest)
-        binding.roleBindings << RoleBinding.of(rb.dest, mb.source)
+        binding.roleBindings << RoleBinding.of(rb.findSourceMatch(mb.dest), mb.dest)
+        binding.roleBindings << RoleBinding.of(rb.findDestMatch(mb.source), mb.source)
         binding
     }
 }

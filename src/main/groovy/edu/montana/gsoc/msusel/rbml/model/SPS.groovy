@@ -26,6 +26,7 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+import edu.montana.gsoc.msusel.rbml.conformance.BlockType
 import edu.montana.gsoc.msusel.rbml.conformance.RoleBlock
 import groovy.transform.builder.Builder
 
@@ -59,19 +60,66 @@ class SPS {
             }
         }
 
-        genHierarchies.each { GeneralizationHierarchy gh ->
-            def block = new RoleBlock()
-            block.source = gh
-            block.dest = gh
+        genHierarchies.each { gh ->
+            GeneralizationHierarchy hier = (GeneralizationHierarchy) gh
+            RoleBlock block = new RoleBlock()
+
+            block.sources = hier.children
+            block.dests = hier.children
+            block.type = BlockType.GENERALIZATION
             blocks << block
         }
         blocks
     }
 
     private def createBlock(Relationship r) {
-        def block = new RoleBlock()
-        block.source = r.source()
-        block.dest = r.dest()
-        block
+        def sources = handleGenHierarchy(r.source(), r.srcPort)
+        def dests = handleGenHierarchy(r.dest(), r.destPort)
+
+        RoleBlock rb = RoleBlock.of(sources, dests)
+        setBlockType(rb, r)
+        rb
+    }
+
+    def handleGenHierarchy(Role role, String port) {
+        def roles = []
+
+        if (role instanceof GeneralizationHierarchy) {
+            GeneralizationHierarchy g = (GeneralizationHierarchy) role
+            if (!g.hasPort(port)) {
+                g.getChildren().each {
+                    roles << it
+                }
+            } else {
+                roles << g.getPort(port)
+            }
+        } else {
+            roles << role
+        }
+
+        roles
+    }
+
+    void setBlockType(block, Relationship r) {
+        switch (r) {
+            case Generalization:
+                block.type = BlockType.GENERALIZATION
+                break
+            case Realization:
+                block.type = BlockType.GENERALIZATION
+                break
+            case Usage:
+                block.type = BlockType.DEPENDENCY
+                break
+            case Aggregation:
+                block.type = BlockType.ASSOCIATION
+                break
+            case Composition:
+                block.type = BlockType.ASSOCIATION
+                break
+            case Association:
+                block.type = BlockType.ASSOCIATION
+                break
+        }
     }
 }

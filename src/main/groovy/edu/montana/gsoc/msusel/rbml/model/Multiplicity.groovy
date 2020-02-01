@@ -90,7 +90,7 @@ class Multiplicity {
 
     def toRange() {
         if (upper < 0)
-            return (lower..Integer.MAX_VALUE)
+            return (lower..Integer.MAX_VALUE - 1)
         else
             return (lower..upper)
     }

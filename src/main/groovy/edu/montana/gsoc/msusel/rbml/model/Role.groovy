@@ -26,6 +26,7 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 
 /**
@@ -33,6 +34,7 @@ import groovy.transform.ToString
  * @version 1.3.0
  */
 @ToString(includes = ["name"])
+@EqualsAndHashCode(includes = ["name"])
 abstract class Role {
 
     String name
