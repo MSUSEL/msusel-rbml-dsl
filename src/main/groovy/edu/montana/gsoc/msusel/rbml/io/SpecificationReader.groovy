@@ -26,32 +26,13 @@
  */
 package edu.montana.gsoc.msusel.rbml.io
 
-import edu.montana.gsoc.msusel.rbml.model.Aggregation
-import edu.montana.gsoc.msusel.rbml.model.Association
-import edu.montana.gsoc.msusel.rbml.model.BehavioralFeature
-import edu.montana.gsoc.msusel.rbml.model.ClassRole
-import edu.montana.gsoc.msusel.rbml.model.Classifier
-import edu.montana.gsoc.msusel.rbml.model.Composition
-import edu.montana.gsoc.msusel.rbml.model.Create
-import edu.montana.gsoc.msusel.rbml.model.Generalization
-import edu.montana.gsoc.msusel.rbml.model.GeneralizationHierarchy
-import edu.montana.gsoc.msusel.rbml.model.InterfaceRole
-import edu.montana.gsoc.msusel.rbml.model.Multiplicity
-import edu.montana.gsoc.msusel.rbml.model.Parameter
-import edu.montana.gsoc.msusel.rbml.model.Realization
-import edu.montana.gsoc.msusel.rbml.model.Relationship
-import edu.montana.gsoc.msusel.rbml.model.Role
-import edu.montana.gsoc.msusel.rbml.model.SPS
-import edu.montana.gsoc.msusel.rbml.model.StructuralFeature
-import edu.montana.gsoc.msusel.rbml.model.UnknownType
-import edu.montana.gsoc.msusel.rbml.model.Usage
-import org.yaml.snakeyaml.Yaml
+import edu.montana.gsoc.msusel.rbml.model.*
 
 class SpecificationReader {
 
-    def roles = [:]
-    def ghs = [:]
-    def relations = [:]
+    Map<String, Classifier> roles = [:]
+    Map<String, GeneralizationHierarchy> ghs = [:]
+    Map<String, Relationship> relations = [:]
     SPS sps
     GeneralizationHierarchy current = null
 
@@ -108,6 +89,7 @@ class SpecificationReader {
                     else if (v.Class)
                         processTypeStep2(v.Class)
                     processRolesStep2(v.children)
+                    copyOverFeatures(v.name)
                 } else {
                     processTypeStep2(v)
                 }
@@ -201,6 +183,7 @@ class SpecificationReader {
         else if (map.Class)
             gen.root = processClass(map.Class)
         gen.children = processRoles(map.children)
+
         current = null
     }
 
@@ -229,14 +212,22 @@ class SpecificationReader {
         if (!map || map.isEmpty())
             return null
 
-        def name = map.name
-        def mult = map.mult
+        String name = map.name
+        String mult = map.mult
+        boolean abstrct = map.abstract ? Boolean.parseBoolean(map.abstract) : false
+        boolean statc = map.static ? Boolean.parseBoolean(map.static) : false
         def t = map.type ?: null
         Classifier type = null
         if (t)
             type = findType(t)
 
-        def feat = BehavioralFeature.builder().name(name).mult(Multiplicity.fromString(mult)).type(type).create()
+        def feat = BehavioralFeature.builder()
+                .name(name)
+                .mult(Multiplicity.fromString(mult))
+                .type(type)
+                .isStatic(statc)
+                .isAbstract(abstrct)
+                .create()
 
         processParams(feat, map.params)
 
@@ -245,7 +236,7 @@ class SpecificationReader {
 
     void processParams(BehavioralFeature feat, params) {
         params.each { p ->
-            p.each { k, v ->
+            p.each { String k, String v ->
                 String var = k
                 Classifier type = findType(v)
 
@@ -262,15 +253,21 @@ class SpecificationReader {
         if (!map || map.isEmpty())
             return null
 
-        def name = map.name
-        def mult = map.mult
-        def t = map.type
+        String name = map.name
+        String mult = map.mult
+        String t = map.type
+        boolean statc = map.static ? Boolean.parseBoolean(map.static) : false
         Classifier type = findType(t)
 
-        StructuralFeature.builder().name(name).mult(Multiplicity.fromString(mult)).type(type).create()
+        StructuralFeature.builder()
+                .name(name)
+                .mult(Multiplicity.fromString(mult))
+                .type(type)
+                .isStatic(statc)
+                .create()
     }
 
-    private def findType(t) {
+    private def findType(String t) {
         Classifier type
         if (roles[t]) {
             type = (Classifier) roles[t]
@@ -461,5 +458,41 @@ class SpecificationReader {
         }
 
         return [role, port]
+    }
+
+    def copyOverFeatures(String ghName) {
+        GeneralizationHierarchy gh = ghs[ghName]
+
+        Classifier root = gh.getRoot()
+        root.behFeats.each { BehavioralFeature feat ->
+            gh.children.each { child ->
+                if (child instanceof ClassRole) {
+                    if(!child.behFeats.contains(feat) && (feat.isStatic || !feat.isAbstract)) {
+                        child.behFeats << feat
+                    }
+                } else if (child instanceof Classifier) {
+                    if (child.isAbstrct()) {
+                        if (child.behFeats.contains(feat) && (!feat.isStatic || feat.isAbstract)) {
+                            child.behFeats << feat
+                        }
+                    }
+                }
+            }
+        }
+        root.structFeats.each { StructuralFeature feat ->
+            gh.children.each { child ->
+                if (child instanceof ClassRole) {
+                    if(!child.structFeats.contains(feat) && feat.isStatic) {
+                        child.structFeats << feat
+                    }
+                } else if (child instanceof Classifier) {
+                    if (child.isAbstrct()) {
+                        if (child.structFeats.contains(feat) && !feat.isStatic) {
+                            child.structFeats << feat
+                        }
+                    }
+                }
+            }
+        }
     }
 }

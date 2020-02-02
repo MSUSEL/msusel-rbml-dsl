@@ -78,7 +78,7 @@ class SPSConformanceSpec extends DBSpec {
         SPS sps = null
         PatternInstance inst = createPatternInstance()
         SPSConformance fixture = new SPSConformance()
-        def tuple = fixture.conforms(sps, inst)
+        fixture.conforms(sps, inst)
         fail()
     }
 

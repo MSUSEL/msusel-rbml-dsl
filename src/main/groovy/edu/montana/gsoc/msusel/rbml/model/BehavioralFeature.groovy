@@ -36,15 +36,19 @@ class BehavioralFeature extends Feature {
 
     List<Parameter> params = []
     Classifier type
+    boolean isAbstract
+    boolean isStatic
     
     /**
      * 
      */
     @Builder(buildMethodName = "create")
-    BehavioralFeature(String name, Multiplicity mult, Classifier type)
+    BehavioralFeature(String name, Multiplicity mult, Classifier type, boolean isAbstract, boolean isStatic)
     {
         super(name, mult)
         this.type = type
+        this.isAbstract = isAbstract
+        this.isStatic = isStatic
     }
 
 }

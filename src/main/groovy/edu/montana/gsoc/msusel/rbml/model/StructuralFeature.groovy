@@ -35,10 +35,12 @@ import groovy.transform.builder.Builder
 class StructuralFeature extends Feature {
 
     Classifier type
+    boolean isStatic
 
     @Builder(buildMethodName = "create")
-    StructuralFeature(String name, Multiplicity mult, Classifier type) {
+    StructuralFeature(String name, Multiplicity mult, Classifier type, boolean isStatic) {
         super(name, mult)
         this.type = type
+        this.isStatic = isStatic
     }
 }
