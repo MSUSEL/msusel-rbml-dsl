@@ -48,6 +48,7 @@ create table roles (
   id INTEGER NOT NULL PRIMARY KEY Autoincrement,
   roleKey VARCHAR,
   name VARCHAR,
+  type INTEGER,
   role_binding_id INTEGER REFERENCES role_bindings(id),
   pattern_id INTEGER REFERENCES patterns(id)
 );
@@ -331,6 +332,24 @@ create table method_exceptions (
   id INTEGER NOT NULL PRIMARY KEY Autoincrement,
   parent_id INTEGER,
   parent_type VARCHAR
+);
+
+create table methods_method_exceptions (
+  id INTEGER NOT NULL PRIMARY KEY Autoincrement,
+  method_id INTEGER REFERENCES methods(id),
+  method_exception_id INTEGER REFERENCES method_exceptions(id)
+);
+
+create table constructors_method_exceptions (
+  id INTEGER NOT NULL PRIMARY KEY Autoincrement,
+  constructor_id INTEGER REFERENCES constructors(id),
+  method_exception_id INTEGER REFERENCES method_exceptions(id)
+);
+
+create table destructors_method_exceptions (
+  id INTEGER NOT NULL PRIMARY KEY Autoincrement,
+  destructor_id INTEGER REFERENCES destructors(id),
+  method_exception_id INTEGER REFERENCES method_exceptions(id)
 );
 
 create table type_refs (

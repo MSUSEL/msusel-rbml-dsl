@@ -42,26 +42,26 @@ class PatternLoader {
      * A Simple mapping of the pattern names to their yaml files
      */
     private final Map<String, String> patterns = [
-            'Abstract Factory' : '/rbmldef/abstract_factory.yml',
-            'Adapter' : '/rbmldef/adapter.yml',
-            'Bridge' : '/rbmldef/bridge.yml',
-            'Builder' : '/rbmldef/builder.yml',
-            'Chain of Responsibility' : '/rbmldef/chain_of_responsibility.yml',
-            'Command' : '/rbmldef/command.yml',
-            'Decorator' : '/rbmldef/decorator.yml',
-            'Facade' : '/rbmldef/facade.yml',
-            'Factory Method' : '/rbmldef/factory_method.yml',
-            'Flyweight' : '/rbmldef/flyweight.yml',
-            'Interpreter' : '/rbmldef/interpreter.yml',
-            'Iterator' : '/rbmldef/iterator.yml',
-            'Mediator' : '/rbmldef/mediator.yml',
-            'Observer' : '/rbmldef/observer.yml',
-            'Prototype' : '/rbmldef/prototype.yml',
-            'Singleton' : '/rbmldef/singleton.yml',
-            'State' : '/rbmldef/state.yml',
-            'Strategy' : '/rbmldef/strategy.yml',
-            'Template Method' : '/rbmldef/template_method.yml',
-            'Visitor' : '/rbmldef/visitor.yml'
+            'abstract factory' : '/rbmldef/abstract_factory.yml',
+            'adapter' : '/rbmldef/adapter.yml',
+            'bridge' : '/rbmldef/bridge.yml',
+            'builder' : '/rbmldef/builder.yml',
+            'chain of responsibility' : '/rbmldef/chain_of_responsibility.yml',
+            'command' : '/rbmldef/command.yml',
+            'decorator' : '/rbmldef/decorator.yml',
+            'facade' : '/rbmldef/facade.yml',
+            'factory method' : '/rbmldef/factory_method.yml',
+            'flyweight' : '/rbmldef/flyweight.yml',
+            'interpreter' : '/rbmldef/interpreter.yml',
+            'iterator' : '/rbmldef/iterator.yml',
+            'mediator' : '/rbmldef/mediator.yml',
+            'observer' : '/rbmldef/observer.yml',
+            'prototype' : '/rbmldef/prototype.yml',
+            'singleton' : '/rbmldef/singleton.yml',
+            'state' : '/rbmldef/state.yml',
+            'strategy' : '/rbmldef/strategy.yml',
+            'template method' : '/rbmldef/template_method.yml',
+            'visitor' : '/rbmldef/visitor.yml'
     ]
 
     /**
@@ -78,9 +78,9 @@ class PatternLoader {
         if (!pattern)
             throw new IllegalArgumentException("Pattern name cannot be null or empty")
         if (!patterns[pattern])
-            throw new IllegalArgumentException("Unknown pattern: $pattern")
+            return null
 
-        String text = getClass().getResource("/rbmldef/${resource}.yml").readLines().join('\n')
+        String text = getClass().getResource(patterns[pattern]).text
         Yaml yaml = new Yaml()
         SpecificationReader reader = new SpecificationReader()
 
