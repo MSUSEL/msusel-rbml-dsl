@@ -58,10 +58,10 @@ SPS:
           mult: 1..1
         children:
           - Classifier:
-              name: AbstractFactory
+              name: AbstractProduct
               mult: "*"
           - Class:
-              name: ConcreteFactory
+              name: ConcreteProduct
               mult: 1..*
     - Class:
         name: Client

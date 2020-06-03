@@ -51,12 +51,12 @@ SPS:
               mult: 1..*
               features:
                 s1:
-                  name: UniqueInstance
+                  name: uniqueInstance
                   type: Singleton@Singleton
                   mult: 1..1
                   props: [static, readOnly]
                 s2:
-                  name: SingletonData
+                  name: singletonData
                   type: Data
                   mult: 1..*
                 b1:

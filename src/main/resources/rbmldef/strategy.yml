@@ -60,7 +60,7 @@ SPS:
             type: State
             mult: "*"
           b2:
-            name: Operation
+            name: ContextOperation
             params: []
             mult: 1..*
   relations:

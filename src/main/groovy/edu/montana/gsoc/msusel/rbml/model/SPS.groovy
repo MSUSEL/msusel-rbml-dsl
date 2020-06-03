@@ -122,4 +122,25 @@ class SPS {
                 break
         }
     }
+
+    Role findTypeRoleByName(String name) {
+        if (!name)
+            throw new IllegalArgumentException()
+
+        Role role = classifiers.find { it.name == name }
+        if (!role)
+        {
+            genHierarchies.each {
+                if (it instanceof GeneralizationHierarchy) {
+                    GeneralizationHierarchy gh = (GeneralizationHierarchy) it
+
+                    Role r = gh.children.find { it.name == name }
+                    if (r)
+                        role = r
+                }
+            }
+        }
+
+        role
+    }
 }

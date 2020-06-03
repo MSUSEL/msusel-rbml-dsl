@@ -71,11 +71,11 @@ SPS:
           name: Observer
           features:
             s2:
-              name: ObserverState
+              name: observerState
               type: ObsStateType
               mult: 1..*
             b1:
-              name: Attach
+              name: AttachSubject
               params: [subj: Subject]
               mult: 1..*
         children:

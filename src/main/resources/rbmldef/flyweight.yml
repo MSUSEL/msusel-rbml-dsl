@@ -29,7 +29,7 @@ SPS:
   name: Flyweight
   roles:
     - GenHierarchy:
-        name: Expression
+        name: Flyweight
         Classifier:
           name: Flyweight
           mult: 1..*

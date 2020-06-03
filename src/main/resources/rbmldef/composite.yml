@@ -82,7 +82,7 @@ SPS:
               mult: 1..*
               features:
                 b1:
-                  name: Operation
+                  name: LeafOperation
                   params: []
                   mult: 1..*
     - Class:

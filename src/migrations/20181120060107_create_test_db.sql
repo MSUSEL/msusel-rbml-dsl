@@ -49,6 +49,7 @@ create table patterns
     id                    INTEGER NOT NULL PRIMARY KEY Autoincrement,
     patternKey            VARCHAR,
     name                  VARCHAR,
+    family                VARCHAR,
     pattern_repository_id INTEGER REFERENCES pattern_repositories (id),
     created_at            NUMERIC,
     updated_at            NUMERIC
@@ -60,6 +61,7 @@ create table roles
     roleKey    VARCHAR,
     name       VARCHAR,
     type       INTEGER,
+    mandatory  BOOLEAN,
     pattern_id INTEGER REFERENCES patterns (id),
     created_at NUMERIC,
     updated_at NUMERIC
@@ -100,11 +102,37 @@ create table pattern_instances
 (
     id               INTEGER NOT NULL PRIMARY KEY Autoincrement,
     instKey          VARCHAR,
+    pattern_size     INTEGER,
     pattern_chain_id INTEGER REFERENCES pattern_chains (id),
     project_id       INTEGER REFERENCES projects (id),
     pattern_id       INTEGER REFERENCES patterns (id),
     created_at       NUMERIC,
     updated_at       NUMERIC
+);
+
+create table injected_instances
+(
+    id         INTEGER NOT NULL PRIMARY KEY Autoincrement,
+    created_at NUMERIC,
+    updated_at NUMERIC
+);
+
+create table projects_injected_instances
+(
+    id                   INTEGER NOT NULL PRIMARY KEY Autoincrement,
+    project_id           INTEGER REFERENCES projects (id),
+    injected_instance_id INTEGER REFERENCES injected_instances (id),
+    created_at           NUMERIC,
+    updated_at           NUMERIC
+);
+
+create table findings_injected_instances
+(
+    id                   INTEGER NOT NULL PRIMARY KEY Autoincrement,
+    finding_id           INTEGER REFERENCES findings (id),
+    injected_instance_id INTEGER REFERENCES injected_instances (id),
+    created_at           NUMERIC,
+    updated_at           NUMERIC
 );
 
 create table role_bindings
@@ -130,11 +158,46 @@ create table findings
 (
     id           INTEGER NOT NULL PRIMARY KEY Autoincrement,
     findingKey   VARCHAR,
-    rule_id      INTEGER REFERENCES rules (id),
-    project_id   INTEGER REFERENCES projects (id),
-    reference_id INTEGER REFERENCES refs (id),
+    start        INTEGER,
+    end          INTEGER,
     created_at   NUMERIC,
     updated_at   NUMERIC
+);
+
+create table projects_findings
+(
+    id         INTEGER NOT NULL PRIMARY KEY Autoincrement,
+    project_id INTEGER REFERENCES projects (id),
+    finding_id INTEGER REFERENCES findings (id),
+    created_at NUMERIC,
+    updated_at NUMERIC
+);
+
+create table rules_findings
+(
+    id         INTEGER NOT NULL PRIMARY KEY Autoincrement,
+    rule_id    INTEGER REFERENCES rules (id),
+    finding_id INTEGER REFERENCES findings (id),
+    created_at NUMERIC,
+    updated_at NUMERIC
+);
+
+create table finding_data
+(
+    id         INTEGER NOT NULL PRIMARY KEY Autoincrement,
+    finding_id INTEGER,
+    created_at NUMERIC,
+    updated_at NUMERIC
+);
+
+create table finding_data_points
+(
+    id              INTEGER NOT NULL PRIMARY KEY Autoincrement,
+    finding_data_id INTEGER,
+    handle          VARCHAR,
+    value           DOUBLE,
+    create_at       NUMERIC,
+    update_at       NUMERIC
 );
 
 create table rules
@@ -180,8 +243,24 @@ create table measures
     id         INTEGER NOT NULL PRIMARY KEY Autoincrement,
     measureKey VARCHAR,
     value      DOUBLE,
+    created_at NUMERIC,
+    updated_at NUMERIC
+);
+
+create table metrics_measures
+(
+    id         INTEGER NOT NULL PRIMARY KEY Autoincrement,
     metric_id  INTEGER REFERENCES metrics (id),
+    measure_id INTEGER REFERENCES measures (id),
+    created_at NUMERIC,
+    updated_at NUMERIC
+);
+
+create table projects_measures
+(
+    id         INTEGER NOT NULL PRIMARY KEY Autoincrement,
     project_id INTEGER REFERENCES projects (id),
+    measure_id INTEGER REFERENCES measures (id),
     created_at NUMERIC,
     updated_at NUMERIC
 );
@@ -192,6 +271,8 @@ create table metrics
     metricKey            VARCHAR,
     name                 VARCHAR,
     description          VARCHAR,
+    handle               VARCHAR,
+    evaluatior           VARCHAR,
     metric_repository_id INTEGER REFERENCES metric_repositories (id),
     created_at           NUMERIC,
     updated_at           NUMERIC
@@ -202,6 +283,7 @@ create table metric_repositories
     id         INTEGER NOT NULL PRIMARY KEY Autoincrement,
     repoKey    VARCHAR,
     name       VARCHAR,
+    toolName   VARCHAR,
     created_at NUMERIC,
     updated_at NUMERIC
 );
@@ -242,6 +324,7 @@ create table modules
     name       VARCHAR,
     relPath    VARCHAR,
     srcPath    VARCHAR,
+    binPath    VARCHAR,
     testPath   VARCHAR,
     project_id INTEGER REFERENCES projects (id),
     created_at NUMERIC,
