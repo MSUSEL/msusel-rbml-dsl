@@ -28,6 +28,10 @@ package edu.montana.gsoc.msusel.rbml.io
 
 import edu.montana.gsoc.msusel.rbml.model.*
 
+/**
+ * @author Isaac Griffith
+ * @version 1.3.0
+ */
 class SpecificationReader {
 
     Map<String, Classifier> roles = [:]

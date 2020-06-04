@@ -34,6 +34,9 @@ import org.yaml.snakeyaml.Yaml
 /**
  * A Singleton class used to load patterns contained in this
  * module into an SPS for use by other components of the system
+ *
+ * @author Isaac Griffith
+ * @version 1.3.0
  */
 @Singleton
 class PatternLoader {

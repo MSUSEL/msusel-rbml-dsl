@@ -29,6 +29,10 @@ package edu.montana.gsoc.msusel.rbml.conformance
 import edu.isu.isuese.datamodel.Component
 import edu.montana.gsoc.msusel.rbml.model.Feature
 
+/**
+ * @author Isaac Griffith
+ * @version 1.3.0
+ */
 class FeatureBinding {
 
     Feature feat

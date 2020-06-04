@@ -26,6 +26,10 @@
  */
 package edu.montana.gsoc.msusel.rbml.io
 
+/**
+ * @author Isaac Griffith
+ * @version 1.3.0
+ */
 class MissingContentException extends RuntimeException {
     MissingContentException() {
     }
