@@ -40,7 +40,7 @@ import groovy.transform.ToString
  * @author Isaac Griffith
  * @version 1.3.0
  */
-@ToString(includes = ["source", "dest"])
+@ToString(includes = ["sources", "dests"])
 @EqualsAndHashCode
 class RoleBlock {
 
