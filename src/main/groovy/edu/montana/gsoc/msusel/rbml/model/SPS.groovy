@@ -26,6 +26,7 @@
  */
 package edu.montana.gsoc.msusel.rbml.model
 
+import edu.isu.isuese.datamodel.RelationType
 import edu.montana.gsoc.msusel.rbml.conformance.BlockType
 import edu.montana.gsoc.msusel.rbml.conformance.RoleBlock
 import groovy.transform.builder.Builder
@@ -100,7 +101,7 @@ class SPS {
         roles
     }
 
-    void setBlockType(block, Relationship r) {
+    static void setBlockType(block, Relationship r) {
         switch (r) {
             case Generalization:
                 block.type = BlockType.GENERALIZATION
@@ -142,5 +143,60 @@ class SPS {
         }
 
         role
+    }
+
+    def getSrcRelations(role) {
+        Map<RelationType, List<Role>> map = [:]
+
+        relations.each { rel ->
+            if (rel instanceof Relationship) {
+                if (rel.dest() == role) {
+                    RelationType type = getRelationType((Relationship) rel)
+                    if (map[type])
+                        map[type] << rel.source()
+                    else
+                        map[type] = [rel.source()]
+                }
+            }
+        }
+
+        return map
+    }
+
+    def getDestRelations(role) {
+        Map<RelationType, List<Role>> map = [:]
+
+        relations.each { rel ->
+            if (rel instanceof Relationship) {
+                if (rel.source() == role) {
+                    RelationType type = getRelationType((Relationship) rel)
+                    if (map[type])
+                        map[type] << rel.dest()
+                    else
+                        map[type] = [rel.dest()]
+                }
+            }
+        }
+
+        return map
+    }
+
+    static def getRelationType(Relationship r) {
+        switch (r) {
+            case Generalization:
+                return RelationType.GENERALIZATION
+            case Realization:
+                return RelationType.GENERALIZATION
+            case Usage:
+                return RelationType.DEPENDENCY
+            case Aggregation:
+                return RelationType.ASSOCIATION
+            case Composition:
+                return RelationType.ASSOCIATION
+            case Association:
+                return RelationType.ASSOCIATION
+            default:
+                return RelationType.DEPENDENCY
+        }
     }
 }
