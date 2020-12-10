@@ -48,6 +48,10 @@ class SPS {
         this.name = name
     }
 
+    String toString() {
+        return "SPS: $name"
+    }
+
     List<RoleBlock> roleBlocks() {
         def blocks = []
         relations.each { Role r ->

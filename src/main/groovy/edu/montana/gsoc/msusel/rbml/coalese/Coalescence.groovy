@@ -52,6 +52,7 @@ class Coalescence {
         map.each { Pattern k, List<PatternInstance> instanceList ->
             instanceList.each {
                 SPS sps = loadPattern(k.getName())
+                println(sps)
                 expand(it, sps)
             }
         }
