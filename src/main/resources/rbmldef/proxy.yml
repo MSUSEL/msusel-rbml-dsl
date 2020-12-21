@@ -26,72 +26,65 @@
 #
 
 SPS:
-  name: Decorator
+  name: Proxy
   roles:
     - GenHierarchy:
-        name: Component
+        name: Subject
         Classifier:
-          name: Component
-          mult: 1..1
+          name: Subject
+          mult: 1..*
           features:
             b1:
-              name: Operation()
-              type: void
+              name: Request()
               params: []
               mult: 1..*
+              abstract: true
         children:
           - Class:
-              name: ConcreteComponent
+              name: RealSubject
               mult: 1..*
-          - Classifier:
-              name: AbstractComponent
-              mult: "*"
-    - GenHierarchy:
-        name: Decorator
-        Classifier:
-          name: Decorator
-          mult: 1..1
-          features:
-            b1:
-              name: OperationImpl
-              params: []
-              mult: 1..*
-        children:
-          - Class:
-              name: ConcreteDecorator
-              mult: 1..*
-          - Classifier:
-              name: AbstractDecorator
-              mult: "*"
               features:
-                s1:
-                  name: addedState
-                  type: State
-                  mult: "*"
                 b1:
-                  name: AddedBehavior()
-                  type: void
+                  name: Request()
                   params: []
-                  mult: "*"
+                  mult: 1..*
+          - Classifier:
+              name: AbstractRealSubject
+              mult: "*"
+          - Class:
+              name: Proxy
+              mult: 1..*
+              features:
+                b1:
+                  name: Request()
+                  params: []
+                  mult: 1..*
+          - Classifier:
+              name: AbstractProxy
+              mult: "*"
+    - Class:
+        name: Client
+        mult: 1..*
   relations:
     - Association:
-        name: Comp
-        mult: 1..*
+        name: ClntSub
+        mult: 1..1
         source:
-          name: absComp
-          type: Component@Component
+          name: clnt
+          type: Client
           mult: 1..*
         dest:
-          name: absDec
-          type: Decorator@Decorator
+          name: subj
+          type: Subject@Subject
           mult: 1..1
-    - Generalization:
-        name: CompDecGen
-        child: Decorator@Decorator
-        parent: Component@Component
-        atLeastOne: group1
-    - Realization:
-        name: CompDecReal
-        child: Decorator@Decorator
-        parent: Component@Component
-        atLeastOne: group1
+    - Association:
+        name: SubProxy
+        mult: 1..1
+        source:
+          name: sub
+          type: Subject@RealSubject
+          mult: 1..1
+        dest:
+          name: prox
+          type: Subject@Proxy
+          mult: 1..*

@@ -35,45 +35,45 @@ SPS:
           mult: 1..*
           features:
             b1:
-              name: Operation
+              name: Operation()
               params: []
               mult: 1..*
               abstract: true
             b2:
-              name: Add
+              name: Add()
               params: [c: Component]
-              mult: 1..1
+              mult: 0..1
             b3:
-              name: Remove
+              name: Remove()
               params: [c: Component]
-              mult: 1..1
+              mult: 0..1
             b4:
-              name: GetChild
+              name: GetChild()
               type: Component
               params: [index: Int]
-              mult: 1..1
+              mult: 0..1
         children:
           - Class:
               name: ConcreteComposite
               mult: 1..*
               features:
                 b1:
-                  name: Operation
+                  name: ConcreteOperation()
                   params: []
                   mult: 1..*
                 b2:
-                  name: Add
+                  name: Add()
                   params: [c: Component]
-                  mult: 1..1
+                  mult: 0..1
                 b3:
-                  name: Remove
+                  name: Remove()
                   params: [c: Component]
-                  mult: 1..1
+                  mult: 0..1
                 b4:
-                  name: GetChild
+                  name: GetChild()
                   type: Component
                   params: [index: Int]
-                  mult: 1..1
+                  mult: 0..1
           - Classifier:
               name: AbstractComposite
               mult: "*"
@@ -82,12 +82,12 @@ SPS:
               mult: 1..*
               features:
                 b1:
-                  name: LeafOperation
+                  name: LeafOperation()
                   params: []
                   mult: 1..*
     - Class:
         name: Client
-        mult: 1..1
+        mult: 0..1
   relations:
     - Association:
         name: ClntCmpt
@@ -110,4 +110,4 @@ SPS:
         dest:
           name: children
           type: Component@Component
-          mult: 1..*
+          mult: "*"

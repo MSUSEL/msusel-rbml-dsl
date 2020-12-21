@@ -62,6 +62,7 @@ class PatternLoader {
             'memento' : '/rbmldef/memento.yml',
             'observer' : '/rbmldef/observer.yml',
             'prototype' : '/rbmldef/prototype.yml',
+            'proxy' : '/rbmldef/proxy.yml',
             'singleton' : '/rbmldef/singleton.yml',
             'state' : '/rbmldef/state.yml',
             'strategy' : '/rbmldef/strategy.yml',
