@@ -38,6 +38,7 @@ class Classifier extends Role {
     List<BehavioralFeature> behFeats = []
     boolean abstrct
     boolean root = false
+    boolean ghMember = false
 
     @Builder(buildMethodName = "create")
     Classifier(String name, Multiplicity mult) {

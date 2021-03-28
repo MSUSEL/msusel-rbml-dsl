@@ -118,6 +118,7 @@ class SpecificationReader {
         if (!current)
             roles[r.name] = r
         else {
+            r.ghMember = true
             String t = "${r.name}@${current.name}"
             t = r.name
             roles[t] = r
@@ -156,6 +157,7 @@ class SpecificationReader {
         if (!current)
             roles[r.name] = r
         else {
+            r.ghMember = true
             String t = "${r.name}@${current.name}"
             t = r.name
             roles[t] = r
@@ -178,6 +180,7 @@ class SpecificationReader {
         if (!current)
             roles[r.name] = r
         else {
+            r.ghMember = true
             String t = "${r.name}@${current.name}"
             t = r.name
             roles[t] = r
