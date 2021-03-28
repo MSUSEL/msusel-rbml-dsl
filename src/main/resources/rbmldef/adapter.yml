@@ -32,35 +32,35 @@ SPS:
         name: Client
         mult: 1..1
     - GenHierarchy:
-        - name: Target
-          Classifier:
-            name: Target
-            mult: 1..1
-            features:
-              b1:
-                name: TargetRequest()
-                params: []
-                mult: 1..*
-                abstract: true
-          children:
-            - Class:
+        name: Target
+        Classifier:
+          name: Target
+          mult: 1..1
+          features:
+            b1:
+              name: TargetRequest()
+              params: [ ]
+              mult: 1..*
+              abstract: "true"
+        children:
+          - Class:
               name: ConcreteAdapter
               mult: 1..1
               features:
                 b1:
                   name: Request()
-                  params: []
+                  params: [ ]
                   mult: 1..*
-            - Classifier:
-                name: AbstractAdapter
-                mult: "*"
+          - Classifier:
+              name: AbstractAdapter
+              mult: "*"
     - Classifier:
         name: Adaptee
         mult: 1..1
         features:
           b1:
             name: SpecificRequest()
-            params: []
+            params: [ ]
             mult: 1..*
   relations:
     - Association:

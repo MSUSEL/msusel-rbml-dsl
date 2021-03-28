@@ -35,9 +35,9 @@ SPS:
           mult: 1..*
           features:
             b1:
-              - name: Execute
-              - params: []
-              - mult: 1..1
+              name: Execute
+              params: []
+              mult: 1..1
         children:
           - Class:
               name: ConcreteCommand

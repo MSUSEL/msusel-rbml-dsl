@@ -91,7 +91,9 @@ class SPS {
 
         if (role instanceof GeneralizationHierarchy) {
             GeneralizationHierarchy g = (GeneralizationHierarchy) role
-            if (!g.hasPort(port)) {
+            if (g.root.name == port)
+                roles << g.root
+            else if (!g.hasPort(port)) {
                 g.getChildren().each {
                     roles << it
                 }

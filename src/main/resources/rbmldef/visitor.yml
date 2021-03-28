@@ -38,7 +38,7 @@ SPS:
               name: Visit
               params: [elem: Element@ConcreteElement]
               mult: 1..*
-              abstract: true
+              abstract: 'true'
         children:
           - Class:
               name: ConcreteVisitor
@@ -61,7 +61,7 @@ SPS:
               name: Accept
               params: [vis: Vistor@ConcreteVistor]
               mult: 1..1
-              abstract: true
+              abstract: 'true'
         children:
           - Class:
               name: ConcreteElement

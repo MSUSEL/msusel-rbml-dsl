@@ -38,7 +38,7 @@ SPS:
               name: Operation()
               params: []
               mult: 1..*
-              abstract: true
+              abstract: "true"
             b2:
               name: Add()
               params: [c: Component]

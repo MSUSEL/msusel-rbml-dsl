@@ -38,7 +38,7 @@ SPS:
               name: Operation
               params: [s: State]
               mult: 1..*
-              abstract: true
+              abstract: 'true'
         children:
           - Class:
               name: ConcreteFlyweight

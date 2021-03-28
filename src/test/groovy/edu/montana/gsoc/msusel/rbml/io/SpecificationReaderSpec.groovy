@@ -269,7 +269,7 @@ mult: 1..9
             reader.processGenHierarchy(map)
 
         then:
-            reader.roles.size() == 0
+            reader.roles.size() == 3
             reader.ghs["x"] instanceof GeneralizationHierarchy
             reader.ghs["x"] != null
             ((GeneralizationHierarchy) reader.ghs["x"]).children.size() == 2
@@ -1293,28 +1293,28 @@ mult: 1..9
 
         where:
         resource                  | name                      | ghs | cls | rels
-        'abstract_factory'        | 'Abstract Factory'        | 2   | 1   | 5
-        'adapter'                 | 'Adapter'                 | 0   | 4   | 5
-        'bridge'                  | 'Bridge'                  | 2   | 0   | 1
-        'builder'                 | 'Builder'                 | 2   | 1   | 2
-        'chain_of_responsibility' | 'Chain of Responsibility' | 1   | 1   | 2
-        'command'                 | 'Command'                 | 1   | 3   | 4
-        'composite'               | 'Composite'               | 1   | 1   | 2
-        'decorator'               | 'Decorator'               | 2   | 0   | 3
+        'abstract_factory'        | 'Abstract Factory'        | 2   | 7   | 5
+        'adapter'                 | 'Adapter'                 | 1   | 5   | 2
+        'bridge'                  | 'Bridge'                  | 2   | 6   | 1
+        'builder'                 | 'Builder'                 | 2   | 7   | 2
+        'chain_of_responsibility' | 'Chain of Responsibility' | 1   | 4   | 2
+        'command'                 | 'Command'                 | 1   | 6   | 4
+        'composite'               | 'Composite'               | 1   | 5   | 2
+        'decorator'               | 'Decorator'               | 2   | 6   | 3
         'facade'                  | 'Facade'                  | 0   | 2   | 1
-        'factory_method'          | 'Factory Method'          | 2   | 0   | 1
-        'flyweight'               | 'Flyweight'               | 1   | 2   | 4
-        'interpreter'             | 'Interpreter'             | 1   | 2   | 2
-        'iterator'                | 'Iterator'                | 2   | 1   | 3
-        'mediator'                | 'Mediator'                | 2   | 0   | 2
+        'factory_method'          | 'Factory Method'          | 2   | 6   | 1
+        'flyweight'               | 'Flyweight'               | 1   | 7   | 4
+        'interpreter'             | 'Interpreter'             | 1   | 7   | 2
+        'iterator'                | 'Iterator'                | 2   | 7   | 3
+        'mediator'                | 'Mediator'                | 2   | 6   | 2
         'memento'                 | 'Memento'                 | 0   | 3   | 2
-        'observer'                | 'Observer'                | 2   | 0   | 1
-        'prototype'               | 'Prototype'               | 1   | 1   | 1
-        'singleton'               | 'Singleton'               | 1   | 0   | 0
-        'strategy'                | 'Strategy'                | 1   | 1   | 1
-        'state'                   | 'State'                   | 1   | 1   | 1
-        'template_method'         | 'Template Method'         | 1   | 0   | 0
-        'visitor'                 | 'Visitor'                 | 2   | 2   | 3
+        'observer'                | 'Observer'                | 2   | 6   | 1
+        'prototype'               | 'Prototype'               | 1   | 4   | 1
+        'singleton'               | 'Singleton'               | 1   | 3   | 0
+        'strategy'                | 'Strategy'                | 1   | 4   | 1
+        'state'                   | 'State'                   | 1   | 4   | 1
+        'template_method'         | 'Template Method'         | 1   | 3   | 0
+        'visitor'                 | 'Visitor'                 | 2   | 8   | 3
     }
 
     def "process decorator pattern"() {
@@ -1331,7 +1331,7 @@ mult: 1..9
             SPS sps = reader.sps
             sps.name == "Decorator"
             sps.genHierarchies.size() == 2
-            sps.classifiers.size() == 0
+            sps.classifiers.size() == 6
             sps.relations.size() == 3
     }
 
@@ -1349,8 +1349,11 @@ mult: 1..9
             SPS sps = reader.sps
             sps.name == "State"
             sps.genHierarchies.size() == 1
-            sps.classifiers.size() == 1
+            sps.classifiers.size() == 4
             sps.relations.size() == 1
+            ((Classifier) sps.classifiers.find { it.name == "Context" }).structFeats.size() == 1
+            ((Classifier) sps.classifiers.find { it.name == "Context" }).behFeats.size() == 1
+            ((Classifier) sps.handleGenHierarchy(sps.getGenHierarchies().find { it.name == "State" }, "State").first()).behFeats.size() == 1
     }
 
     def "process empty pattern"() {

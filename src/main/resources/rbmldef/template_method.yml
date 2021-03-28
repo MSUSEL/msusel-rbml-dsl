@@ -33,7 +33,7 @@ SPS:
         Classifier:
           name: Template
           mult: 1..1
-          abstract: true
+          abstract: 'true'
           features:
             b1:
               name: Operation()
@@ -45,7 +45,7 @@ SPS:
               type: void
               params: []
               mult: 1..*
-              abstract: true
+              abstract: 'true'
         children:
           - Class:
               name: ConcreteTemplate
@@ -56,7 +56,7 @@ SPS:
                   type: void
                   params: []
                   mult: 1..*
-                  abstract: false
+                  abstract: 'false'
           - Classifier:
               name: AbstractTemplate
               mult: "*"

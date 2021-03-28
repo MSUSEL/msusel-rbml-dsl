@@ -67,24 +67,24 @@ SPS:
               name: First
               params: []
               mult: 1..1
-              abstract: true
+              abstract: 'true'
             b2:
               name: Next
               params: []
               mult: 1..1
-              abstract: true
+              abstract: 'true'
             b3:
               name: IsDone
               type: Boolean
               params: []
               mult: 1..1
-              abstract: true
+              abstract: 'true'
             b4:
               name: CurrentItem
               type: Item
               params: []
               mult: 1..1
-              abstract: true
+              abstract: 'true'
         children:
           - Class:
               name: ConcreteIterator

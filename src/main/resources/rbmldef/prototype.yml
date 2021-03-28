@@ -39,7 +39,7 @@ SPS:
               type: Prototype@Prototype
               params: []
               mult: 1..1
-              abstract: true
+              abstract: 'true'
         children:
           - Class:
               name: ConcretePrototype

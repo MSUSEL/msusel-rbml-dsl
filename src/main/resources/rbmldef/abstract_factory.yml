@@ -38,7 +38,7 @@ SPS:
               name: CreateProduct
               type: Product@Product
               mult: 1..*
-              abstract: true
+              abstract: "true"
         children:
           - Classifier:
               name: AbstractFactory

@@ -49,6 +49,7 @@ class SpecificationReader {
             throw new MissingContentException("SPS is missing one of the required: name or roles")
 
         String name = map.SPS.name
+        println("Name: $name")
         processRoles(map.SPS.roles)
         processRelations(map.SPS.relations)
         processRolesStep2(map.SPS.roles)
@@ -113,8 +114,15 @@ class SpecificationReader {
                 .mult(Multiplicity.fromString(mult))
                 .create()
 
+        println("Created classifier: $r")
         if (!current)
             roles[r.name] = r
+        else {
+            String t = "${r.name}@${current.name}"
+            t = r.name
+            roles[t] = r
+        }
+        println("Roles contains r? ${roles[r.name]}")
 
         r
     }
@@ -123,7 +131,9 @@ class SpecificationReader {
         if (map == null)
             throw new IllegalArgumentException()
 
+        println("Processing type: ${map.name}")
         Classifier r = roles[map.name]
+        println("Found classifier: $r")
 
         if (r) {
             if (map.features) {
@@ -145,6 +155,11 @@ class SpecificationReader {
                 .create()
         if (!current)
             roles[r.name] = r
+        else {
+            String t = "${r.name}@${current.name}"
+            t = r.name
+            roles[t] = r
+        }
 
         r
     }
@@ -162,6 +177,11 @@ class SpecificationReader {
                 .create()
         if (!current)
             roles[r.name] = r
+        else {
+            String t = "${r.name}@${current.name}"
+            t = r.name
+            roles[t] = r
+        }
 
         r
     }
@@ -174,7 +194,7 @@ class SpecificationReader {
             throw new MissingContentException()
 
         String name = map.name
-        String mult = map.mult ?: "1..1"
+        String mult = map.mult ? map.mult : "1..1"
 
         GeneralizationHierarchy gen = GeneralizationHierarchy.builder()
                 .name(name)
@@ -189,6 +209,7 @@ class SpecificationReader {
         gen.children = processRoles(map.children)
 
         current = null
+        roles
     }
 
     void processFeatures(Classifier r, map) {
@@ -218,7 +239,7 @@ class SpecificationReader {
 
         String name = map.name
         String mult = map.mult
-        boolean abstrct = map.abstract ? Boolean.parseBoolean(map.abstract) : false
+        boolean abstrct = map."abstract" ? Boolean.parseBoolean(map.'abstract') : false
         boolean statc = map.static ? Boolean.parseBoolean(map.static) : false
         def t = map.type ?: null
         Classifier type = null

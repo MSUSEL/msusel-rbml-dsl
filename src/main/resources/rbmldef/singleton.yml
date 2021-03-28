@@ -38,13 +38,13 @@ SPS:
               name: Operation
               params: []
               mult: 1..*
-              abstract: true
+              abstract: 'true'
             b2:
               name: GetData
               type: Data
               params: []
               mult: 1..*
-              abstract: true
+              abstract: 'true'
         children:
           - Class:
               name: ConcreteSingleton
@@ -69,13 +69,13 @@ SPS:
                   name: Operation
                   params: []
                   mult: 1..*
-                  abstract: true
+                  abstract: 'true'
                 b3:
                   name: GetData
                   type: Data
                   params: []
                   mult: 1..*
-                  abstract: true
+                  abstract: 'true'
           - Classifier:
               name: AbstractSingleton
               mult: "*"

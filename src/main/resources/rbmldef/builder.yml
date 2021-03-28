@@ -38,13 +38,13 @@ SPS:
               name: BuildPart
               params: []
               mult: 1..*
-              abstract: true
+              abstract: "true"
             b2:
               name: GetResult
               params: []
               type: Product@Product
               mult: 1..1
-              abstract: true
+              abstract: "true"
         children:
           - Class:
               name: ConcreteBuilder
@@ -54,13 +54,13 @@ SPS:
                   name: BuildPart
                   params: []
                   mult: 1..*
-                  abstract: false
+                  abstract: "false"
                 b2:
                   name: GetResult
                   params: []
                   type: Product@Product
                   mult: 1..1
-                  abstract: false
+                  abstract: "false"
           - Classifier:
               name: AbstractBuidler
               mult: "*"

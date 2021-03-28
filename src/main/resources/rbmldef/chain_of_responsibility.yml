@@ -39,7 +39,7 @@ SPS:
               name: HandleRequest
               params: []
               mult: 1..*
-              abstract: true
+              abstract: "true"
         children:
           - Class:
               name: ConcreteHandler
