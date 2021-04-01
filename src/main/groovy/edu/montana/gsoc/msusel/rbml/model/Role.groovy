@@ -34,15 +34,18 @@ import groovy.transform.ToString
  * @version 1.3.0
  */
 @ToString(includes = ["name"])
-@EqualsAndHashCode(includes = ["name"])
+@EqualsAndHashCode(includes = ["name", "id"])
 abstract class Role {
+
+    private static long ID = 0
 
     String name
     Multiplicity mult
     List<String> props = []
+    long id
 
     Role() {
-
+        id = ID++
     }
 
     Role(String name, Multiplicity mult) {
