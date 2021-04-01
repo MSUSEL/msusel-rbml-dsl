@@ -48,9 +48,15 @@ SPS:
               name: Handle
               params: []
               mult: 1..*
+              abstract: "true"
         children:
           - Class:
               name: ConcreteState
+              features:
+                b1:
+                  name: Handle
+                  params: []
+                  mult: 1..*
           - Classifier:
               name: AbstractState
   relations:

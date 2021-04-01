@@ -243,7 +243,8 @@ class SpecificationReader {
         String name = map.name
         String mult = map.mult
         boolean abstrct = map."abstract" ? Boolean.parseBoolean(map.'abstract') : false
-        boolean statc = map.static ? Boolean.parseBoolean(map.static) : false
+        boolean statc = map.'static' ? Boolean.parseBoolean(map.'static') : false
+        println("Name: $name and Abstract: $abstrct and Static: $statc")
         def t = map.type ?: null
         Classifier type = null
         if (t)
