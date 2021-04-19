@@ -47,8 +47,6 @@ class SPSConformanceSpec extends DBSpec {
         SPSConformance fixture = new SPSConformance()
         def tuple = fixture.conforms(sps, inst)
 
-        println(tuple)
-
         the(tuple[0]).shouldEqual(1.0)
         the(tuple[1]).shouldEqual(1.0)
         the(tuple[2].size()).shouldEqual(0)

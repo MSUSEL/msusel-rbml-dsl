@@ -47,7 +47,6 @@ class SourceTypeResolution extends TypeResolutionEvent {
                 break
             case Realization:
             case Generalization:
-                println("Type: " + type)
                 role.setChild(PatternManager.instance.findClassifier(type))
                 break
         }

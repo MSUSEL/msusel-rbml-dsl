@@ -72,7 +72,6 @@ class RealizationRoleFactory extends AbstractFactory {
         attributes.clear()
         inst.setMult(new Multiplicity(lower: lower, upper: upper))
 
-        println("ParentNode: " + builder.parentNode.class.simpleName)
         if (builder.parentNode != null && builder.parentNode instanceof SPS) {
             builder.parentNode.relations << inst
         } else if (builder.parentNode != null && builder.parentNode instanceof AtLeastOne) {
@@ -84,8 +83,6 @@ class RealizationRoleFactory extends AbstractFactory {
 
     @Override
     void setParent(FactoryBuilderSupport builder, Object parent, Object child) {
-        println("Parent: " + parent.getClass().simpleName)
-        println("Child: " + child.getClass().simpleName)
         if (parent != null && parent instanceof AtLeastOne) {
             parent.relations << child
         }

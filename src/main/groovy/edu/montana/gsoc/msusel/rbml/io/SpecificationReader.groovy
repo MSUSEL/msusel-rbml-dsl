@@ -49,7 +49,6 @@ class SpecificationReader {
             throw new MissingContentException("SPS is missing one of the required: name or roles")
 
         String name = map.SPS.name
-        println("Name: $name")
         processRoles(map.SPS.roles)
         processRelations(map.SPS.relations)
         processRolesStep2(map.SPS.roles)
@@ -114,7 +113,6 @@ class SpecificationReader {
                 .mult(Multiplicity.fromString(mult))
                 .create()
 
-        println("Created classifier: $r")
         if (!current)
             roles[r.name] = r
         else {
@@ -123,7 +121,6 @@ class SpecificationReader {
             t = r.name
             roles[t] = r
         }
-        println("Roles contains r? ${roles[r.name]}")
 
         r
     }
@@ -132,9 +129,7 @@ class SpecificationReader {
         if (map == null)
             throw new IllegalArgumentException()
 
-        println("Processing type: ${map.name}")
         Classifier r = roles[map.name]
-        println("Found classifier: $r")
 
         if (r) {
             if (map.features) {
@@ -244,7 +239,6 @@ class SpecificationReader {
         String mult = map.mult
         boolean abstrct = map."abstract" ? Boolean.parseBoolean(map.'abstract') : false
         boolean statc = map.'static' ? Boolean.parseBoolean(map.'static') : false
-        println("Name: $name and Abstract: $abstrct and Static: $statc")
         def t = map.type ?: null
         Classifier type = null
         if (t)

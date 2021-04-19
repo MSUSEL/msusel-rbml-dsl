@@ -61,8 +61,6 @@ class SPSConformance {
         Map<RoleBlock, List<BlockBinding>> mapping = [:]
         List<ModelBlock> modelBlocks = getModelBlocks(instance)
 
-        println("modelblocks: ${modelBlocks}")
-
         double totalLocal = 0
         int total = 0
 
@@ -71,7 +69,6 @@ class SPSConformance {
 
             modelBlocks.each { ModelBlock mb ->
                 BlockBinding binding = checkBlockConformance(rb, mb)
-                println("binding: $binding")
                 if (binding) {
                     totalLocal += checkLocalConformance(binding)
                     total += 1
@@ -80,17 +77,12 @@ class SPSConformance {
             }
         }
 
-        println("total: $total")
-        println("totalLocal: $totalLocal")
-
         // Instance Conformance Index
         double ici
         if (total <= 0)
             ici = 0.0
         else
             ici = totalLocal / total
-
-        println("ici: $ici")
 
         List<Pair<RoleBlock, BlockBinding>> toRemove = []
         mapping.each { RoleBlock rb, List<BlockBinding> list ->
@@ -99,9 +91,6 @@ class SPSConformance {
                     toRemove << Pair.of(rb, mb)
             }
         }
-
-        println("mapping: $mapping") // currently nothing maps correctly
-        println("toRemove: $toRemove")
 
         Pair<List<Role>, List<Role>> sat = Pair.of([], [])
         def val = realizationMult(mapping, sat)
@@ -112,8 +101,6 @@ class SPSConformance {
             // Pattern Satisfaction Index
             psi = (double) sat.right.size() / (sat.left.size() + sat.right.size())
         }
-
-        println("psi: $psi")
 
         List<ModelBlock> nonConformingModelBlocks = getNonConformingModelBlocks(mapping, instance)
         List<ModelBlock> conformingModelBlocks = getConformingModelBlocks(mapping)
@@ -330,7 +317,6 @@ class SPSConformance {
 
         BlockBinding binding = null
         if (rb.type == mb.type) {
-            println("block types match")
             if (rb.matchesSource(mb.source) && rb.matchesDest(mb.dest)) {
                 binding = BlockBinding.of(rb, mb)
             } else if (rb.matchesSource(mb.dest) && rb.matchesDest(mb.source)) {
@@ -374,7 +360,6 @@ class SPSConformance {
                     Classifier c = (Classifier) b.role
                     count += c.structFeats.size()
                     count += c.behFeats.size()
-                    println("count: $count")
                 }
                 Set<Feature> feats = [].toSet()
                 featBind.each { fb ->
@@ -383,15 +368,11 @@ class SPSConformance {
                 unmapped += count - feats.size()
                 total += count
                 counts += count - unmapped
-
-                println("total: $total")
-                println("unmapped: $unmapped")
             }
 
             localConformance = counts / total
         }
 
-        println("local conformance: $localConformance")
         localConformance
     }
 
