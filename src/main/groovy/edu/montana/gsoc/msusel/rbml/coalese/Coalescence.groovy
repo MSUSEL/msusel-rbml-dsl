@@ -161,7 +161,7 @@ class Coalescence {
                     if (type instanceof Class && !type.isAbstract()) {
                         Role r = inst.findRole(role.getName())
                         if (r) {
-                            inst.addRoleBinding(RoleBinding.of(r, Reference.to(type)))
+                            inst.addRoleBinding(RoleBinding.of(r, type.createReference()))
                             return true
                         }
                     }
@@ -170,7 +170,7 @@ class Coalescence {
                     if (type instanceof Interface) {
                         Role r = inst.findRole(role.getName())
                         if (r) {
-                            inst.addRoleBinding(RoleBinding.of(r, Reference.to(type)))
+                            inst.addRoleBinding(RoleBinding.of(r, type.createReference()))
                             return true
                         }
                     }
@@ -178,7 +178,7 @@ class Coalescence {
                 case Classifier:
                     Role r = inst.findRole(role.getName())
                     if (r) {
-                        inst.addRoleBinding(RoleBinding.of(r, Reference.to(type)))
+                        inst.addRoleBinding(RoleBinding.of(r, type.createReference()))
                         return true
                     }
                     break
