@@ -49,4 +49,12 @@ class Classifier extends Role {
     Classifier() {
         abstrct = true
     }
+
+    StructuralFeature getStructuralFeatureByName(String name) {
+        structFeats.find {it.name == name }
+    }
+
+    BehavioralFeature getBehavioralFeatureByName(String name) {
+        behFeats.find {it.name == name }
+    }
 }

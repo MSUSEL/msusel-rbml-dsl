@@ -205,4 +205,8 @@ class SPS {
                 return RelationType.DEPENDENCY
         }
     }
+
+    Classifier getClassifierByName(String name) {
+        classifiers.find { ((Classifier) it).name == name } as Classifier
+    }
 }
