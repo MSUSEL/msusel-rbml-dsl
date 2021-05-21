@@ -31,6 +31,10 @@ SPS:
     - Class:
         name: Context
         features:
+          s1:
+            name: currentState
+            type: State
+            mult: 1..1
           b1:
             name: Request
             params: []
