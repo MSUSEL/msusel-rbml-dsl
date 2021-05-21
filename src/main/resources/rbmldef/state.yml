@@ -31,10 +31,6 @@ SPS:
     - Class:
         name: Context
         features:
-          s1:
-            name: currentState
-            type: State
-            mult: 1..1
           b1:
             name: Request
             params: []
@@ -69,6 +65,6 @@ SPS:
           type: Context
           mult: 1..1
         dest:
-          name: st
+          name: state
           type: State@State
           mult: 1..*

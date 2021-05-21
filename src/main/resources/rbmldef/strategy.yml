@@ -37,22 +37,24 @@ SPS:
             b1:
               name: Operation
               params: []
-              mult: 1..*
+              mult: 1..1
+              abstract: "true"
         children:
           - Class:
               name: ConcreteStrategy
-              mult: 1..*
               features:
                 b1:
+                  name: Operation
+                  params: []
+                  mult: 1..1
+                b2:
                   name: StrategyOp
                   params: []
                   mult: 1..*
           - Classifier:
               name: AbstractStrategy
-              mult: "*"
     - Class:
         name: Context
-        mult: 1..*
         features:
           b1:
             name: GetState
