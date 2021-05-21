@@ -65,6 +65,6 @@ SPS:
           type: Context
           mult: 1..1
         dest:
-          name: state
+          name: st
           type: State@State
           mult: 1..*
