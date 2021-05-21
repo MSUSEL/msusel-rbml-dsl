@@ -56,11 +56,14 @@ SPS:
     - Class:
         name: Context
         features:
-          b1:
-            name: GetState
-            params: []
+          s1:
+            name: currentStrategy
+            type: Strategy
+            mult: 1..1
+          s2:
+            name: state
             type: State
-            mult: "*"
+            mult: 1..*
           b2:
             name: ContextOperation
             params: []
