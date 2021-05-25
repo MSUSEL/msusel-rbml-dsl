@@ -55,10 +55,16 @@ SPS:
               name: OperationImpl
               params: []
               mult: 1..*
+              abstract: "true"
         children:
           - Class:
               name: ConcreteImplementor
               mult: 1..*
+              features:
+                b1:
+                  name: OperationImpl
+                  params: []
+                  mult: 1..*
           - Classifier:
               name: AbstractImplementor
               mult: "*"

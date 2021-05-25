@@ -51,6 +51,7 @@ SPS:
               type: Product@Product
               params: []
               mult: 1..*
+              abstract: "true"
         children:
           - Class:
               name: ConcreteCreator

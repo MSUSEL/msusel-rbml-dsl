@@ -58,7 +58,7 @@ SPS:
               mult: 1..*
               features:
                 b1:
-                  name: ConcreteOperation()
+                  name: Operation()
                   params: []
                   mult: 1..*
                 b2:
@@ -82,7 +82,7 @@ SPS:
               mult: 1..*
               features:
                 b1:
-                  name: LeafOperation()
+                  name: Operation()
                   params: []
                   mult: 1..*
     - Class:
@@ -105,7 +105,7 @@ SPS:
         mult: 1..1
         source:
           name: parent
-          type: Component@ConcreteComponent
+          type: Component@ConcreteComposite
           mult: 1..1
         dest:
           name: children

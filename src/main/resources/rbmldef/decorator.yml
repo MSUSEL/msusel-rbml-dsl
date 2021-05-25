@@ -53,15 +53,15 @@ SPS:
           mult: 1..1
           features:
             b1:
-              name: OperationImpl
+              name: Operation()
               params: []
               mult: 1..*
         children:
           - Class:
-              name: ConcreteDecorator
+              name: AbstractDecorator
               mult: 1..*
           - Classifier:
-              name: AbstractDecorator
+              name: ConcreteDecorator
               mult: "*"
               features:
                 s1:

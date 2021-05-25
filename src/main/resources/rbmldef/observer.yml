@@ -33,10 +33,6 @@ SPS:
         Classifier:
           name: Subject
           features:
-            s2:
-              name: subjectState
-              type: SubStateType
-              mult: 1..*
             b1:
               name: Attach
               params: [obsv: Observer]
@@ -49,19 +45,24 @@ SPS:
               name: Notify
               params: []
               mult: 1..*
-            b4:
-              name: GetState
-              type: SubStateType
-              params: []
-              mult: 1..*
-            b5:
-              name: SetState
-              params: [lst: ObserverState]
-              mult: 1..*
         children:
           - Class:
               name: ConcreteSubject
               mult: 1..*
+              features:
+                s1:
+                  name: subjectState
+                  type: SubStateType
+                  mult: 1..*
+                b1:
+                  name: GetState
+                  type: SubStateType
+                  params: []
+                  mult: 1..*
+                b2:
+                  name: SetState
+                  params: [lst: ObserverState]
+                  mult: 1..*
           - Classifier:
               name: AbstractSubject
               mult: "*"
@@ -75,13 +76,19 @@ SPS:
               type: ObsStateType
               mult: 1..*
             b1:
-              name: AttachSubject
-              params: [subj: Subject]
-              mult: 1..*
+              name: Update
+              params: []
+              mult: 1..1
+              abstract: "true"
         children:
           - Class:
               name: ConcreteObserver
               mult: 1..*
+              features:
+                b1:
+                  name: Update
+                  params: []
+                  mult: 1..1
           - Classifier:
               name: AbstractObserver
               mult: "*"
@@ -96,4 +103,15 @@ SPS:
         dest:
           name: obs
           type: Observer@Observer
+          mult: 1..*
+    - Association:
+        name: Observed
+        mult: 1..1
+        source:
+          name: obs
+          type: ConcreteObserver@Observer
+          mult: 1..*
+        dest:
+          name: sub
+          type: ConcreteSubject@Subject
           mult: 1..*

@@ -59,8 +59,8 @@ SPS:
           features:
             b1:
               name: Accept
-              params: [vis: Vistor@ConcreteVistor]
-              mult: 1..1
+              params: [vis: Vistor@Vistor]
+              mult: 1..*
               abstract: 'true'
         children:
           - Class:
@@ -69,8 +69,8 @@ SPS:
               features:
                 b1:
                   name: Accept
-                  params: [vis: Vistor@ConcreteVistor]
-                  mult: 1..1
+                  params: [vis: Vistor@Vistor]
+                  mult: 1..*
                 b2:
                   name: Operation
                   params: []
@@ -106,4 +106,3 @@ SPS:
           name: elem
           type: Element@Element
           mult: 1..*
-

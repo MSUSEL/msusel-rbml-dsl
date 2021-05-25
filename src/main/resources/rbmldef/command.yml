@@ -86,7 +86,7 @@ SPS:
         source: Client
         dest: Command@ConcreteCommand
     - Association:
-        name: Stores
+        name: Executes
         mult: 1..*
         source:
           name: inv
@@ -100,10 +100,10 @@ SPS:
         name: Invokes
         mult: 1..1
         source:
-          name: r
-          type: Receiver
-          mult: 1..1
-        dest:
           name: c
           type: Command@ConcreteCommand
+          mult: 1..1
+        dest:
+          name: r
+          type: Receiver
           mult: 1..1
