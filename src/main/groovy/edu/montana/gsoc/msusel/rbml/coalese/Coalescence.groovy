@@ -158,7 +158,7 @@ class Coalescence {
         for (edu.montana.gsoc.msusel.rbml.model.Role role : roles) {
             switch (role) {
                 case ClassRole:
-                    if (type instanceof Class && !type.isAbstract()) {
+                    if (type.getType() == Type.CLASS && !type.isAbstract()) {
                         Role r = inst.findRole(role.getName())
                         if (r) {
                             inst.addRoleBinding(RoleBinding.of(r, type.createReference()))
@@ -167,7 +167,7 @@ class Coalescence {
                     }
                     break
                 case InterfaceRole:
-                    if (type instanceof Interface) {
+                    if (type.getType() == Type.INTERFACE) {
                         Role r = inst.findRole(role.getName())
                         if (r) {
                             inst.addRoleBinding(RoleBinding.of(r, type.createReference()))

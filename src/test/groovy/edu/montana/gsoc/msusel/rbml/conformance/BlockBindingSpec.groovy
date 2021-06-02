@@ -26,7 +26,7 @@
  */
 package edu.montana.gsoc.msusel.rbml.conformance
 
-import edu.isu.isuese.datamodel.Class
+
 import edu.isu.isuese.datamodel.Type
 import edu.montana.gsoc.msusel.rbml.model.Classifier
 import edu.montana.gsoc.msusel.rbml.model.Role
@@ -40,8 +40,8 @@ class BlockBindingSpec extends DBSpec {
         Role src = Classifier.builder().name("src").create()
         Role dest = Classifier.builder().name("dest").create()
         RoleBlock rb = RoleBlock.of(src, dest)
-        Type srcT = Class.builder().name("SrcImpl").compKey("SrcImpl").create()
-        Type destT = Class.builder().name("DestImpl").compKey("DestImpl").create()
+        Type srcT = Type.builder().type(Type.CLASS).name("SrcImpl").compKey("SrcImpl").create()
+        Type destT = Type.builder().type(Type.CLASS).name("DestImpl").compKey("DestImpl").create()
         ModelBlock mb = ModelBlock.of(srcT, destT)
 
         def binding = BlockBinding.of(rb, mb)
@@ -61,8 +61,8 @@ class BlockBindingSpec extends DBSpec {
         Role src = Classifier.builder().name("src").create()
         Role dest = Classifier.builder().name("dest").create()
         RoleBlock rb = RoleBlock.of(src, dest)
-        Type srcT = Class.builder().name("SrcImpl").compKey("SrcImpl").create()
-        Type destT = Class.builder().name("DestImpl").compKey("DestImpl").create()
+        Type srcT = Type.builder().type(Type.CLASS).name("SrcImpl").compKey("SrcImpl").create()
+        Type destT = Type.builder().type(Type.CLASS).name("DestImpl").compKey("DestImpl").create()
         ModelBlock mb = ModelBlock.of(srcT, destT)
 
         def binding = BlockBinding.fo(rb, mb)
@@ -79,8 +79,8 @@ class BlockBindingSpec extends DBSpec {
 
     @Test(expected = IllegalArgumentException.class)
     void "create a block binding with null role block"() {
-        Type srcT = Class.builder().name("SrcImpl").compKey("SrcImpl").create()
-        Type destT = Class.builder().name("DestImpl").compKey("DestImpl").create()
+        Type srcT = Type.builder().type(Type.CLASS).name("SrcImpl").compKey("SrcImpl").create()
+        Type destT = Type.builder().type(Type.CLASS).name("DestImpl").compKey("DestImpl").create()
         ModelBlock mb = ModelBlock.of(srcT, destT)
 
         def binding = BlockBinding.fo(null, mb)

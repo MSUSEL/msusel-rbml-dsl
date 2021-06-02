@@ -27,12 +27,7 @@
 package edu.montana.gsoc.msusel.rbml.conformance
 
 import com.google.common.collect.Sets
-import com.google.common.graph.Graph
-import com.google.common.graph.GraphBuilder
-import com.google.common.graph.MutableGraph
-import edu.isu.isuese.datamodel.Class
 import edu.isu.isuese.datamodel.Field
-import edu.isu.isuese.datamodel.Interface
 import edu.isu.isuese.datamodel.Method
 import edu.isu.isuese.datamodel.PatternInstance
 import edu.isu.isuese.datamodel.Type

@@ -26,8 +26,7 @@
  */
 package edu.montana.gsoc.msusel.rbml.conformance
 
-import edu.isu.isuese.datamodel.Class
-import edu.isu.isuese.datamodel.Interface
+
 import edu.isu.isuese.datamodel.Type
 import edu.montana.gsoc.msusel.rbml.model.ClassRole
 import edu.montana.gsoc.msusel.rbml.model.Classifier
@@ -57,14 +56,14 @@ class RoleBlock {
     }
 
     boolean matchesSource(Type comp) {
-        return (comp instanceof Class && contains(sources, ClassRole.class)) ||
-                (comp instanceof Interface && contains(sources, InterfaceRole.class)) ||
+        return (comp.getType() == Type.CLASS && contains(sources, ClassRole.class)) ||
+                (comp.getType() == Type.INTERFACE && contains(sources, InterfaceRole.class)) ||
                 (contains(sources, Classifier.class))
     }
 
     boolean matchesDest(Type comp) {
-        return (comp instanceof Class && contains(dests, ClassRole.class)) ||
-                (comp instanceof Interface && contains(dests, InterfaceRole.class)) ||
+        return (comp.getType() == Type.CLASS && contains(dests, ClassRole.class)) ||
+                (comp.getType() == Type.INTERFACE && contains(dests, InterfaceRole.class)) ||
                 (contains(dests, Classifier.class))
     }
 
@@ -79,11 +78,11 @@ class RoleBlock {
     Role findMatch(Type comp, List<Role> list) {
         Role role
 
-        switch (comp) {
-            case Class:
+        switch (comp.getType()) {
+            case Type.CLASS:
                 role = list.find { it instanceof ClassRole || it instanceof Classifier }
                 break
-            case Interface:
+            case Type.INTERFACE:
                 role = list.find { it instanceof InterfaceRole || it instanceof Classifier }
                 break
             default:

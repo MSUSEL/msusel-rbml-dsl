@@ -27,6 +27,7 @@
 package edu.montana.gsoc.msusel.rbml.conformance
 
 import edu.isu.isuese.datamodel.*
+import edu.montana.gsoc.msusel.rbml.conformance.RoleBinding
 import edu.montana.gsoc.msusel.rbml.io.SpecificationReader
 import edu.montana.gsoc.msusel.rbml.model.*
 import org.apache.commons.lang3.tuple.Pair
@@ -465,8 +466,8 @@ class SPSConformanceSpec extends DBSpec {
     void testCheckBlockConformance_null_mb() {
         SPSConformance fixture = new SPSConformance()
 
-        Type src = Class.builder().compKey("ClassA").name("Class A").create()
-        Type dest = Class.builder().compKey("ClassB").name("Class B").create()
+        Type src = Type.builder().type(Type.CLASS).compKey("ClassA").name("Class A").create()
+        Type dest = Type.builder().type(Type.CLASS).compKey("ClassB").name("Class B").create()
         ModelBlock mb = ModelBlock.of(src, dest)
 
         fixture.checkBlockConformance(null, mb)
@@ -497,11 +498,11 @@ class SPSConformanceSpec extends DBSpec {
                 .create()
         RoleBlock rb = RoleBlock.of(srcR, destR)
 
-        Type src = Interface.builder()
+        Type src = Type.builder().type(Type.INTERFACE)
                 .compKey("ClassA")
                 .name("Class A")
                 .create()
-        Type dest = Class.builder()
+        Type dest = Type.builder().type(Type.CLASS)
                 .compKey("ClassB")
                 .name("Class B")
                 .create()
@@ -519,8 +520,8 @@ class SPSConformanceSpec extends DBSpec {
         edu.montana.gsoc.msusel.rbml.model.Role destR = ClassRole.builder().name("RoleB").mult(Multiplicity.fromString("1..1")).create()
         RoleBlock rb = RoleBlock.of(srcR, destR)
 
-        Type src = Class.builder().compKey("ClassA").name("Class A").create()
-        Type dest = Class.builder().compKey("ClassB").name("Class B").create()
+        Type src = Type.builder().type(Type.CLASS).compKey("ClassA").name("Class A").create()
+        Type dest = Type.builder().type(Type.CLASS).compKey("ClassB").name("Class B").create()
         ModelBlock mb = ModelBlock.of(src, dest)
 
         boolean value = fixture.checkBlockConformance(rb, mb)
@@ -551,8 +552,8 @@ class SPSConformanceSpec extends DBSpec {
         edu.montana.gsoc.msusel.rbml.model.Role destR = ClassRole.builder().name("RoleB").mult(Multiplicity.fromString("1..1")).create()
         RoleBlock rb = RoleBlock.of(srcR, destR)
 
-        Type src = Interface.builder().compKey("ClassA").name("Class A").create()
-        Type dest = Enum.builder().compKey("ClassB").name("Class B").create()
+        Type src = Type.builder().type(Type.INTERFACE).compKey("ClassA").name("Class A").create()
+        Type dest = Type.builder().type(Type.ENUM).compKey("ClassB").name("Class B").create()
         ModelBlock mb = ModelBlock.of(src, dest)
 
         boolean value = fixture.checkBlockConformance(rb, mb)
@@ -567,8 +568,8 @@ class SPSConformanceSpec extends DBSpec {
         edu.montana.gsoc.msusel.rbml.model.Role destR = InterfaceRole.builder().name("RoleB").mult(Multiplicity.fromString("1..1")).create()
         RoleBlock rb = RoleBlock.of(srcR, destR)
 
-        Type src = Class.builder().compKey("ClassA").name("Class A").create()
-        Type dest = Class.builder().compKey("ClassB").name("Class B").create()
+        Type src = Type.builder().type(Type.CLASS).compKey("ClassA").name("Class A").create()
+        Type dest = Type.builder().type(Type.CLASS).compKey("ClassB").name("Class B").create()
         ModelBlock mb = ModelBlock.of(src, dest)
 
         boolean value = fixture.checkBlockConformance(rb, mb)
@@ -590,8 +591,8 @@ class SPSConformanceSpec extends DBSpec {
         edu.montana.gsoc.msusel.rbml.model.Role destR = InterfaceRole.builder().name("RoleB").mult(Multiplicity.fromString("1..1")).create()
         RoleBlock rb = RoleBlock.of(srcR, destR)
 
-        Type src = Class.builder().compKey("ClassA").name("Class A").create()
-        Type dest = Class.builder().compKey("ClassB").name("Class B").create()
+        Type src = Type.builder().type(Type.CLASS).compKey("ClassA").name("Class A").create()
+        Type dest = Type.builder().type(Type.CLASS).compKey("ClassB").name("Class B").create()
         ModelBlock mb = ModelBlock.of(src, dest)
 
         BlockBinding bb = BlockBinding.of(rb, mb)
@@ -609,8 +610,8 @@ class SPSConformanceSpec extends DBSpec {
         edu.montana.gsoc.msusel.rbml.model.Role destR = InterfaceRole.builder().name("RoleB").mult(Multiplicity.fromString("1..1")).create()
         RoleBlock rb = RoleBlock.of(srcR, destR)
 
-        Type src = Class.builder().compKey("ClassA").name("Class A").create()
-        Type dest = Class.builder().compKey("ClassB").name("Class B").create()
+        Type src = Type.builder().type(Type.CLASS).compKey("ClassA").name("Class A").create()
+        Type dest = Type.builder().type(Type.CLASS).compKey("ClassB").name("Class B").create()
         ModelBlock mb = ModelBlock.of(src, dest)
 
         BlockBinding bb = BlockBinding.of(rb, mb)
@@ -626,9 +627,9 @@ class SPSConformanceSpec extends DBSpec {
         edu.montana.gsoc.msusel.rbml.model.Role roleB = ClassRole.builder().name("Role B").create()
         edu.montana.gsoc.msusel.rbml.model.Role roleC = ClassRole.builder().name("Role C").create()
 
-        Class classA = Class.builder().compKey("ClassA").name("Class A").create()
-        Class classB = Class.builder().compKey("ClassB").name("Class B").create()
-        Class classC = Class.builder().compKey("ClassC").name("Class C").create()
+        Type classA = Type.builder().type(Type.CLASS).compKey("ClassA").name("Class A").create()
+        Type classB = Type.builder().type(Type.CLASS).compKey("ClassB").name("Class B").create()
+        Type classC = Type.builder().type(Type.CLASS).compKey("ClassC").name("Class C").create()
 
         RoleBlock rb1 = RoleBlock.of(roleA, roleB)
         RoleBlock rb2 = RoleBlock.of(roleB, roleC)
@@ -660,10 +661,10 @@ class SPSConformanceSpec extends DBSpec {
         edu.montana.gsoc.msusel.rbml.model.Role roleB = ClassRole.builder().name("Role B").create()
         edu.montana.gsoc.msusel.rbml.model.Role roleC = ClassRole.builder().name("Role C").create()
 
-        Class classA = Class.builder().compKey("ClassA").name("Class A").create()
-        Class classB = Class.builder().compKey("ClassB").name("Class B").create()
-        Class classC = Class.builder().compKey("ClassC").name("Class C").create()
-        Class classD = Class.builder().compKey("ClassD").name("Class D").create()
+        Type classA = Type.builder().type(Type.CLASS).compKey("ClassA").name("Class A").create()
+        Type classB = Type.builder().type(Type.CLASS).compKey("ClassB").name("Class B").create()
+        Type classC = Type.builder().type(Type.CLASS).compKey("ClassC").name("Class C").create()
+        Type classD = Type.builder().type(Type.CLASS).compKey("ClassD").name("Class D").create()
 
         RoleBlock rb1 = RoleBlock.of(roleA, roleB)
         RoleBlock rb2 = RoleBlock.of(roleB, roleC)
@@ -771,10 +772,10 @@ class SPSConformanceSpec extends DBSpec {
         RoleBlock BC = RoleBlock.of(B, C)
         RoleBlock CD = RoleBlock.of(C, D)
         RoleBlock DA = RoleBlock.of(D, A)
-        Type a = Class.builder().name("a").compKey("a").create()
-        Type b = Class.builder().name("b").compKey("b").create()
-        Type c = Class.builder().name("c").compKey("c").create()
-        Type d = Class.builder().name("d").compKey("d").create()
+        Type a = Type.builder().type(Type.CLASS).name("a").compKey("a").create()
+        Type b = Type.builder().type(Type.CLASS).name("b").compKey("b").create()
+        Type c = Type.builder().type(Type.CLASS).name("c").compKey("c").create()
+        Type d = Type.builder().type(Type.CLASS).name("d").compKey("d").create()
         ModelBlock ab = ModelBlock.of(a, b)
         ModelBlock bc = ModelBlock.of(b, c)
         ModelBlock cd = ModelBlock.of(c, d)
@@ -802,10 +803,10 @@ class SPSConformanceSpec extends DBSpec {
         RoleBlock BC = RoleBlock.of(B, C)
         RoleBlock CD = RoleBlock.of(C, D)
         RoleBlock DA = RoleBlock.of(D, A)
-        Type a = Class.builder().name("a").compKey("a").create()
-        Type b = Class.builder().name("b").compKey("b").create()
-        Type c = Class.builder().name("c").compKey("c").create()
-        Type d = Class.builder().name("d").compKey("d").create()
+        Type a = Type.builder().type(Type.CLASS).name("a").compKey("a").create()
+        Type b = Type.builder().type(Type.CLASS).name("b").compKey("b").create()
+        Type c = Type.builder().type(Type.CLASS).name("c").compKey("c").create()
+        Type d = Type.builder().type(Type.CLASS).name("d").compKey("d").create()
         ModelBlock ab = ModelBlock.of(a, b)
         ModelBlock bc = ModelBlock.of(b, c)
         ModelBlock cd = ModelBlock.of(c, d)
@@ -832,9 +833,9 @@ class SPSConformanceSpec extends DBSpec {
         RoleBlock BC = RoleBlock.of(B, C)
         RoleBlock CD = RoleBlock.of(C, D)
         RoleBlock DA = RoleBlock.of(D, A)
-        Type a = Class.builder().name("a").compKey("a").create()
-        Type b = Class.builder().name("b").compKey("b").create()
-        Type c = Class.builder().name("c").compKey("c").create()
+        Type a = Type.builder().type(Type.CLASS).name("a").compKey("a").create()
+        Type b = Type.builder().type(Type.CLASS).name("b").compKey("b").create()
+        Type c = Type.builder().type(Type.CLASS).name("c").compKey("c").create()
         ModelBlock ab = ModelBlock.of(a, b)
         ModelBlock bc = ModelBlock.of(b, c)
         mapping[AB] = [BlockBinding.of(AB, ab)]
@@ -859,7 +860,7 @@ class SPSConformanceSpec extends DBSpec {
         RoleBlock AA = RoleBlock.of(A, A)
         RoleBlock BC = RoleBlock.of(B, C)
         RoleBlock CD = RoleBlock.of(C, D)
-        Type a = Class.builder().name("a").compKey("a").create()
+        Type a = Type.builder().type(Type.CLASS).name("a").compKey("a").create()
         ModelBlock aa = ModelBlock.of(a, a)
         mapping[AA] = [BlockBinding.of(AA, aa)]
         mapping[BC] = []
@@ -900,7 +901,7 @@ class SPSConformanceSpec extends DBSpec {
         RoleBlock AA = RoleBlock.of(A, A)
         RoleBlock BC = RoleBlock.of(B, C)
         RoleBlock CD = RoleBlock.of(C, D)
-        Type a = Class.builder().name("a").compKey("a").create()
+        Type a = Type.builder().type(Type.CLASS).name("a").compKey("a").create()
         ModelBlock aa = ModelBlock.of(a, a)
         mapping[AA] = [BlockBinding.of(AA, aa)]
         mapping[BC] = []
@@ -916,16 +917,16 @@ class SPSConformanceSpec extends DBSpec {
     void testFeatureRoleBindings_null_item_item() {
         SPSConformance fixture = new SPSConformance()
 
-        def types = [Class.builder().name("a").compKey("a").create(),
-                     Class.builder().name("b").compKey("b").create(),
-                     Class.builder().name("c").compKey("c").create(),
-                     Class.builder().name("d").compKey("d").create(),
-                     Class.builder().name("e").compKey("e").create(),
-                     Class.builder().name("f").compKey("f").create(),
-                     Class.builder().name("g").compKey("g").create(),
-                     Class.builder().name("h").compKey("h").create(),
-                     Class.builder().name("i").compKey("i").create(),
-                     Class.builder().name("j").compKey("j").create()]
+        def types = [Type.builder().type(Type.CLASS).name("a").compKey("a").create(),
+                     Type.builder().type(Type.CLASS).name("b").compKey("b").create(),
+                     Type.builder().type(Type.CLASS).name("c").compKey("c").create(),
+                     Type.builder().type(Type.CLASS).name("d").compKey("d").create(),
+                     Type.builder().type(Type.CLASS).name("e").compKey("e").create(),
+                     Type.builder().type(Type.CLASS).name("f").compKey("f").create(),
+                     Type.builder().type(Type.CLASS).name("g").compKey("g").create(),
+                     Type.builder().type(Type.CLASS).name("h").compKey("h").create(),
+                     Type.builder().type(Type.CLASS).name("i").compKey("i").create(),
+                     Type.builder().type(Type.CLASS).name("j").compKey("j").create()]
 
         def roles = [ClassRole.builder().name("A").mult(Multiplicity.fromString("1..1")).create(),
                      ClassRole.builder().name("B").mult(Multiplicity.fromString("1..1")).create(),
@@ -944,16 +945,16 @@ class SPSConformanceSpec extends DBSpec {
     void testFeatureRoleBindings_empty_item_item() {
         SPSConformance fixture = new SPSConformance()
 
-        def types = [Class.builder().name("a").compKey("a").create(),
-                     Class.builder().name("b").compKey("b").create(),
-                     Class.builder().name("c").compKey("c").create(),
-                     Class.builder().name("d").compKey("d").create(),
-                     Class.builder().name("e").compKey("e").create(),
-                     Class.builder().name("f").compKey("f").create(),
-                     Class.builder().name("g").compKey("g").create(),
-                     Class.builder().name("h").compKey("h").create(),
-                     Class.builder().name("i").compKey("i").create(),
-                     Class.builder().name("j").compKey("j").create()]
+        def types = [Type.builder().type(Type.CLASS).name("a").compKey("a").create(),
+                     Type.builder().type(Type.CLASS).name("b").compKey("b").create(),
+                     Type.builder().type(Type.CLASS).name("c").compKey("c").create(),
+                     Type.builder().type(Type.CLASS).name("d").compKey("d").create(),
+                     Type.builder().type(Type.CLASS).name("e").compKey("e").create(),
+                     Type.builder().type(Type.CLASS).name("f").compKey("f").create(),
+                     Type.builder().type(Type.CLASS).name("g").compKey("g").create(),
+                     Type.builder().type(Type.CLASS).name("h").compKey("h").create(),
+                     Type.builder().type(Type.CLASS).name("i").compKey("i").create(),
+                     Type.builder().type(Type.CLASS).name("j").compKey("j").create()]
 
         def roles = [ClassRole.builder().name("A").mult(Multiplicity.fromString("1..1")).create(),
                      ClassRole.builder().name("B").mult(Multiplicity.fromString("1..1")).create(),
@@ -973,16 +974,16 @@ class SPSConformanceSpec extends DBSpec {
     void testFeatureRoleBindings_item_null_item() {
         SPSConformance fixture = new SPSConformance()
 
-        def types = [Class.builder().name("a").compKey("a").create(),
-                     Class.builder().name("b").compKey("b").create(),
-                     Class.builder().name("c").compKey("c").create(),
-                     Class.builder().name("d").compKey("d").create(),
-                     Class.builder().name("e").compKey("e").create(),
-                     Class.builder().name("f").compKey("f").create(),
-                     Class.builder().name("g").compKey("g").create(),
-                     Class.builder().name("h").compKey("h").create(),
-                     Class.builder().name("i").compKey("i").create(),
-                     Class.builder().name("j").compKey("j").create()]
+        def types = [Type.builder().type(Type.CLASS).name("a").compKey("a").create(),
+                     Type.builder().type(Type.CLASS).name("b").compKey("b").create(),
+                     Type.builder().type(Type.CLASS).name("c").compKey("c").create(),
+                     Type.builder().type(Type.CLASS).name("d").compKey("d").create(),
+                     Type.builder().type(Type.CLASS).name("e").compKey("e").create(),
+                     Type.builder().type(Type.CLASS).name("f").compKey("f").create(),
+                     Type.builder().type(Type.CLASS).name("g").compKey("g").create(),
+                     Type.builder().type(Type.CLASS).name("h").compKey("h").create(),
+                     Type.builder().type(Type.CLASS).name("i").compKey("i").create(),
+                     Type.builder().type(Type.CLASS).name("j").compKey("j").create()]
 
         def roles = [ClassRole.builder().name("A").mult(Multiplicity.fromString("1..1")).create(),
                      ClassRole.builder().name("B").mult(Multiplicity.fromString("1..1")).create(),
@@ -1001,16 +1002,16 @@ class SPSConformanceSpec extends DBSpec {
     void testFeatureRoleBindings_item_empty_item() {
         SPSConformance fixture = new SPSConformance()
 
-        def types = [Class.builder().name("a").compKey("a").create(),
-                     Class.builder().name("b").compKey("b").create(),
-                     Class.builder().name("c").compKey("c").create(),
-                     Class.builder().name("d").compKey("d").create(),
-                     Class.builder().name("e").compKey("e").create(),
-                     Class.builder().name("f").compKey("f").create(),
-                     Class.builder().name("g").compKey("g").create(),
-                     Class.builder().name("h").compKey("h").create(),
-                     Class.builder().name("i").compKey("i").create(),
-                     Class.builder().name("j").compKey("j").create()]
+        def types = [Type.builder().type(Type.CLASS).name("a").compKey("a").create(),
+                     Type.builder().type(Type.CLASS).name("b").compKey("b").create(),
+                     Type.builder().type(Type.CLASS).name("c").compKey("c").create(),
+                     Type.builder().type(Type.CLASS).name("d").compKey("d").create(),
+                     Type.builder().type(Type.CLASS).name("e").compKey("e").create(),
+                     Type.builder().type(Type.CLASS).name("f").compKey("f").create(),
+                     Type.builder().type(Type.CLASS).name("g").compKey("g").create(),
+                     Type.builder().type(Type.CLASS).name("h").compKey("h").create(),
+                     Type.builder().type(Type.CLASS).name("i").compKey("i").create(),
+                     Type.builder().type(Type.CLASS).name("j").compKey("j").create()]
 
         def roles = [ClassRole.builder().name("A").mult(Multiplicity.fromString("1..1")).create(),
                      ClassRole.builder().name("B").mult(Multiplicity.fromString("1..1")).create(),
@@ -1030,16 +1031,16 @@ class SPSConformanceSpec extends DBSpec {
     void testFeatureRoleBindings_item_item_null() {
         SPSConformance fixture = new SPSConformance()
 
-        def types = [Class.builder().name("a").compKey("a").create(),
-                     Class.builder().name("b").compKey("b").create(),
-                     Class.builder().name("c").compKey("c").create(),
-                     Class.builder().name("d").compKey("d").create(),
-                     Class.builder().name("e").compKey("e").create(),
-                     Class.builder().name("f").compKey("f").create(),
-                     Class.builder().name("g").compKey("g").create(),
-                     Class.builder().name("h").compKey("h").create(),
-                     Class.builder().name("i").compKey("i").create(),
-                     Class.builder().name("j").compKey("j").create()]
+        def types = [Type.builder().type(Type.CLASS).name("a").compKey("a").create(),
+                     Type.builder().type(Type.CLASS).name("b").compKey("b").create(),
+                     Type.builder().type(Type.CLASS).name("c").compKey("c").create(),
+                     Type.builder().type(Type.CLASS).name("d").compKey("d").create(),
+                     Type.builder().type(Type.CLASS).name("e").compKey("e").create(),
+                     Type.builder().type(Type.CLASS).name("f").compKey("f").create(),
+                     Type.builder().type(Type.CLASS).name("g").compKey("g").create(),
+                     Type.builder().type(Type.CLASS).name("h").compKey("h").create(),
+                     Type.builder().type(Type.CLASS).name("i").compKey("i").create(),
+                     Type.builder().type(Type.CLASS).name("j").compKey("j").create()]
 
         def roles = [ClassRole.builder().name("A").mult(Multiplicity.fromString("1..1")).create(),
                      ClassRole.builder().name("B").mult(Multiplicity.fromString("1..1")).create(),
@@ -1054,16 +1055,16 @@ class SPSConformanceSpec extends DBSpec {
     void testFeatureRoleBindings_item_item_empty() {
         SPSConformance fixture = new SPSConformance()
 
-        def types = [Class.builder().name("a").compKey("a").create(),
-                     Class.builder().name("b").compKey("b").create(),
-                     Class.builder().name("c").compKey("c").create(),
-                     Class.builder().name("d").compKey("d").create(),
-                     Class.builder().name("e").compKey("e").create(),
-                     Class.builder().name("f").compKey("f").create(),
-                     Class.builder().name("g").compKey("g").create(),
-                     Class.builder().name("h").compKey("h").create(),
-                     Class.builder().name("i").compKey("i").create(),
-                     Class.builder().name("j").compKey("j").create()]
+        def types = [Type.builder().type(Type.CLASS).name("a").compKey("a").create(),
+                     Type.builder().type(Type.CLASS).name("b").compKey("b").create(),
+                     Type.builder().type(Type.CLASS).name("c").compKey("c").create(),
+                     Type.builder().type(Type.CLASS).name("d").compKey("d").create(),
+                     Type.builder().type(Type.CLASS).name("e").compKey("e").create(),
+                     Type.builder().type(Type.CLASS).name("f").compKey("f").create(),
+                     Type.builder().type(Type.CLASS).name("g").compKey("g").create(),
+                     Type.builder().type(Type.CLASS).name("h").compKey("h").create(),
+                     Type.builder().type(Type.CLASS).name("i").compKey("i").create(),
+                     Type.builder().type(Type.CLASS).name("j").compKey("j").create()]
 
         def roles = [ClassRole.builder().name("A").mult(Multiplicity.fromString("1..1")).create(),
                      ClassRole.builder().name("B").mult(Multiplicity.fromString("1..1")).create(),
@@ -1079,16 +1080,16 @@ class SPSConformanceSpec extends DBSpec {
     void testFeatureRoleBindings_item_item_item() {
         SPSConformance fixture = new SPSConformance()
 
-        def types = [Class.builder().name("a").compKey("a").create(),
-                 Class.builder().name("b").compKey("b").create(),
-                 Class.builder().name("c").compKey("c").create(),
-                 Class.builder().name("d").compKey("d").create(),
-                 Class.builder().name("e").compKey("e").create(),
-                 Class.builder().name("f").compKey("f").create(),
-                 Class.builder().name("g").compKey("g").create(),
-                 Class.builder().name("h").compKey("h").create(),
-                 Class.builder().name("i").compKey("i").create(),
-                 Class.builder().name("j").compKey("j").create()]
+        def types = [Type.builder().type(Type.CLASS).name("a").compKey("a").create(),
+                 Type.builder().type(Type.CLASS).name("b").compKey("b").create(),
+                 Type.builder().type(Type.CLASS).name("c").compKey("c").create(),
+                 Type.builder().type(Type.CLASS).name("d").compKey("d").create(),
+                 Type.builder().type(Type.CLASS).name("e").compKey("e").create(),
+                 Type.builder().type(Type.CLASS).name("f").compKey("f").create(),
+                 Type.builder().type(Type.CLASS).name("g").compKey("g").create(),
+                 Type.builder().type(Type.CLASS).name("h").compKey("h").create(),
+                 Type.builder().type(Type.CLASS).name("i").compKey("i").create(),
+                 Type.builder().type(Type.CLASS).name("j").compKey("j").create()]
 
         def roles = [ClassRole.builder().name("A").mult(Multiplicity.fromString("1..1")).create(),
                      ClassRole.builder().name("B").mult(Multiplicity.fromString("1..1")).create(),
@@ -1117,17 +1118,17 @@ class SPSConformanceSpec extends DBSpec {
         File f = File.builder().name("test").type(FileType.SOURCE).fileKey("test").create()
         ns.addFile(f)
 
-        types["A"] = Class.builder().name("A").compKey("A").create()
-        types["B"] = Class.builder().name("B").compKey("B").create()
+        types["A"] = Type.builder().type(Type.CLASS).name("A").compKey("A").create()
+        types["B"] = Type.builder().type(Type.CLASS).name("B").compKey("B").create()
         types["B"].setAbstract(true)
-        types["C"] = Interface.builder().name("C").compKey("C").create()
-        types["D"] = Class.builder().name("D").compKey("D").create()
-        types["E"] = Class.builder().name("E").compKey("E").create()
-        types["F"] = Class.builder().name("F").compKey("F").create()
-        types["G"] = Class.builder().name("G").compKey("G").create()
-        types["H"] = Class.builder().name("H").compKey("H").create()
-        types["I"] = Class.builder().name("I").compKey("I").create()
-        types["J"] = Class.builder().name("J").compKey("J").create()
+        types["C"] = Type.builder().type(Type.INTERFACE).name("C").compKey("C").create()
+        types["D"] = Type.builder().type(Type.CLASS).name("D").compKey("D").create()
+        types["E"] = Type.builder().type(Type.CLASS).name("E").compKey("E").create()
+        types["F"] = Type.builder().type(Type.CLASS).name("F").compKey("F").create()
+        types["G"] = Type.builder().type(Type.CLASS).name("G").compKey("G").create()
+        types["H"] = Type.builder().type(Type.CLASS).name("H").compKey("H").create()
+        types["I"] = Type.builder().type(Type.CLASS).name("I").compKey("I").create()
+        types["J"] = Type.builder().type(Type.CLASS).name("J").compKey("J").create()
         types.values().each { f.addType(it) }
 
         types["A"].associatedTo(types["B"])
@@ -1164,22 +1165,22 @@ class SPSConformanceSpec extends DBSpec {
         Module mod = Module.builder().name("TestMod").moduleKey("testmod").create()
         Namespace ns = Namespace.builder().name("TestNS").nsKey("testns").create()
         File file = File.builder().fileKey("test.java").name("test.java").create()
-        Type tClient = Class.builder()
+        Type tClient = Type.builder().type(Type.CLASS)
                 .name("Client")
                 .compKey("client")
                 .accessibility(Accessibility.PUBLIC)
                 .create()
-        Type tParent = Class.builder()
+        Type tParent = Type.builder().type(Type.CLASS)
                 .name("Parent")
                 .compKey("parent")
                 .accessibility(Accessibility.PUBLIC)
                 .create()
-        Type tChild = Class.builder()
+        Type tChild = Type.builder().type(Type.CLASS)
                 .name("Child")
                 .compKey("child")
                 .accessibility(Accessibility.PUBLIC)
                 .create()
-        Type tOther = Class.builder()
+        Type tOther = Type.builder().type(Type.CLASS)
                 .name("Other")
                 .compKey("other")
                 .accessibility(Accessibility.PUBLIC)
@@ -1243,22 +1244,22 @@ class SPSConformanceSpec extends DBSpec {
         Module mod = Module.builder().name("TestMod").moduleKey("testmod").create()
         Namespace ns = Namespace.builder().name("TestNS").nsKey("testns").create()
         File file = File.builder().fileKey("test.java").name("test.java").create()
-        Type tClient = Class.builder()
+        Type tClient = Type.builder().type(Type.CLASS)
                 .name("Client")
                 .compKey("client")
                 .accessibility(Accessibility.PUBLIC)
                 .create()
-        Type tParent = Class.builder()
+        Type tParent = Type.builder().type(Type.CLASS)
                 .name("Visitor")
                 .compKey("visitor")
                 .accessibility(Accessibility.PUBLIC)
                 .create()
-        Type tChild = Class.builder()
+        Type tChild = Type.builder().type(Type.CLASS)
                 .name("VisitorChild")
                 .compKey("vischild")
                 .accessibility(Accessibility.PUBLIC)
                 .create()
-        Type tElement = Class.builder()
+        Type tElement = Type.builder().type(Type.CLASS)
                 .name("Element")
                 .compKey("element")
                 .accessibility(Accessibility.PUBLIC)
@@ -1281,7 +1282,7 @@ class SPSConformanceSpec extends DBSpec {
                 .create()
         teleAccept.addParameter(param1)
         tElement.addMember(teleAccept)
-        Type tEleChild = Class.builder()
+        Type tEleChild = Type.builder().type(Type.CLASS)
                 .name("ElementChild")
                 .compKey("elechild")
                 .accessibility(Accessibility.PUBLIC)
@@ -1303,7 +1304,7 @@ class SPSConformanceSpec extends DBSpec {
                 .create()
         tecAccept.addParameter(param2)
         tEleChild.addMember(tecAccept)
-        Type tStruct = Class.builder()
+        Type tStruct = Type.builder().type(Type.CLASS)
                 .name("Structure")
                 .compKey("struct")
                 .accessibility(Accessibility.PUBLIC)
@@ -1409,9 +1410,9 @@ class SPSConformanceSpec extends DBSpec {
 
     @Test
     void testEnumsWorkAsExpected() {
-        Enum e1 = Enum.builder().name("e1").compKey("e1").accessibility(Accessibility.PUBLIC).create()
-        Enum e2 = Enum.builder().name("e2").compKey("e2").accessibility(Accessibility.PUBLIC).create()
-        Enum e3 = Enum.builder().name("e3").compKey("e3").accessibility(Accessibility.PUBLIC).create()
+        Type e1 = Type.builder().type(Type.ENUM).name("e1").compKey("e1").accessibility(Accessibility.PUBLIC).create()
+        Type e2 = Type.builder().type(Type.ENUM).name("e2").compKey("e2").accessibility(Accessibility.PUBLIC).create()
+        Type e3 = Type.builder().type(Type.ENUM).name("e3").compKey("e3").accessibility(Accessibility.PUBLIC).create()
 
         e1.realizes(e2)
         e1.realizes(e3)
@@ -1426,9 +1427,9 @@ class SPSConformanceSpec extends DBSpec {
 
     @Test
     void testClassesWorkAsExpected() {
-        Class e1 = Class.builder().name("e1").compKey("e1").accessibility(Accessibility.PUBLIC).create()
-        Class e2 = Class.builder().name("e2").compKey("e2").accessibility(Accessibility.PUBLIC).create()
-        Class e3 = Class.builder().name("e3").compKey("e3").accessibility(Accessibility.PUBLIC).create()
+        Type e1 = Type.builder().type(Type.CLASS).name("e1").compKey("e1").accessibility(Accessibility.PUBLIC).create()
+        Type e2 = Type.builder().type(Type.CLASS).name("e2").compKey("e2").accessibility(Accessibility.PUBLIC).create()
+        Type e3 = Type.builder().type(Type.CLASS).name("e3").compKey("e3").accessibility(Accessibility.PUBLIC).create()
 
         e1.realizes(e2)
         e1.realizes(e3)
@@ -1443,9 +1444,9 @@ class SPSConformanceSpec extends DBSpec {
 
     @Test
     void testInterfacesWorkAsExpected() {
-        Interface e1 = Interface.builder().name("e1").compKey("e1").accessibility(Accessibility.PUBLIC).create()
-        Interface e2 = Interface.builder().name("e2").compKey("e2").accessibility(Accessibility.PUBLIC).create()
-        Interface e3 = Interface.builder().name("e3").compKey("e3").accessibility(Accessibility.PUBLIC).create()
+        Type e1 = Type.builder().type(Type.INTERFACE).name("e1").compKey("e1").accessibility(Accessibility.PUBLIC).create()
+        Type e2 = Type.builder().type(Type.INTERFACE).name("e2").compKey("e2").accessibility(Accessibility.PUBLIC).create()
+        Type e3 = Type.builder().type(Type.INTERFACE).name("e3").compKey("e3").accessibility(Accessibility.PUBLIC).create()
 
         e1.realizes(e2)
         e1.realizes(e3)
@@ -1460,9 +1461,9 @@ class SPSConformanceSpec extends DBSpec {
 
     @Test
     void testAllThreeTypesWorkTogether() {
-        Interface e1 = Interface.builder().name("e1").compKey("e1").accessibility(Accessibility.PUBLIC).create()
-        Class e2 = Class.builder().name("e2").compKey("e2").accessibility(Accessibility.PUBLIC).create()
-        Enum e3 = Enum.builder().name("e3").compKey("e3").accessibility(Accessibility.PUBLIC).create()
+        Type e1 = Type.builder().type(Type.INTERFACE).name("e1").compKey("e1").accessibility(Accessibility.PUBLIC).create()
+        Type e2 = Type.builder().type(Type.CLASS).name("e2").compKey("e2").accessibility(Accessibility.PUBLIC).create()
+        Type e3 = Type.builder().type(Type.ENUM).name("e3").compKey("e3").accessibility(Accessibility.PUBLIC).create()
 
         e1.realizes(e2)
         e1.realizes(e3)
@@ -1505,7 +1506,7 @@ class SPSConformanceSpec extends DBSpec {
     }
 
     def createRoleBinding() {
-        Class c = Class.builder()
+        Type c = Type.builder().type(Type.CLASS)
                 .name("class")
                 .compKey("class")
                 .accessibility(Accessibility.PUBLIC)
