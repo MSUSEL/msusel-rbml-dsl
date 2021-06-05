@@ -1308,7 +1308,7 @@ mult: 1..9
         'iterator'                | 'Iterator'                | 2   | 7   | 3
         'mediator'                | 'Mediator'                | 2   | 6   | 2
         'memento'                 | 'Memento'                 | 0   | 3   | 2
-        'observer'                | 'Observer'                | 2   | 6   | 1
+        'observer'                | 'Observer'                | 2   | 6   | 2
         'prototype'               | 'Prototype'               | 1   | 4   | 1
         'singleton'               | 'Singleton'               | 1   | 3   | 0
         'strategy'                | 'Strategy'                | 1   | 4   | 1

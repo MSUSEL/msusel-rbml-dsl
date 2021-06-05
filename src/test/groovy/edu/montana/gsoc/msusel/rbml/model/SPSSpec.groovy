@@ -51,7 +51,7 @@ class SPSSpec extends Specification {
         where:
         resource                  | blocks
         'abstract_factory'        | 7
-        'adapter'                 | 5
+        'adapter'                 | 3
         'bridge'                  | 3
         'builder'                 | 4
         'chain_of_responsibility' | 3
@@ -65,7 +65,7 @@ class SPSSpec extends Specification {
         'iterator'                | 5
         'mediator'                | 4
         'memento'                 | 2
-        'observer'                | 3
+        'observer'                | 4
         'prototype'               | 2
         'singleton'               | 1
         'strategy'                | 2
