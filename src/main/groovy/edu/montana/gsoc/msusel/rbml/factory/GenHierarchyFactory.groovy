@@ -42,7 +42,6 @@ class GenHierarchyFactory extends AbstractFactory {
 
     def newInstance(FactoryBuilderSupport builder, Object name, Object value, Map attributes)
     throws InstantiationException, IllegalAccessException {
-        println "Creating new Generalization Hierarchy: ${value}"
         GeneralizationHierarchy inst = new GeneralizationHierarchy()
         inst.setName(value)
 

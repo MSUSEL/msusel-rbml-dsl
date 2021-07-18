@@ -43,8 +43,6 @@ class ClassifierRoleFactory extends AbstractFactory {
 
     def newInstance(FactoryBuilderSupport builder, Object name, Object value, Map attributes)
     throws InstantiationException, IllegalAccessException {
-        println "Creating Classifier with Name: ${value}"
-
         Classifier inst = new Classifier()
 
         if (value) {
@@ -71,8 +69,6 @@ class ClassifierRoleFactory extends AbstractFactory {
         if (builder.parentNode && builder.parentNode instanceof SPS) {
             builder.parentNode.classifiers << inst
         }
-
-        println "builder.parentNode is of type: ${builder.parentNode.getClass().getSimpleName()}"
 
         inst
     }
