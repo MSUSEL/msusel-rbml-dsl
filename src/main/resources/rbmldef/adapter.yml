@@ -38,7 +38,7 @@ SPS:
           mult: 1..1
           features:
             b1:
-              name: TargetRequest()
+              name: Request()
               params: [ ]
               mult: 1..*
               abstract: "true"

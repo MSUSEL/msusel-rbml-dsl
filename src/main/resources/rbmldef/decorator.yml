@@ -74,7 +74,11 @@ SPS:
                   params: []
                   mult: "*"
   relations:
-    - Association:
+    - Generalization:
+    	name: CompDeco
+        child: Decorator@Decorator
+        parent: Component@Component
+    - Aggregation:
         name: Comp
         mult: 1..*
         source:
@@ -85,13 +89,3 @@ SPS:
           name: absDec
           type: Decorator@Decorator
           mult: 1..1
-    - Generalization:
-        name: CompDecGen
-        child: Decorator@Decorator
-        parent: Component@Component
-        atLeastOne: group1
-    - Realization:
-        name: CompDecReal
-        child: Decorator@Decorator
-        parent: Component@Component
-        atLeastOne: group1
