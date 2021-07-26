@@ -36,7 +36,7 @@ SPS:
           features:
             b1:
               name: Operation
-              params: []
+              params: [ ]
               mult: 1..*
         children:
           - Class:
@@ -53,7 +53,7 @@ SPS:
           features:
             b1:
               name: OperationImpl
-              params: []
+              params: [ ]
               mult: 1..*
               abstract: "true"
         children:
@@ -63,7 +63,7 @@ SPS:
               features:
                 b1:
                   name: OperationImpl
-                  params: []
+                  params: [ ]
                   mult: 1..*
           - Classifier:
               name: AbstractImplementor
@@ -73,10 +73,10 @@ SPS:
         name: Implements
         mult: 1..1
         source:
-            name: abs
-            type: Abstraction@Abstraction
-            mult: 1..*
+          name: abs
+          type: Abstraction@Abstraction
+          mult: 1..*
         dest:
-            name: imp
-            type: Implementor@Implementor
-            mult: 1..*
+          name: imp
+          type: Implementor@Implementor
+          mult: 1..*

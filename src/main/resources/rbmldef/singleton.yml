@@ -36,13 +36,13 @@ SPS:
           features:
             b1:
               name: Operation
-              params: []
+              params: [ ]
               mult: 1..*
               abstract: 'true'
             b2:
               name: GetData
               type: Data
-              params: []
+              params: [ ]
               mult: 1..*
               abstract: 'true'
         children:
@@ -54,7 +54,7 @@ SPS:
                   name: uniqueInstance
                   type: Singleton@Singleton
                   mult: 1..1
-                  props: [static, readOnly]
+                  props: [ static, readOnly ]
                 s2:
                   name: singletonData
                   type: Data
@@ -62,18 +62,18 @@ SPS:
                 b1:
                   name: FactoryMethod
                   type: Singleton@Singleton
-                  params: []
+                  params: [ ]
                   mult: 1..1
-                  props: [readOnly]
+                  props: [ readOnly ]
                 b2:
                   name: Operation
-                  params: []
+                  params: [ ]
                   mult: 1..*
                   abstract: 'true'
                 b3:
                   name: GetData
                   type: Data
-                  params: []
+                  params: [ ]
                   mult: 1..*
                   abstract: 'true'
           - Classifier:

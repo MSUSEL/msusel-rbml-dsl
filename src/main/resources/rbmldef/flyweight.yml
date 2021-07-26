@@ -36,7 +36,7 @@ SPS:
           features:
             b1:
               name: Operation
-              params: [s: State]
+              params: [ s: State ]
               mult: 1..*
               abstract: 'true'
         children:
@@ -46,7 +46,7 @@ SPS:
               features:
                 b1:
                   name: Operation
-                  params: [s: State]
+                  params: [ s: State ]
                   mult: 1..1
           - Classifier:
               name: AbstractFlyweight
@@ -57,7 +57,7 @@ SPS:
               features:
                 b1:
                   name: Operation
-                  params: [s: State]
+                  params: [ s: State ]
                   mult: 1..1
           - Classifier:
               name: AbstractUnsharedFlyweight
@@ -69,7 +69,7 @@ SPS:
           b1:
             name: GetFlyweight
             type: Flyweight@Flyweight
-            params: [key: Key]
+            params: [ key: Key ]
             mult: 1..1
     - Class:
         name: Client

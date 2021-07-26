@@ -37,7 +37,7 @@ SPS:
             b1:
               name: Clone
               type: Prototype@Prototype
-              params: []
+              params: [ ]
               mult: 1..1
               abstract: 'true'
         children:
@@ -48,7 +48,7 @@ SPS:
                 b1:
                   name: Clone
                   type: Prototype@Prototype
-                  params: []
+                  params: [ ]
                   mult: 1..1
           - Classifier:
               name: AbstractPrototype
@@ -59,7 +59,7 @@ SPS:
         features:
           b1:
             name: Operation
-            params: []
+            params: [ ]
             mult: 1..*
   relations:
     - Association:

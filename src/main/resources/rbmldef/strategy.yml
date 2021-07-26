@@ -36,7 +36,7 @@ SPS:
           features:
             b1:
               name: Operation
-              params: []
+              params: [ ]
               mult: 1..1
               abstract: "true"
         children:
@@ -45,11 +45,11 @@ SPS:
               features:
                 b1:
                   name: Operation
-                  params: []
+                  params: [ ]
                   mult: 1..1
                 b2:
                   name: StrategyOp
-                  params: []
+                  params: [ ]
                   mult: 1..*
           - Classifier:
               name: AbstractStrategy
@@ -62,7 +62,7 @@ SPS:
             mult: 1..1
           b2:
             name: ContextOperation
-            params: []
+            params: [ ]
             mult: 1..*
   relations:
     - Association:

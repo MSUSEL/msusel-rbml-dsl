@@ -36,12 +36,12 @@ SPS:
           features:
             b1:
               name: BuildPart
-              params: []
+              params: [ ]
               mult: 1..*
               abstract: "true"
             b2:
               name: GetResult
-              params: []
+              params: [ ]
               type: Product@Product
               mult: 1..1
               abstract: "true"
@@ -52,12 +52,12 @@ SPS:
               features:
                 b1:
                   name: BuildPart
-                  params: []
+                  params: [ ]
                   mult: 1..*
                   abstract: "false"
                 b2:
                   name: GetResult
-                  params: []
+                  params: [ ]
                   type: Product@Product
                   mult: 1..1
                   abstract: "false"
@@ -82,7 +82,7 @@ SPS:
         features:
           b1:
             name: Construct
-            params: []
+            params: [ ]
             mult: 1..1
   relations:
     - Create:

@@ -36,21 +36,21 @@ SPS:
           features:
             b1:
               name: Operation()
-              params: []
+              params: [ ]
               mult: 1..*
               abstract: "true"
             b2:
               name: Add()
-              params: [c: Component]
+              params: [ c: Component ]
               mult: 0..1
             b3:
               name: Remove()
-              params: [c: Component]
+              params: [ c: Component ]
               mult: 0..1
             b4:
               name: GetChild()
               type: Component
-              params: [index: Int]
+              params: [ index: Int ]
               mult: 0..1
         children:
           - Class:
@@ -59,20 +59,20 @@ SPS:
               features:
                 b1:
                   name: Operation()
-                  params: []
+                  params: [ ]
                   mult: 1..*
                 b2:
                   name: Add()
-                  params: [c: Component]
+                  params: [ c: Component ]
                   mult: 0..1
                 b3:
                   name: Remove()
-                  params: [c: Component]
+                  params: [ c: Component ]
                   mult: 0..1
                 b4:
                   name: GetChild()
                   type: Component
-                  params: [index: Int]
+                  params: [ index: Int ]
                   mult: 0..1
           - Classifier:
               name: AbstractComposite
@@ -83,7 +83,7 @@ SPS:
               features:
                 b1:
                   name: Operation()
-                  params: []
+                  params: [ ]
                   mult: 1..*
     - Class:
         name: Client

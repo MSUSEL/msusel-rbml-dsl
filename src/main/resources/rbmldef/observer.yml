@@ -35,15 +35,15 @@ SPS:
           features:
             b1:
               name: Attach
-              params: [obsv: Observer]
+              params: [ obsv: Observer ]
               mult: 1..*
             b2:
               name: Detach
-              params: [obsv: Observer]
+              params: [ obsv: Observer ]
               mult: 1..*
             b3:
               name: Notify
-              params: []
+              params: [ ]
               mult: 1..*
         children:
           - Class:
@@ -57,11 +57,11 @@ SPS:
                 b1:
                   name: GetState
                   type: SubStateType
-                  params: []
+                  params: [ ]
                   mult: 1..*
                 b2:
                   name: SetState
-                  params: [lst: ObserverState]
+                  params: [ lst: ObserverState ]
                   mult: 1..*
           - Classifier:
               name: AbstractSubject
@@ -77,7 +77,7 @@ SPS:
               mult: 1..*
             b1:
               name: Update
-              params: []
+              params: [ ]
               mult: 1..1
               abstract: "true"
         children:
@@ -87,7 +87,7 @@ SPS:
               features:
                 b1:
                   name: Update
-                  params: []
+                  params: [ ]
                   mult: 1..1
           - Classifier:
               name: AbstractObserver

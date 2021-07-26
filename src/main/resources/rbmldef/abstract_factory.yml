@@ -108,4 +108,3 @@ SPS:
         source: Client
         dest: Product@Product
         atLeastOne: group2
-

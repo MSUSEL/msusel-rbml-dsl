@@ -36,7 +36,7 @@ SPS:
           features:
             b1:
               name: Interpret
-              params: [c: Context]
+              params: [ c: Context ]
               mult: 1..1
         children:
           - Class:
@@ -45,7 +45,7 @@ SPS:
               features:
                 b1:
                   name: Interpret
-                  params: [c: Context]
+                  params: [ c: Context ]
                   mult: 1..1
           - Classifier:
               name: AbstractTerminalExpr
@@ -56,7 +56,7 @@ SPS:
               features:
                 b1:
                   name: Interpret
-                  params: [c: Context]
+                  params: [ c: Context ]
                   mult: 1..1
           - Classifier:
               name: AbstractNonTerminalExpr

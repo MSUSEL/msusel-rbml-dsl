@@ -38,12 +38,12 @@ SPS:
             b1:
               name: Operation()
               type: void
-              params: []
+              params: [ ]
               mult: 1..*
             b2:
               name: PrimitiveOp()
               type: void
-              params: []
+              params: [ ]
               mult: 1..*
               abstract: 'true'
         children:
@@ -54,7 +54,7 @@ SPS:
                 b2:
                   name: PrimitiveOp()
                   type: void
-                  params: []
+                  params: [ ]
                   mult: 1..*
                   abstract: 'false'
           - Classifier:

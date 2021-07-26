@@ -36,7 +36,7 @@ SPS:
           features:
             b1:
               name: Visit
-              params: [elem: Element@ConcreteElement]
+              params: [ elem: Element@ConcreteElement ]
               mult: 1..*
               abstract: 'true'
         children:
@@ -46,7 +46,7 @@ SPS:
               features:
                 b1:
                   name: Visit
-                  params: [elem: Element@ConcreteElement]
+                  params: [ elem: Element@ConcreteElement ]
                   mult: 1..*
           - Classifier:
               name: AbstractVisitor
@@ -59,7 +59,7 @@ SPS:
           features:
             b1:
               name: Accept
-              params: [vis: Vistor@Vistor]
+              params: [ vis: Vistor@Vistor ]
               mult: 1..*
               abstract: 'true'
         children:
@@ -69,11 +69,11 @@ SPS:
               features:
                 b1:
                   name: Accept
-                  params: [vis: Vistor@Vistor]
+                  params: [ vis: Vistor@Vistor ]
                   mult: 1..*
                 b2:
                   name: Operation
-                  params: []
+                  params: [ ]
                   mult: 1..*
           - Classifier:
               name: AbstractElement

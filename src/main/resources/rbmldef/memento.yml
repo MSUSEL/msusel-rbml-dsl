@@ -34,11 +34,11 @@ SPS:
         features:
           b1:
             name: SetMemento
-            params: [m: Memento]
+            params: [ m: Memento ]
             mult: 1..1
           b2:
             name: CreateMemento
-            params: []
+            params: [ ]
             type: Memento
             mult: 1..1
     - Class:
@@ -52,11 +52,11 @@ SPS:
           b1:
             name: GetState
             type: MemoState
-            params: []
+            params: [ ]
             mult: 1..*
           b2:
             name: SetState
-            params: [st: MemoState]
+            params: [ st: MemoState ]
             mult: 1..*
     - Class:
         name: CareTaker

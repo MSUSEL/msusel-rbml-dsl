@@ -37,7 +37,7 @@ SPS:
             mult: 1..1
           b1:
             name: Request
-            params: []
+            params: [ ]
             mult: 1..*
     - GenHierarchy:
         name: State
@@ -47,7 +47,7 @@ SPS:
           features:
             b1:
               name: Handle
-              params: []
+              params: [ ]
               mult: 1..*
               abstract: "true"
         children:
@@ -56,7 +56,7 @@ SPS:
               features:
                 b1:
                   name: Handle
-                  params: []
+                  params: [ ]
                   mult: 1..*
           - Classifier:
               name: AbstractState

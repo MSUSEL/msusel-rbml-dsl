@@ -37,7 +37,7 @@ SPS:
             b1:
               name: Operation()
               type: void
-              params: []
+              params: [ ]
               mult: 1..*
         children:
           - Class:
@@ -54,7 +54,7 @@ SPS:
           features:
             b1:
               name: Operation()
-              params: []
+              params: [ ]
               mult: 1..*
         children:
           - Class:
@@ -71,11 +71,11 @@ SPS:
                 b1:
                   name: AddedBehavior()
                   type: void
-                  params: []
+                  params: [ ]
                   mult: "*"
   relations:
     - Generalization:
-    	name: CompDeco
+        name: CompDeco
         child: Decorator@Decorator
         parent: Component@Component
     - Aggregation:

@@ -39,7 +39,7 @@ SPS:
             b1:
               name: CreateIterator
               type: Iterator@Iterator
-              params: []
+              params: [ ]
               mult: 1..*
         children:
           - Class:
@@ -49,7 +49,7 @@ SPS:
                 b1:
                   name: CreateIterator
                   type: Iterator@Iterator
-                  params: []
+                  params: [ ]
                   mult: 1..*
           - Classifier:
               name: AbstractAggregate
@@ -65,24 +65,24 @@ SPS:
               mult: 1..1
             b1:
               name: First
-              params: []
+              params: [ ]
               mult: 1..1
               abstract: 'true'
             b2:
               name: Next
-              params: []
+              params: [ ]
               mult: 1..1
               abstract: 'true'
             b3:
               name: IsDone
               type: Boolean
-              params: []
+              params: [ ]
               mult: 1..1
               abstract: 'true'
             b4:
               name: CurrentItem
               type: Item
-              params: []
+              params: [ ]
               mult: 1..1
               abstract: 'true'
         children:
@@ -92,21 +92,21 @@ SPS:
               features:
                 b1:
                   name: First
-                  params: []
+                  params: [ ]
                   mult: 1..1
                 b2:
                   name: Next
-                  params: []
+                  params: [ ]
                   mult: 1..1
                 b3:
                   name: IsDone
                   type: Boolean
-                  params: []
+                  params: [ ]
                   mult: 1..1
                 b4:
                   name: CurrentItem
                   type: Item
-                  params: []
+                  params: [ ]
                   mult: 1..1
           - Classifier:
               name: AbstractIterator

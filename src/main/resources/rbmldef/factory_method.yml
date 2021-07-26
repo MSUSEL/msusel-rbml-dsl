@@ -49,7 +49,7 @@ SPS:
             b1:
               name: FactoryMethod
               type: Product@Product
-              params: []
+              params: [ ]
               mult: 1..*
               abstract: "true"
         children:
@@ -60,7 +60,7 @@ SPS:
                 b1:
                   name: FactoryMethod
                   type: Product@Product
-                  params: []
+                  params: [ ]
                   mult: 1..*
           - Classifier:
               name: AbstractCreator

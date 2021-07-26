@@ -37,7 +37,7 @@ SPS:
           features:
             b1:
               name: HandleRequest
-              params: []
+              params: [ ]
               mult: 1..*
               abstract: "true"
         children:
@@ -47,7 +47,7 @@ SPS:
               features:
                 b1:
                   name: HandleRequest
-                  params: []
+                  params: [ ]
                   mult: 1..*
           - Classifier:
               name: AbstractAbstraction
