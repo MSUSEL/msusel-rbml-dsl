@@ -57,6 +57,7 @@ class Classifier extends Role {
     }
 
     BehavioralFeature getBehavioralFeatureByName(String name) {
+        behFeats.each {println "BehFeature with Name: ${it.name}" }
         behFeats.find {it.name == name }
     }
 
