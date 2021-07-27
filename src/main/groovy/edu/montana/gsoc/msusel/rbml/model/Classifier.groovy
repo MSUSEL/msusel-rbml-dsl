@@ -57,4 +57,15 @@ class Classifier extends Role {
     BehavioralFeature getBehavioralFeatureByName(String name) {
         behFeats.find {it.name == name }
     }
+
+    Role findFeatureByName(String name) {
+        if (!name)
+            return null
+        
+        Role r = getStructuralFeatureByName(name)
+        if (!r)
+            r = getBehavioralFeatureByName(name)
+
+        return r
+    }
 }
