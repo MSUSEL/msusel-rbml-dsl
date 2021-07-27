@@ -109,9 +109,9 @@ SPS:
         mult: 1..1
         source:
           name: obs
-          type: ConcreteObserver@Observer
+          type: Observer@ConcreteObserver
           mult: 1..*
         dest:
           name: sub
-          type: ConcreteSubject@Subject
+          type: Subject@ConcreteSubject
           mult: 1..*
