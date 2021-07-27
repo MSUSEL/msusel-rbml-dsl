@@ -61,7 +61,7 @@ class Classifier extends Role {
     Role findFeatureByName(String name) {
         if (!name)
             return null
-        
+
         Role r = getStructuralFeatureByName(name)
         if (!r)
             r = getBehavioralFeatureByName(name)
