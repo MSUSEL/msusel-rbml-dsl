@@ -27,11 +27,13 @@
 package edu.montana.gsoc.msusel.rbml.model
 
 import groovy.transform.builder.Builder
+import groovy.util.logging.Log4j2
 
 /**
  * @author Isaac Griffith
  * @version 1.3.0
  */
+@Log4j2
 class Classifier extends Role {
 
     List<StructuralFeature> structFeats = []
@@ -62,9 +64,11 @@ class Classifier extends Role {
         if (!name)
             return null
 
+        log.info "Searching for feature named: $name"
         Role r = getStructuralFeatureByName(name)
         if (!r)
             r = getBehavioralFeatureByName(name)
+        log.info "Found: $r"
 
         return r
     }
