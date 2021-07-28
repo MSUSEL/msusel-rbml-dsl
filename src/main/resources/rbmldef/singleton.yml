@@ -53,7 +53,8 @@ SPS:
                   name: uniqueInstance
                   type: Singleton@Singleton
                   mult: 1..1
-                  props: [ static, readOnly ]
+                  static: 'true'
+                  readOnly: 'true'
                 s2:
                   name: singletonData
                   type: Data
@@ -63,7 +64,6 @@ SPS:
                   type: Singleton@Singleton
                   params: [ ]
                   mult: 1..1
-                  props: [ readOnly ]
                 b2:
                   name: Operation
                   params: [ ]

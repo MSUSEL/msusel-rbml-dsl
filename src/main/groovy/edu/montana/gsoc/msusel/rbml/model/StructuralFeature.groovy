@@ -36,11 +36,13 @@ class StructuralFeature extends Feature {
 
     Classifier type
     boolean isStatic
+    boolean isReadOnly
 
     @Builder(buildMethodName = "create")
-    StructuralFeature(String name, Multiplicity mult, Classifier type, boolean isStatic) {
+    StructuralFeature(String name, Multiplicity mult, Classifier type, boolean isStatic, boolean isReadOnly) {
         super(name, mult)
         this.type = type
         this.isStatic = isStatic
+        this.isReadOnly = isReadOnly
     }
 }

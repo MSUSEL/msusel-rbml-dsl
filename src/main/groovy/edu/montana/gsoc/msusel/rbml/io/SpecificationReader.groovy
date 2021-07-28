@@ -280,6 +280,7 @@ class SpecificationReader {
         String mult = map.mult
         String t = map.type
         boolean statc = map.static ? Boolean.parseBoolean(map.static) : false
+        boolean readOnly = map.readOnly ? Boolean.parseBoolean(map.readOnly) : false
         Classifier type = findType(t)
 
         StructuralFeature.builder()
@@ -287,6 +288,7 @@ class SpecificationReader {
                 .mult(Multiplicity.fromString(mult))
                 .type(type)
                 .isStatic(statc)
+                .isReadOnly(readOnly)
                 .create()
     }
 
