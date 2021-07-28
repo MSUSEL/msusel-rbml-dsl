@@ -49,7 +49,6 @@ SPS:
         name: Decorator
         Classifier:
           name: Decorator
-          mult: 1..1
           features:
             b1:
               name: Operation()
