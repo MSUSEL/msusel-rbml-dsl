@@ -30,9 +30,8 @@ SPS:
   roles:
     - GenHierarchy:
         name: Singleton
-        Class:
+        Classifier:
           name: Singleton
-          mult: 1..1
           features:
             b1:
               name: Operation
