@@ -59,7 +59,7 @@ SPS:
                   type: Data
                   mult: 1..*
                 b1:
-                  name: FactoryMethod
+                  name: GetInstance
                   type: Singleton@Singleton
                   params: [ ]
                   mult: 1..1
