@@ -59,7 +59,7 @@ SPS:
           features:
             b1:
               name: Accept
-              params: [ vis: Vistor@Vistor ]
+              params: [ vis: Visitor@Visitor ]
               mult: 1..*
               abstract: 'true'
         children:
@@ -69,7 +69,7 @@ SPS:
               features:
                 b1:
                   name: Accept
-                  params: [ vis: Vistor@Vistor ]
+                  params: [ vis: Visitor@Visitor ]
                   mult: 1..*
                 b2:
                   name: Operation
