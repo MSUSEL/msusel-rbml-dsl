@@ -31,7 +31,7 @@ SPS:
     - GenHierarchy:
         name: Singleton
         Class:
-          name: Creator
+          name: Singleton
           mult: 1..1
           features:
             b1:
@@ -69,13 +69,11 @@ SPS:
                   name: Operation
                   params: [ ]
                   mult: 1..*
-                  abstract: 'true'
                 b3:
                   name: GetData
                   type: Data
                   params: [ ]
                   mult: 1..*
-                  abstract: 'true'
           - Classifier:
               name: AbstractSingleton
               mult: "*"
