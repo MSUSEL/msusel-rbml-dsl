@@ -36,7 +36,7 @@ SPS:
           features:
             b1:
               name: Visit
-              params: [ elem: Element@ConcreteElement ]
+              params: [ elem: Element@Element ]
               mult: 1..*
               abstract: 'true'
         children:
