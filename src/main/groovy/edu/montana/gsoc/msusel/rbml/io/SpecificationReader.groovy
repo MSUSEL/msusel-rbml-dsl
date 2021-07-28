@@ -265,7 +265,7 @@ class SpecificationReader {
 
                 feat.params << Parameter.builder()
                         .mult(Multiplicity.fromString("1..1"))
-                        .var(var)
+                        .variable(var)
                         .type(type)
                         .create()
             }
@@ -291,7 +291,10 @@ class SpecificationReader {
     }
 
     private def findType(String t) {
-        Classifier type
+        Classifier type = null
+        if (t.contains("@")) {
+            t = t.split("@")[1]
+        }
         if (roles[t]) {
             type = (Classifier) roles[t]
 //        } else {

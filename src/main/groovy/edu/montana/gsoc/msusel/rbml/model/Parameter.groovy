@@ -38,9 +38,9 @@ class Parameter extends Role {
     Classifier type
 
     @Builder(buildMethodName = "create")
-    Parameter(String var, Classifier type, Multiplicity mult) {
-        super(var, mult)
-        this.variable = var
+    Parameter(String variable, Classifier type, Multiplicity mult) {
+        super(variable, mult)
+        this.variable = variable
         this.type = type
     }
 }
