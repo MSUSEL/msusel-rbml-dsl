@@ -64,7 +64,6 @@ SPS:
               mult: "*"
     - Class:
         name: FlyweightFactory
-        mult: 1..1
         features:
           b1:
             name: GetFlyweight
@@ -85,7 +84,7 @@ SPS:
         dest:
           name: flyweights
           type: Flyweight@Flyweight
-          mult: 1..*
+          mult: 1..1
     - Association:
         name: SharedFlyweight
         mult: 1..*

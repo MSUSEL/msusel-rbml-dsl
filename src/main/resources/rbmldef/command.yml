@@ -57,7 +57,7 @@ SPS:
     - Class:
         name: Invoker
         mult: 1..*
-    - Classifier:
+    - Class:
         name: Receiver
         mult: 1..*
         features:

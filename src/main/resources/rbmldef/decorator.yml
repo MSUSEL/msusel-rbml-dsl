@@ -82,7 +82,7 @@ SPS:
         dest:
           name: absComp
           type: Component@Component
-          mult: 1..*
+          mult: 1..1
         source:
           name: absDec
           type: Decorator@Decorator
