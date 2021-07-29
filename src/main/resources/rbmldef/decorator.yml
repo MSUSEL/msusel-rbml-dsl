@@ -55,12 +55,12 @@ SPS:
               params: [ ]
               mult: 1..*
         children:
-          - Class:
-              name: AbstractDecorator
-              mult: 1..*
           - Classifier:
-              name: ConcreteDecorator
+              name: AbstractDecorator
               mult: "*"
+          - Class:
+              name: ConcreteDecorator
+              mult: 1..*
               features:
                 s1:
                   name: addedState
@@ -79,11 +79,11 @@ SPS:
     - Aggregation:
         name: Comp
         mult: 1..*
-        source:
+        dest:
           name: absComp
           type: Component@Component
           mult: 1..*
-        dest:
+        source:
           name: absDec
           type: Decorator@Decorator
           mult: 1..1
