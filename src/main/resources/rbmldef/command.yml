@@ -32,7 +32,6 @@ SPS:
         name: Command
         Classifier:
           name: Command
-          mult: 1..*
           features:
             b1:
               name: Execute
