@@ -30,10 +30,8 @@ SPS:
   roles:
     - GenHierarchy:
         name: Handler
-        Class:
+        Classifier:
           name: Handler
-          mult: 1..1
-          abstract: true
           features:
             b1:
               name: HandleRequest
@@ -50,7 +48,7 @@ SPS:
                   params: [ ]
                   mult: 1..*
           - Classifier:
-              name: AbstractAbstraction
+              name: AbstractHandler
               mult: 1..*
     - Classifier:
         name: Client

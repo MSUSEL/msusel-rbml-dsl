@@ -36,15 +36,15 @@ SPS:
             b1:
               name: Attach
               params: [ obsv: Observer ]
-              mult: 1..*
+              mult: 1..1
             b2:
               name: Detach
               params: [ obsv: Observer ]
-              mult: 1..*
+              mult: 1..1
             b3:
               name: Notify
               params: [ ]
-              mult: 1..*
+              mult: 1..1
         children:
           - Class:
               name: ConcreteSubject
@@ -53,15 +53,6 @@ SPS:
                 s1:
                   name: subjectState
                   type: SubStateType
-                  mult: 1..*
-                b1:
-                  name: GetState
-                  type: SubStateType
-                  params: [ ]
-                  mult: 1..*
-                b2:
-                  name: SetState
-                  params: [ lst: ObserverState ]
                   mult: 1..*
           - Classifier:
               name: AbstractSubject
@@ -97,9 +88,9 @@ SPS:
         name: Observes
         mult: 1..1
         source:
-          name: sub
+          name: subb
           type: Subject@Subject
-          mult: 1..*
+          mult: 0..*
         dest:
           name: obs
           type: Observer@Observer
@@ -108,9 +99,9 @@ SPS:
         name: Observed
         mult: 1..1
         source:
-          name: obs
+          name: obss
           type: Observer@ConcreteObserver
-          mult: 1..*
+          mult: 0..*
         dest:
           name: sub
           type: Subject@ConcreteSubject
