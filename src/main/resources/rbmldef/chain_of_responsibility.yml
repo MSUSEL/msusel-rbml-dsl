@@ -49,7 +49,7 @@ SPS:
                   mult: 1..*
           - Classifier:
               name: AbstractHandler
-              mult: 1..*
+              mult: "*"
     - Classifier:
         name: Client
         mult: 1..*
