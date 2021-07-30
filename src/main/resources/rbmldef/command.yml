@@ -78,7 +78,7 @@ SPS:
         dest:
           name: rcvr
           type: Receiver
-          mult: 1..1
+          mult: 1..*
     - Create:
         name: CreateCommand
         mult: 1..1
