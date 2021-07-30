@@ -87,7 +87,7 @@ SPS:
           mult: 1..1
     - Association:
         name: SharedFlyweight
-        mult: 1..*
+        mult: 1..1
         source:
           name: clnt
           type: Client
@@ -95,7 +95,7 @@ SPS:
         dest:
           name: cfw
           type: Flyweight@ConcreteFlyweight
-          mult: 1..*
+          mult: 1..1
     - Association:
         name: UnsharedFlyweight
         mult: "*"
