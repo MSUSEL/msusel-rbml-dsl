@@ -76,7 +76,7 @@ SPS:
         name: CompDeco
         child: Decorator@Decorator
         parent: Component@Component
-    - Association:
+    - Aggregation:
         name: Comp
         mult: 1..*
         source:
