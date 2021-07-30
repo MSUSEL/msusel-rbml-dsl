@@ -79,11 +79,11 @@ SPS:
     - Aggregation:
         name: Comp
         mult: 1..*
-        dest:
-          name: absComp
-          type: Component@Component
-          mult: 1..1
         source:
           name: absDec
           type: Decorator@Decorator
+          mult: 1..1
+        dest:
+          name: absComp
+          type: Component@Component
           mult: 1..1
