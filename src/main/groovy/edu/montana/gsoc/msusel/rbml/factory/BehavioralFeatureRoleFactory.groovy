@@ -104,7 +104,6 @@ class BehavioralFeatureRoleFactory extends AbstractFactory {
 
             Classifier tc = null
             if (type != "") {
-                println "RBML type found: " + type
                 PatternManager.instance.events << new BehaviorTypeResolution(role: inst, type: type)
             } else {
                 inst.type = new UnspecifiedType()
